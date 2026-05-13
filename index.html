@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Família da Vovó | Nosso Legado</title>
+    <meta name="description" content="Site da família para compartilhar memórias, histórias e momentos especiais">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'family-brown': '#8B4513',
+                        'family-cream': '#FFF8E1',
+                        'family-gold': '#D4AF37',
+                        'family-green': '#2E8B57'
+                    },
+                    fontFamily: {
+                        'script': ['Dancing Script', 'cursive'],
+                        'sans': ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .memory-card, .history-card, .recipe-card, .birthday-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .memory-card:hover, .history-card:hover, .recipe-card:hover, .birthday-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .comment-item { transition: background 0.2s; }
+        .comment-item:hover { background: #fef3c7; }
+        html { scroll-behavior: smooth; }
+        @media (max-width: 768px) { .container { padding-left: 1rem; padding-right: 1rem; } }
+        .recipe-photo { width: 100%; height: 200px; object-fit: cover; border-radius: 12px 12px 0 0; }
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .toast-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .modal-overlay { animation: fadeInModal 0.2s ease-out; }
+        @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-family-cream font-sans text-gray-800">
+    <header class="bg-family-brown text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-tree text-family-gold text-3xl"></i>
+                <h1 class="text-2xl md:text-3xl font-bold font-script">Família da Vovó</h1>
+            </div>
+            <nav class="mt-3 md:mt-0">
+                <ul class="flex flex-wrap justify-center gap-3 md:gap-5">
+                    <li><a href="#home" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Início</a></li>
+                    <li><a href="#memories" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Memórias</a></li>
+                    <li><a href="#history" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">História</a></li>
+                    <li><a href="#birthdays" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Aniversários</a></li>
+                    <li><a href="#recipes" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Receitas</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="relative py-20 md:py-28 bg-gradient-to-r from-family-green/20 to-family-brown/20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl md:text-7xl font-script text-family-brown mb-4 fade-in">Bem-vindo à nossa família!</h2>
+            <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8 text-gray-700">Um lugar para guardar nossas memórias, histórias e celebrar nosso legado familiar.</p>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <a href="#memories" class="bg-family-brown text-white px-8 py-3 rounded-full hover:bg-family-gold transition transform hover:scale-105 inline-block font-semibold shadow-md">📸 Ver Memórias</a>
+                <a href="#birthdays" class="bg-white text-family-brown border-2 border-family-brown px-8 py-3 rounded-full hover:bg-family-green hover:text-white hover:border-transparent transition transform hover:scale-105 inline-block font-semibold shadow-md">🎂 Aniversários</a>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-10 bg-repeat-x opacity-50" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 20\" preserveAspectRatio=\"none\"><path d=\"M0,0 Q30,20 60,0 T120,0 V20 H0 Z\" fill=\"%238B4513\"/></svg>')"></div>
+    </section>
+
+    <section id="memories" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">Nossas Memórias</h2>
+                <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Fotos e vídeos que capturam momentos especiais da nossa família</p>
+            </div>
+            <div class="flex justify-center mb-8 flex-wrap gap-2">
+                <button class="filter-btn px-5 py-2 rounded-full bg-family-brown text-white transition font-medium shadow-sm" data-filter="all">📋 Todas</button>
+                <button class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-family-green hover:text-white transition font-medium" data-filter="reunioes">👨‍👩‍👧‍👦 Reuniões</button>
+                <button class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-family-green hover:text-white transition font-medium" data-filter="aniversarios">🎂 Aniversários</button>
+                <button class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-family-green hover:text-white transition font-medium" data-filter="viagens">✈️ Viagens</button>
+            </div>
+            <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <section id="history" class="py-16 bg-family-cream">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">Nossa História</h2>
+                <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">A jornada da nossa família através das gerações</p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <h3 class="text-2xl font-script text-family-brown text-center mb-6">📖 Linha do Tempo</h3>
+                <div id="history-content" class="space-y-6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE ANIVERSÁRIOS (SUBSTITUIU A ÁRVORE GENEALÓGICA) -->
+    <section id="birthdays" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">🎂 Aniversários da Família</h2>
+                <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Celebre e acompanhe os aniversários de todos os membros da família</p>
+                <p class="text-sm text-gray-500 mt-2">📅 Marque no calendário e não perca nenhuma data especial!</p>
+            </div>
+            <div id="birthdays-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+        </div>
+    </section>
+
+    <section id="recipes" class="py-16 bg-family-cream">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">Receitas da Família</h2>
+                <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Sabores que atravessam gerações e guardam histórias especiais</p>
+            </div>
+            <div id="recipes-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <footer class="bg-family-brown text-white py-12 mt-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2024 Família da Vovó - Preservando nossas memórias</p>
+        </div>
+    </footer>
+
+    <!-- MODAL DETALHES DA HISTÓRIA -->
+    <div id="history-detail-modal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4 modal-overlay">
+        <div class="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="history-detail-title" class="text-2xl font-bold text-family-brown"></h3>
+                    <button onclick="closeHistoryDetailModal()" class="text-gray-500 hover:text-gray-700"><i class="fas fa-times text-2xl"></i></button>
+                </div>
+                <div id="history-detail-content" class="space-y-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL MEMÓRIA -->
+    <div id="memory-modal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4 modal-overlay">
+        <div class="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="modal-title" class="text-2xl font-bold text-family-brown"></h3>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700"><i class="fas fa-times text-2xl"></i></button>
+                </div>
+                <div id="modal-content" class="space-y-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast-notification hidden"></div>
+
+    <script>
+        // ============================================================
+        // 🟢 ÁREA PARA VOCÊ ADICIONAR SUAS INFORMAÇÕES DIRETAMENTE NO CÓDIGO
+        // ============================================================
+        
+        // ---------- 1. MEMÓRIAS (FOTOS E VÍDEOS) ----------
+        const GALLERY_ITEMS = [
+            // EXEMPLO:
+            // {
+            //     id: 1,
+            //     title: "Título da Memória",
+            //     description: "Descrição do momento especial...",
+            //     type: "foto",
+            //     category: "reunioes",
+            //     date: "2024-01-15",
+            //     src: "caminho/da/foto.jpg",
+            //     comments: []
+            // }
+        ];
+        
+        // ---------- 2. HISTÓRIA DA FAMÍLIA (LINHA DO TEMPO) ----------
+        const HISTORY_ITEMS = [
+            // EXEMPLO:
+            // {
+            //     id: 1,
+            //     year: "1950",
+            //     title: "Título do Momento",
+            //     description: "Descrição detalhada do que aconteceu...",
+            //     fileData: null,
+            //     fileType: null
+            // }
+        ];
+        
+        // ---------- 3. ANIVERSÁRIOS DA FAMÍLIA (NOVO!) ----------
+        const BIRTHDAY_ITEMS = [
+            // EXEMPLO DE ANIVERSÁRIO:
+            {
+                id: 1,
+                nome: "Kellton",
+                data: "11/10",
+                idade: "17 Anos",
+                foto: "imagens/eu2.jpg",  // Coloque o caminho da foto ou null
+                curiosidade: "O progamador da família, adora tecnologia e é apaixonado por jogos. Sempre tem uma piada pronta e um sorriso no rosto! 🎮💻",
+                like: true
+            },
+           
+            
+            // Adicione mais aniversários seguindo o modelo acima
+        ];
+        
+        // ---------- 4. RECEITAS DA FAMÍLIA ----------
+        const RECIPE_ITEMS = [
+            // EXEMPLO DE RECEITA:
+            // {
+            //     name: "Bolo de Cenoura com Cobertura de Chocolate",
+            //     ingredients: "- 3 cenouras médias\n- 3 ovos\n- 1 xícara de óleo\n- 2 xícaras de açúcar\n- 2 xícaras de farinha\n- 1 colher de fermento\n\nCOBERTURA:\n- 3 colheres de chocolate\n- 2 colheres de manteiga\n- 1/2 xícara de açúcar\n- 1/2 xícara de leite",
+            //     instructions: "MASSA:\n1. Bata as cenouras, ovos e óleo no liquidificador\n2. Misture com os ingredientes secos\n3. Adicione o fermento\n4. Asse por 40 min\n\nCOBERTURA:\n1. Leve todos os ingredientes ao fogo\n2. Mexa até engrossar\n3. Despeje sobre o bolo",
+            //     photo: null
+            // }
+        ];
+        
+        // ============================================================
+        // NÃO EDITAR A PARTIR DAQUI - O CÓDIGO ABAIXO RENDERIZA AS INFORMAÇÕES
+        // ============================================================
+        
+        let galleryItems = [...GALLERY_ITEMS];
+        let historyItems = [...HISTORY_ITEMS];
+        let birthdayItems = [...BIRTHDAY_ITEMS];
+        let recipeItems = [...RECIPE_ITEMS];
+        let nextId = galleryItems.length > 0 ? Math.max(...galleryItems.map(i => i.id), 0) + 1 : 1;
+        
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            let bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
+            toast.innerHTML = `<div class="${bgColor} text-white px-5 py-3 rounded-lg shadow-lg">${message}</div>`;
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 2000);
+        }
+        
+        function formatDate(dateStr) { 
+            if(!dateStr) return ''; 
+            const [y,m,d] = dateStr.split('-'); 
+            return `${d}/${m}/${y}`; 
+        }
+        
+        function escapeHtml(text) { 
+            if(!text) return '';
+            const div = document.createElement('div'); 
+            div.textContent = text; 
+            return div.innerHTML; 
+        }
+        
+        function getCategoryIcon(category) {
+            const icons = { 'reunioes': '👨‍👩‍👧‍👦', 'aniversarios': '🎂', 'viagens': '✈️' };
+            return icons[category] || '📷';
+        }
+        
+        function getCategoryName(category) {
+            const names = { 'reunioes': 'Reuniões', 'aniversarios': 'Aniversários', 'viagens': 'Viagens' };
+            return names[category] || category;
+        }
+        
+        function renderGallery() {
+            const container = document.getElementById('gallery-container');
+            if (galleryItems.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-20 bg-gray-50 rounded-xl"><i class="fas fa-camera text-7xl text-gray-300 mb-4"></i><p class="text-gray-500 text-lg">Nenhuma memória adicionada ainda.</p><p class="text-gray-400 mt-2">Em breve adicionaremos nossas fotos e vídeos!</p></div>`;
+                return;
+            }
+            container.innerHTML = galleryItems.map(item => `
+                <div class="memory-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all" data-category="${item.category}">
+                    ${item.type === 'video' ? 
+                        `<div class="relative cursor-pointer group" onclick="openVideoModal(${item.id})">
+                            <video src="${item.src}" class="w-full h-56 object-cover"></video>
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
+                                <div class="bg-white/90 rounded-full p-4"><i class="fas fa-play text-family-brown text-2xl"></i></div>
+                            </div>
+                        </div>` :
+                        `<img src="${item.src}" class="w-full h-56 object-cover cursor-pointer hover:opacity-90 transition" onclick="openImageModal('${item.src}', '${escapeHtml(item.title)}')">`
+                    }
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-lg text-family-brown">${escapeHtml(item.title)}</h3>
+                            <span class="bg-family-green/20 text-family-green text-xs px-2 py-1 rounded-full">${getCategoryIcon(item.category)}</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mt-1 line-clamp-2">${escapeHtml(item.description)}</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="text-xs text-gray-400"><i class="far fa-calendar-alt"></i> ${formatDate(item.date)}</span>
+                            <button class="view-memory-btn text-family-brown hover:text-family-gold text-sm font-medium transition" data-id="${item.id}">Ver detalhes →</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            document.querySelectorAll('.view-memory-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => openMemoryModal(parseInt(e.currentTarget.dataset.id)));
+            });
+        }
+        
+        function renderHistory() {
+            const container = document.getElementById('history-content');
+            if (historyItems.length === 0) {
+                container.innerHTML = `<div class="text-center py-16 bg-white rounded-xl shadow-md"><i class="fas fa-book-open text-7xl text-family-gold mb-4"></i><h3 class="text-xl font-bold text-family-brown mb-2">História da Família</h3><p class="text-gray-600 max-w-md mx-auto">Em breve adicionaremos os momentos especiais da nossa família!</p></div>`;
+                return;
+            }
+            container.innerHTML = historyItems.sort((a,b) => parseInt(b.year) - parseInt(a.year)).map(item => `
+                <div class="history-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all">
+                    <div class="p-6">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <span class="bg-family-brown text-white px-3 py-1 rounded-full text-sm font-bold">📅 ${escapeHtml(item.year)}</span>
+                            <h3 class="text-xl font-bold text-family-brown">${escapeHtml(item.title)}</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4 leading-relaxed">${escapeHtml(item.description)}</p>
+                        ${item.fileData ? `
+                            <div class="mt-3 cursor-pointer group" onclick="openHistoryDetailModal('${item.id}')">
+                                ${item.fileType === 'video' ? 
+                                    `<div class="relative rounded-lg overflow-hidden">
+                                        <video src="${item.fileData}" class="w-full max-h-64 object-cover rounded-lg"></video>
+                                        <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
+                                            <div class="bg-white/90 rounded-full p-3"><i class="fas fa-play text-family-brown text-xl"></i></div>
+                                        </div>
+                                    </div>` :
+                                    `<img src="${item.fileData}" class="w-full max-h-64 object-cover rounded-lg shadow-md transition group-hover:scale-105">`
+                                }
+                                <p class="text-sm text-family-brown mt-2 text-center">📸 Clique para ampliar</p>
+                            </div>
+                        ` : ''}
+                        <button onclick="openHistoryDetailModal('${item.id}')" class="mt-4 text-family-brown hover:text-family-gold transition text-sm font-medium inline-flex items-center gap-1">Ver detalhes <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // NOVA FUNÇÃO PARA RENDERIZAR ANIVERSÁRIOS
+        function renderBirthdays() {
+            const container = document.getElementById('birthdays-container');
+            if (birthdayItems.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-16 bg-gray-50 rounded-xl"><i class="fas fa-birthday-cake text-7xl text-family-brown mb-4"></i><h3 class="text-xl font-bold text-family-brown mb-2">Aniversários da Família</h3><p class="text-gray-600 max-w-md mx-auto">Em breve adicionaremos os aniversariantes!</p></div>`;
+                return;
+            }
+            
+            // Ordenar por data (mês/dia)
+            birthdayItems.sort((a, b) => {
+                const [diaA, mesA] = a.data.split('/');
+                const [diaB, mesB] = b.data.split('/');
+                if (mesA === mesB) return parseInt(diaA) - parseInt(diaB);
+                return parseInt(mesA) - parseInt(mesB);
+            });
+            
+            container.innerHTML = birthdayItems.map(item => `
+                <div class="birthday-card bg-gradient-to-br from-family-cream to-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-family-gold/30">
+                    <div class="p-5 text-center">
+                        ${item.foto ? 
+                            `<img src="${item.foto}" class="w-24 h-24 rounded-full mx-auto mb-3 object-cover border-3 border-family-gold shadow-md">` : 
+                            `<div class="w-24 h-24 bg-gradient-to-br from-family-gold to-family-brown rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                                <i class="fas fa-user-circle text-white text-4xl"></i>
+                            </div>`
+                        }
+                        <h3 class="font-bold text-xl text-family-brown mb-1">${escapeHtml(item.nome)}</h3>
+                        <div class="flex items-center justify-center gap-2 mb-2">
+                            <span class="bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold">📅 ${escapeHtml(item.data)}</span>
+                            ${item.idade ? `<span class="bg-family-green/20 text-family-green px-3 py-1 rounded-full text-sm">🎂 ${escapeHtml(item.idade)}</span>` : ''}
+                        </div>
+                        ${item.curiosidade ? `
+                            <div class="mt-3 p-2 bg-family-brown/10 rounded-lg">
+                                <p class="text-sm text-gray-600"><i class="fas fa-star text-family-gold mr-1"></i> ${escapeHtml(item.curiosidade)}</p>
+                            </div>
+                        ` : ''}
+                        <div class="mt-3 text-center">
+                            <span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Não se esqueça de parabenizar!</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function renderRecipes() {
+            const container = document.getElementById('recipes-container');
+            if (recipeItems.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-16 bg-white rounded-xl shadow-md"><i class="fas fa-utensils text-7xl text-family-brown mb-4"></i><h3 class="text-xl font-bold text-family-brown mb-2">Receitas da Família</h3><p class="text-gray-600 max-w-md mx-auto">Em breve adicionaremos nossas receitas especiais!</p></div>`;
+                return;
+            }
+            container.innerHTML = recipeItems.map(item => `
+                <div class="recipe-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all">
+                    ${item.photo ? `<img src="${item.photo}" class="recipe-photo object-cover">` : `<div class="h-48 bg-gradient-to-r from-family-brown/20 to-family-gold/20 flex items-center justify-center"><i class="fas fa-utensils text-5xl text-family-brown/50"></i></div>`}
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold text-family-brown mb-3">${escapeHtml(item.name)}</h3>
+                        <div class="mb-3">
+                            <h4 class="font-semibold text-family-green text-sm"><i class="fas fa-list"></i> Ingredientes:</h4>
+                            <p class="whitespace-pre-wrap text-gray-600 text-sm mt-1">${escapeHtml(item.ingredients)}</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-family-green text-sm"><i class="fas fa-utensils"></i> Modo de Preparo:</h4>
+                            <p class="whitespace-pre-wrap text-gray-600 text-sm mt-1">${escapeHtml(item.instructions)}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function openMemoryModal(id) {
+            const memory = galleryItems.find(i => i.id === id);
+            if(!memory) return;
+            document.getElementById('modal-title').innerHTML = `${getCategoryIcon(memory.category)} ${escapeHtml(memory.title)}`;
+            document.getElementById('modal-content').innerHTML = `
+                <p class="text-gray-600 text-lg">${escapeHtml(memory.description)}</p>
+                <p class="text-sm text-gray-500"><i class="far fa-calendar-alt"></i> Data: ${formatDate(memory.date)}</p>
+                <p class="text-sm text-gray-500"><i class="far fa-folder"></i> Categoria: ${getCategoryName(memory.category)}</p>
+                ${memory.type === 'video' ? `<video src="${memory.src}" class="w-full rounded-lg shadow-md mt-2" controls autoplay></video>` : `<img src="${memory.src}" class="w-full rounded-lg shadow-md mt-2">`}
+                <div class="bg-family-cream p-5 rounded-xl mt-4">
+                    <h4 class="font-semibold mb-3 text-family-brown"><i class="fas fa-comments"></i> 💬 Comentários:</h4>
+                    <div id="comments-list" class="max-h-60 overflow-y-auto">
+                        ${memory.comments && memory.comments.length > 0 ? 
+                            memory.comments.map(c => `<div class="comment-item p-2 border-b border-gray-200"><i class="fas fa-user-circle text-family-brown mr-2"></i>${escapeHtml(c)}</div>`).join('') :
+                            '<p class="text-gray-500 italic text-center py-4">Nenhum comentário ainda.</p>'
+                        }
+                    </div>
+                    <div class="mt-4">
+                        <textarea id="new-comment" class="w-full px-3 py-2 border border-gray-300 rounded-lg" rows="2" placeholder="Deixe seu comentário..."></textarea>
+                        <button onclick="addComment(${id})" class="mt-2 bg-family-brown text-white px-5 py-2 rounded-lg hover:bg-family-gold transition">💬 Comentar</button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('memory-modal').classList.remove('hidden');
+            document.getElementById('memory-modal').classList.add('flex');
+        }
+        
+        window.openHistoryDetailModal = function(id) {
+            const item = historyItems.find(i => i.id == id);
+            if(!item) return;
+            document.getElementById('history-detail-title').innerHTML = `📅 ${item.year} - ${escapeHtml(item.title)}`;
+            document.getElementById('history-detail-content').innerHTML = `
+                <p class="text-gray-700 text-lg leading-relaxed">${escapeHtml(item.description)}</p>
+                ${item.fileData ? (item.fileType === 'video' ? `<video src="${item.fileData}" class="w-full rounded-xl shadow-lg mt-4" controls></video>` : `<img src="${item.fileData}" class="w-full rounded-xl shadow-lg mt-4">`) : '<p class="text-gray-400 mt-4 text-center">📷 Nenhuma foto adicionada.</p>'}
+            `;
+            document.getElementById('history-detail-modal').classList.remove('hidden');
+            document.getElementById('history-detail-modal').classList.add('flex');
+        };
+        
+        window.addComment = function(id) {
+            const comment = document.getElementById('new-comment').value;
+            if(comment.trim()) {
+                const memory = galleryItems.find(m => m.id === id);
+                if(memory) {
+                    if(!memory.comments) memory.comments = [];
+                    memory.comments.push(comment.trim() + " - " + new Date().toLocaleDateString('pt-BR'));
+                    showToast('💬 Comentário adicionado!');
+                    openMemoryModal(id);
+                }
+            } else showToast('Digite um comentário!', 'error');
+        };
+        
+        window.openImageModal = function(src, title) {
+            document.getElementById('modal-title').innerHTML = title;
+            document.getElementById('modal-content').innerHTML = `<img src="${src}" class="w-full rounded-xl shadow-lg"><div class="text-center text-gray-500 mt-3">✨ Clique fora para fechar</div>`;
+            document.getElementById('memory-modal').classList.remove('hidden');
+            document.getElementById('memory-modal').classList.add('flex');
+        };
+        
+        window.openVideoModal = function(id) { openMemoryModal(id); };
+        window.closeHistoryDetailModal = () => { document.getElementById('history-detail-modal').classList.add('hidden'); document.getElementById('history-detail-modal').classList.remove('flex'); };
+        
+        function setupFilters() {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('bg-family-brown', 'text-white'); b.classList.add('bg-gray-200'); });
+                    this.classList.add('bg-family-brown', 'text-white'); this.classList.remove('bg-gray-200');
+                    const filter = this.dataset.filter;
+                    document.querySelectorAll('.memory-card').forEach(card => {
+                        card.style.display = (filter === 'all' || card.dataset.category === filter) ? 'block' : 'none';
+                    });
+                });
+            });
+        }
+        
+        document.getElementById('close-modal').addEventListener('click', () => { document.getElementById('memory-modal').classList.add('hidden'); document.getElementById('memory-modal').classList.remove('flex'); });
+        window.addEventListener('click', (e) => {
+            if(e.target === document.getElementById('memory-modal')) { document.getElementById('memory-modal').classList.add('hidden'); document.getElementById('memory-modal').classList.remove('flex'); }
+            if(e.target === document.getElementById('history-detail-modal')) closeHistoryDetailModal();
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) { e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); }));
+        
+        renderGallery(); 
+        renderHistory(); 
+        renderBirthdays();
+        renderRecipes(); 
+        setupFilters();
+    </script>
+</body>
+</html>
