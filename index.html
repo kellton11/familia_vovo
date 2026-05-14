@@ -51,6 +51,144 @@
         }
         .modal-overlay { animation: fadeInModal 0.2s ease-out; }
         @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
+        
+        /* Estilos para a Árvore Genealógica com SCROLL HORIZONTAL */
+        .family-tree-section {
+            background: linear-gradient(135deg, #f5f1ea 0%, #e8e0d5 100%);
+        }
+        
+        /* Container com scroll horizontal - ESSA É A PARTE IMPORTANTE! */
+        .tree-scroll-container {
+            overflow-x: auto;
+            overflow-y: visible;
+            white-space: nowrap;
+            padding: 20px 10px;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Estilizar a barra de scroll */
+        .tree-scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .tree-scroll-container::-webkit-scrollbar-track {
+            background: #e8e0d5;
+            border-radius: 10px;
+        }
+        .tree-scroll-container::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 10px;
+        }
+        .tree-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #8B4513;
+        }
+        
+        /* Nível da árvore em linha horizontal */
+        .tree-level-horizontal {
+            display: inline-flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 15px 0;
+            white-space: normal;
+        }
+        
+        /* Estilo dos cards da árvore */
+        .tree-person {
+            background: linear-gradient(145deg, #ffffff 0%, #f9f6f0 100%);
+            border: 2px solid #D4AF37;
+            border-radius: 16px;
+            padding: 12px;
+            width: 140px;
+            display: inline-block;
+            vertical-align: top;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            white-space: normal;
+        }
+        .tree-person:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            border-color: #8B4513;
+        }
+        .tree-person img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #D4AF37;
+            transition: all 0.3s ease;
+        }
+        .tree-person:hover img {
+            border-color: #8B4513;
+            transform: scale(1.05);
+        }
+        .tree-person .name {
+            font-weight: bold;
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #8B4513;
+        }
+        .tree-person .role {
+            font-size: 0.75rem;
+            color: #2E8B57;
+            margin-top: 4px;
+        }
+        
+        /* Conexões entre gerações */
+        .tree-connector {
+            display: flex;
+            justify-content: center;
+            margin: 5px 0;
+        }
+        .connector-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #D4AF37, #8B4513);
+            margin: 0 10px;
+        }
+        .level-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.2rem;
+            color: #8B4513;
+            margin-bottom: 15px;
+            display: inline-block;
+            padding: 0 20px;
+            background: rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        
+        /* Indicador de scroll para celular */
+        .scroll-indicator {
+            display: none;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: #8B4513;
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+        
+        /* Responsivo para celular */
+        @media (max-width: 768px) {
+            .tree-person { width: 120px; padding: 10px; margin: 0 5px; }
+            .tree-person img { width: 70px; height: 70px; }
+            .tree-person .name { font-size: 0.85rem; }
+            .tree-person .role { font-size: 0.7rem; }
+            .connector-line { width: 30px; }
+            .level-title { font-size: 1rem; white-space: nowrap; }
+            .scroll-indicator { display: block; }
+            .tree-level-horizontal { gap: 10px; }
+        }
+        
+        @media (max-width: 480px) {
+            .tree-person { width: 100px; padding: 8px; }
+            .tree-person img { width: 60px; height: 60px; }
+            .connector-line { width: 20px; }
+        }
     </style>
 </head>
 <body class="bg-family-cream font-sans text-gray-800">
@@ -65,6 +203,7 @@
                     <li><a href="#home" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Início</a></li>
                     <li><a href="#memories" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Memórias</a></li>
                     <li><a href="#history" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">História</a></li>
+                    <li><a href="#family-tree" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Árvore</a></li>
                     <li><a href="#birthdays" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Aniversários</a></li>
                     <li><a href="#recipes" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Receitas</a></li>
                 </ul>
@@ -78,7 +217,8 @@
             <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8 text-gray-700">Um lugar para guardar nossas memórias, histórias e celebrar nosso legado familiar.</p>
             <div class="flex justify-center gap-4 flex-wrap">
                 <a href="#memories" class="bg-family-brown text-white px-8 py-3 rounded-full hover:bg-family-gold transition transform hover:scale-105 inline-block font-semibold shadow-md">📸 Ver Memórias</a>
-                <a href="#birthdays" class="bg-white text-family-brown border-2 border-family-brown px-8 py-3 rounded-full hover:bg-family-green hover:text-white hover:border-transparent transition transform hover:scale-105 inline-block font-semibold shadow-md">🎂 Aniversários</a>
+                <a href="#family-tree" class="bg-white text-family-brown border-2 border-family-brown px-8 py-3 rounded-full hover:bg-family-green hover:text-white hover:border-transparent transition transform hover:scale-105 inline-block font-semibold shadow-md">🌳 Nossa Árvore</a>
+                <a href="#birthdays" class="bg-family-gold text-family-brown px-8 py-3 rounded-full hover:bg-family-green hover:text-white transition transform hover:scale-105 inline-block font-semibold shadow-md">🎂 Aniversários</a>
             </div>
         </div>
         <div class="absolute bottom-0 left-0 right-0 h-10 bg-repeat-x opacity-50" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 20\" preserveAspectRatio=\"none\"><path d=\"M0,0 Q30,20 60,0 T120,0 V20 H0 Z\" fill=\"%238B4513\"/></svg>')"></div>
@@ -115,7 +255,170 @@
         </div>
     </section>
 
-    <!-- SEÇÃO DE ANIVERSÁRIOS (SUBSTITUIU A ÁRVORE GENEALÓGICA) -->
+    <!-- SEÇÃO DA ÁRVORE GENEALÓGICA COM SCROLL HORIZONTAL -->
+    <section id="family-tree" class="py-16 family-tree-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">🌳 Nossa Árvore Genealógica</h2>
+                <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Conheça nossa família e suas conexões através das gerações</p>
+            </div>
+            
+            <!-- Container com scroll horizontal - ARRASTE PARA O LADO NO CELULAR -->
+            <div class="tree-scroll-container">
+                <!-- AVÓS -->
+                <div class="text-center mb-2">
+                    <span class="level-title">🌿 1ª Geração - Avós 🌿</span>
+                </div>
+                <div class="tree-level-horizontal">
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=65" alt="Vovó Nelsa">
+                        <div class="name">Nelsa</div>
+                        <div class="role">🌹 Vovó</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="Vovô Antonio Felipe">
+                        <div class="name">Antonio Felipe</div>
+                        <div class="role">🌳 Vovô</div>
+                    </div>
+                </div>
+                
+                <!-- Conexão -->
+                <div class="tree-connector">
+                    <div class="connector-line"></div>
+                    <i class="fas fa-heart text-family-gold mx-2"></i>
+                    <div class="connector-line"></div>
+                </div>
+                
+                <!-- FILHOS -->
+                <div class="text-center mb-2 mt-2">
+                    <span class="level-title">🌿 2ª Geração - Filhos 🌿</span>
+                </div>
+                <div class="tree-level-horizontal">
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=33" alt="Odete">
+                        <div class="name">Odete</div>
+                        <div class="role">👩‍👧 Tia</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=45" alt="Pastora">
+                        <div class="name">Pastora</div>
+                        <div class="role">👩‍👧 Tia</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=45" alt="Celia">
+                        <div class="name">Celia</div>
+                        <div class="role">👩‍👧 Tia</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=45" alt="Antonio Claudio">
+                        <div class="name">Antonio Claudio</div>
+                        <div class="role">👨‍👦 Tio</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=45" alt="Jovani">
+                        <div class="name">Jovani</div>
+                        <div class="role">👨‍👦 Tio</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=45" alt="Cleide">
+                        <div class="name">Cleide</div>
+                        <div class="role">👩‍👧 Tia</div>
+                    </div>
+                </div>
+                
+                <!-- Conexão -->
+                <div class="tree-connector">
+                    <div class="connector-line"></div>
+                    <i class="fas fa-heart text-family-gold mx-2"></i>
+                    <div class="connector-line"></div>
+                </div>
+                
+                <!-- NETOS -->
+                <div class="text-center mb-2 mt-2">
+                    <span class="level-title">🌿 3ª Geração - Netos 🌿</span>
+                </div>
+                <div class="tree-level-horizontal">
+                    <div class="tree-person text-center">
+                        <img src="imagens/eu2.jpg" alt="Kellton" onerror="this.src='https://i.pravatar.cc/150?img=5'">
+                        <div class="name">Kellton</div>
+                        <div class="role">💻 Neto</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=16" alt="Anna Luizza">
+                        <div class="name">Anna Luizza</div>
+                        <div class="role">🎀 Neta</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=25" alt="Geovona">
+                        <div class="name">Geovona</div>
+                        <div class="role">🌸 Prima</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=25" alt="Rayane">
+                        <div class="name">Rayane</div>
+                        <div class="role">🌸 Prima</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=25" alt="Anna Rafaela">
+                        <div class="name">Anna Rafaela</div>
+                        <div class="role">🌸 Prima</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=25" alt="Michele">
+                        <div class="name">Michele</div>
+                        <div class="role">🌸 Prima</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=25" alt="Micaele">
+                        <div class="name">Micaele</div>
+                        <div class="role">🌸 Prima</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=25" alt="Stefany">
+                        <div class="name">Stefany</div>
+                        <div class="role">🌸 Prima</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Kaike">
+                        <div class="name">Kaike</div>
+                        <div class="role">👦 Neto</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Caio">
+                        <div class="name">Caio</div>
+                        <div class="role">👦 Neto</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Kellvy">
+                        <div class="name">Kellvy</div>
+                        <div class="role">👦 Neto</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Alex">
+                        <div class="name">Alex</div>
+                        <div class="role">👦 Neto</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Pedro Filipe">
+                        <div class="name">Pedro Filipe</div>
+                        <div class="role">👦 Neto</div>
+                    </div>
+                </div>
+                
+                <!-- Indicador de scroll para celular -->
+                <div class="scroll-indicator">
+                    <i class="fas fa-arrow-left"></i> Arraste para o lado <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="text-center mt-4 text-family-brown text-sm">
+                    <i class="fas fa-heart text-family-gold"></i> Unidos pelo amor e pela memória <i class="fas fa-heart text-family-gold"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE ANIVERSÁRIOS -->
     <section id="birthdays" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -141,7 +444,13 @@
 
     <footer class="bg-family-brown text-white py-12 mt-8">
         <div class="container mx-auto px-4 text-center">
-            <p>&copy; 2024 Família da Vovó - Preservando nossas memórias</p>
+            <div class="flex justify-center gap-6 mb-4">
+                <i class="fas fa-tree text-family-gold text-2xl"></i>
+                <i class="fas fa-heart text-family-gold text-2xl"></i>
+                <i class="fas fa-camera text-family-gold text-2xl"></i>
+            </div>
+            <p>&copy; 2026 Família da Vovó - Preservando nossas memórias com amor</p>
+            <p class="text-sm text-gray-300 mt-2">"Uma família unida é a maior riqueza que alguém pode ter"</p>
         </div>
     </footer>
 
@@ -206,32 +515,23 @@
             // }
         ];
         
-        // ---------- 3. ANIVERSÁRIOS DA FAMÍLIA (NOVO!) ----------
+        // ---------- 3. ANIVERSÁRIOS DA FAMÍLIA ----------
         const BIRTHDAY_ITEMS = [
-            // EXEMPLO DE ANIVERSÁRIO:
             {
                 id: 1,
                 nome: "Kellton",
                 data: "11/10",
                 idade: "17 Anos",
-                foto: "imagens/eu2.jpg",  // Coloque o caminho da foto ou null
-                curiosidade: "O progamador da família, adora tecnologia e é apaixonado por jogos. Sempre tem uma piada pronta e um sorriso no rosto! 🎮💻",
+                foto: "imagens/eu2.jpg",
+                curiosidade: "O programador da família, adora tecnologia e é apaixonado por jogos. Sempre tem uma piada pronta e um sorriso no rosto! 🎮💻",
                 like: true
             },
-           
-            
             // Adicione mais aniversários seguindo o modelo acima
         ];
         
         // ---------- 4. RECEITAS DA FAMÍLIA ----------
         const RECIPE_ITEMS = [
             // EXEMPLO DE RECEITA:
-            // {
-            //     name: "Bolo de Cenoura com Cobertura de Chocolate",
-            //     ingredients: "- 3 cenouras médias\n- 3 ovos\n- 1 xícara de óleo\n- 2 xícaras de açúcar\n- 2 xícaras de farinha\n- 1 colher de fermento\n\nCOBERTURA:\n- 3 colheres de chocolate\n- 2 colheres de manteiga\n- 1/2 xícara de açúcar\n- 1/2 xícara de leite",
-            //     instructions: "MASSA:\n1. Bata as cenouras, ovos e óleo no liquidificador\n2. Misture com os ingredientes secos\n3. Adicione o fermento\n4. Asse por 40 min\n\nCOBERTURA:\n1. Leve todos os ingredientes ao fogo\n2. Mexa até engrossar\n3. Despeje sobre o bolo",
-            //     photo: null
-            // }
         ];
         
         // ============================================================
@@ -344,7 +644,6 @@
             `).join('');
         }
         
-        // NOVA FUNÇÃO PARA RENDERIZAR ANIVERSÁRIOS
         function renderBirthdays() {
             const container = document.getElementById('birthdays-container');
             if (birthdayItems.length === 0) {
@@ -352,7 +651,6 @@
                 return;
             }
             
-            // Ordenar por data (mês/dia)
             birthdayItems.sort((a, b) => {
                 const [diaA, mesA] = a.data.split('/');
                 const [diaB, mesB] = b.data.split('/');
@@ -364,7 +662,7 @@
                 <div class="birthday-card bg-gradient-to-br from-family-cream to-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-family-gold/30">
                     <div class="p-5 text-center">
                         ${item.foto ? 
-                            `<img src="${item.foto}" class="w-24 h-24 rounded-full mx-auto mb-3 object-cover border-3 border-family-gold shadow-md">` : 
+                            `<img src="${item.foto}" class="w-24 h-24 rounded-full mx-auto mb-3 object-cover border-3 border-family-gold shadow-md" onerror="this.src='https://i.pravatar.cc/150?img=${item.id}'">` : 
                             `<div class="w-24 h-24 bg-gradient-to-br from-family-gold to-family-brown rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
                                 <i class="fas fa-user-circle text-white text-4xl"></i>
                             </div>`
