@@ -52,7 +52,7 @@
         .modal-overlay { animation: fadeInModal 0.2s ease-out; }
         @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
         
-        /* Estilos para a Árvore Genealógica com SCROLL HORIZONTAL */
+        /* Estilos para a Árvore Genealógica */
         .family-tree-section {
             background: linear-gradient(135deg, #f5f1ea 0%, #e8e0d5 100%);
         }
@@ -77,11 +77,7 @@
             background: #D4AF37;
             border-radius: 10px;
         }
-        .tree-scroll-container::-webkit-scrollbar-thumb:hover {
-            background: #8B4513;
-        }
         
-        /* Estrutura da árvore com conexões */
         .tree-family-group {
             display: inline-flex;
             flex-direction: column;
@@ -129,12 +125,13 @@
             border: 2px solid #D4AF37;
             border-radius: 16px;
             padding: 12px;
-            width: 140px;
+            width: 130px;
             display: inline-block;
             vertical-align: top;
             transition: all 0.3s ease;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             white-space: normal;
+            text-align: center;
         }
         .tree-person:hover {
             transform: translateY(-8px) scale(1.02);
@@ -142,8 +139,8 @@
             border-color: #8B4513;
         }
         .tree-person img {
-            width: 90px;
-            height: 90px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #D4AF37;
@@ -155,20 +152,20 @@
         }
         .tree-person .name {
             font-weight: bold;
-            margin-top: 10px;
-            font-size: 1rem;
+            margin-top: 8px;
+            font-size: 0.9rem;
             color: #8B4513;
         }
         .tree-person .role {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #2E8B57;
-            margin-top: 4px;
+            margin-top: 3px;
         }
         .tree-person .in-memory {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #999;
             font-style: italic;
-            margin-top: 4px;
+            margin-top: 3px;
         }
         
         .level-title {
@@ -202,179 +199,19 @@
         }
         
         @media (max-width: 768px) {
-            .tree-person { width: 120px; padding: 10px; margin: 0 5px; }
-            .tree-person img { width: 70px; height: 70px; }
-            .tree-person .name { font-size: 0.85rem; }
-            .tree-person .role { font-size: 0.7rem; }
-            .level-title { font-size: 1rem; white-space: nowrap; }
+            .tree-person { width: 110px; padding: 8px; margin: 0 5px; }
+            .tree-person img { width: 65px; height: 65px; }
+            .tree-person .name { font-size: 0.75rem; }
+            .tree-person .role { font-size: 0.65rem; }
+            .level-title { font-size: 0.9rem; }
             .scroll-indicator { display: block; }
             .tree-family-group { margin: 0 10px; }
         }
         
         @media (max-width: 480px) {
-            .tree-person { width: 100px; padding: 8px; }
-            .tree-person img { width: 60px; height: 60px; }
+            .tree-person { width: 95px; padding: 6px; }
+            .tree-person img { width: 55px; height: 55px; }
         }
-        /* Estilos para a Árvore Genealógica */
-.family-tree-section {
-    background: linear-gradient(135deg, #f5f1ea 0%, #e8e0d5 100%);
-}
-
-.tree-scroll-container {
-    overflow-x: auto;
-    overflow-y: visible;
-    white-space: nowrap;
-    padding: 20px 10px;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-}
-
-.tree-scroll-container::-webkit-scrollbar {
-    height: 8px;
-}
-.tree-scroll-container::-webkit-scrollbar-track {
-    background: #e8e0d5;
-    border-radius: 10px;
-}
-.tree-scroll-container::-webkit-scrollbar-thumb {
-    background: #D4AF37;
-    border-radius: 10px;
-}
-
-.tree-family-group {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 20px;
-    vertical-align: top;
-}
-
-.tree-parents {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 10px;
-}
-
-.tree-children {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 10px;
-    position: relative;
-}
-
-.tree-children::before {
-    content: '';
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 2px;
-    height: 15px;
-    background: linear-gradient(180deg, #D4AF37, #8B4513);
-}
-
-.tree-connector-line {
-    width: 2px;
-    height: 20px;
-    background: linear-gradient(180deg, #D4AF37, #8B4513);
-    margin: 0 auto;
-}
-
-.tree-person {
-    background: linear-gradient(145deg, #ffffff 0%, #f9f6f0 100%);
-    border: 2px solid #D4AF37;
-    border-radius: 16px;
-    padding: 12px;
-    width: 130px;
-    display: inline-block;
-    vertical-align: top;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    white-space: normal;
-    text-align: center;
-}
-.tree-person:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    border-color: #8B4513;
-}
-.tree-person img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid #D4AF37;
-    transition: all 0.3s ease;
-}
-.tree-person:hover img {
-    border-color: #8B4513;
-    transform: scale(1.05);
-}
-.tree-person .name {
-    font-weight: bold;
-    margin-top: 8px;
-    font-size: 0.9rem;
-    color: #8B4513;
-}
-.tree-person .role {
-    font-size: 0.7rem;
-    color: #2E8B57;
-    margin-top: 3px;
-}
-.tree-person .in-memory {
-    font-size: 0.65rem;
-    color: #999;
-    font-style: italic;
-    margin-top: 3px;
-}
-
-.level-title {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.2rem;
-    color: #8B4513;
-    margin: 20px 0 15px;
-    display: inline-block;
-    padding: 0 20px;
-    background: rgba(212, 175, 55, 0.2);
-    border-radius: 20px;
-    white-space: nowrap;
-}
-
-.generation-separator {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.scroll-indicator {
-    display: none;
-    text-align: center;
-    margin-top: 10px;
-    font-size: 0.75rem;
-    color: #8B4513;
-    animation: bounce 1s infinite;
-}
-@keyframes bounce {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(5px); }
-}
-
-@media (max-width: 768px) {
-    .tree-person { width: 110px; padding: 8px; margin: 0 5px; }
-    .tree-person img { width: 65px; height: 65px; }
-    .tree-person .name { font-size: 0.75rem; }
-    .tree-person .role { font-size: 0.65rem; }
-    .level-title { font-size: 0.9rem; }
-    .scroll-indicator { display: block; }
-    .tree-family-group { margin: 0 10px; }
-}
-
-@media (max-width: 480px) {
-    .tree-person { width: 95px; padding: 6px; }
-    .tree-person img { width: 55px; height: 55px; }
-}
     </style>
 </head>
 <body class="bg-family-cream font-sans text-gray-800">
@@ -423,7 +260,13 @@
                 <button class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-family-green hover:text-white transition font-medium" data-filter="aniversarios">🎂 Aniversários</button>
                 <button class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-family-green hover:text-white transition font-medium" data-filter="viagens">✈️ Viagens</button>
             </div>
-            <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="col-span-full text-center py-20 bg-gray-50 rounded-xl">
+                    <i class="fas fa-camera text-7xl text-gray-300 mb-4"></i>
+                    <p class="text-gray-500 text-lg">Nenhuma memória adicionada ainda.</p>
+                    <p class="text-gray-400 mt-2">Em breve adicionaremos nossas fotos e vídeos!</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -436,201 +279,209 @@
             </div>
             <div class="max-w-4xl mx-auto">
                 <h3 class="text-2xl font-script text-family-brown text-center mb-6">📖 Linha do Tempo</h3>
-                <div id="history-content" class="space-y-6"></div>
+                <div id="history-content" class="space-y-6">
+                    <div class="text-center py-16 bg-white rounded-xl shadow-md">
+                        <i class="fas fa-book-open text-7xl text-family-gold mb-4"></i>
+                        <h3 class="text-xl font-bold text-family-brown mb-2">História da Família</h3>
+                        <p class="text-gray-600 max-w-md mx-auto">Em breve adicionaremos os momentos especiais da nossa família!</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-   <!-- SEÇÃO DA ÁRVORE GENEALÓGICA COMPLETA -->
-<section id="family-tree" class="py-16 family-tree-section">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">🌳 Nossa Árvore Genealógica</h2>
-            <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
-            <p class="text-gray-600 max-w-2xl mx-auto">Conheça nossa família e suas conexões através das gerações</p>
+    <!-- ÁRVORE GENEALÓGICA -->
+    <section id="family-tree" class="py-16 family-tree-section">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">🌳 Nossa Árvore Genealógica</h2>
+                <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Conheça nossa família e suas conexões através das gerações</p>
+                <p class="text-sm text-family-brown mt-2">✨ Antonio Felipe (Vovô) - In memoriam ✨</p>
+            </div>
+            
+            <div class="tree-scroll-container">
+                <!-- 1ª GERAÇÃO - AVÓS -->
+                <div class="text-center mb-2">
+                    <span class="level-title">🌿 1ª Geração - Avós 🌿</span>
+                </div>
+                <div class="tree-parents" style="justify-content: center;">
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=65" alt="Vovó Nelsa">
+                        <div class="name">Nelsa</div>
+                        <div class="role">🌹 Vovó</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="Vovô Antonio Felipe">
+                        <div class="name">Antonio Felipe ✝️</div>
+                        <div class="role">🌳 Vovô</div>
+                        <div class="in-memory">(In memoriam)</div>
+                    </div>
+                </div>
+                
+                <div class="tree-connector-line" style="margin: 10px auto;"></div>
+                
+                <!-- 2ª GERAÇÃO - FILHOS -->
+                <div class="text-center mb-2 mt-2">
+                    <span class="level-title">🌿 2ª Geração - Filhos 🌿</span>
+                </div>
+                <div class="tree-parents" style="justify-content: center; flex-wrap: wrap;">
+                    <div class="tree-person text-center"><div class="name">Cleide</div><div class="role">👩‍👧 Mãe</div></div>
+                    <div class="tree-person text-center"><div class="name">Maria Pastora</div><div class="role">👩‍👧 Mãe</div></div>
+                    <div class="tree-person text-center"><div class="name">Jovani</div><div class="role">👨‍👦 Pai</div></div>
+                    <div class="tree-person text-center"><div class="name">Antônio Claudio</div><div class="role">👨‍👦 Pai</div></div>
+                    <div class="tree-person text-center"><div class="name">Odete</div><div class="role">👩‍👧 Mãe</div></div>
+                    <div class="tree-person text-center"><div class="name">Auricélia</div><div class="role">👩‍👧 Mãe</div></div>
+                </div>
+                
+                <div class="generation-separator">
+                    <i class="fas fa-arrow-down text-family-gold text-xl"></i>
+                </div>
+                
+                <!-- 3ª GERAÇÃO - NETOS -->
+                <div class="text-center mb-4">
+                    <span class="level-title">🌿 3ª Geração - Netos 🌿</span>
+                </div>
+                
+                <div style="display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                    
+                    <!-- CLEIDE → Rafael, Clécio, Rayane -->
+                    <div class="tree-family-group">
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Cleide</div><div class="role">👩‍👧 Mãe</div></div></div>
+                        <div class="tree-connector-line"></div>
+                        <div class="tree-children">
+                            <div class="tree-person text-center"><div class="name">Rafael</div><div class="role">👦 Filho</div></div>
+                            <div class="tree-person text-center"><div class="name">Clécio</div><div class="role">👦 Filho</div></div>
+                            <div class="tree-person text-center"><div class="name">Rayane</div><div class="role">🌸 Filha</div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- MARIA PASTORA → Alex, Liliane, Michele, Micaele -->
+                    <div class="tree-family-group">
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Maria Pastora</div><div class="role">👩‍👧 Mãe</div></div></div>
+                        <div class="tree-connector-line"></div>
+                        <div class="tree-children">
+                            <div class="tree-person text-center"><div class="name">Alex</div><div class="role">👦 Filho</div></div>
+                            <div class="tree-person text-center"><div class="name">Liliane ✝️</div><div class="role">🌸 Filha</div><div class="in-memory">(In memoriam)</div></div>
+                            <div class="tree-person text-center"><div class="name">Michele</div><div class="role">🌸 Filha</div></div>
+                            <div class="tree-person text-center"><div class="name">Micaele</div><div class="role">🌸 Filha</div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- JOVANI → Kaike, Geovana -->
+                    <div class="tree-family-group">
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Jovani</div><div class="role">👨‍👦 Pai</div></div></div>
+                        <div class="tree-connector-line"></div>
+                        <div class="tree-children">
+                            <div class="tree-person text-center"><div class="name">Kaike</div><div class="role">👦 Filho</div></div>
+                            <div class="tree-person text-center"><div class="name">Geovana</div><div class="role">🌸 Filha</div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- ANTONIO CLAUDIO → Kellton, Kellvy, Kelleri -->
+                    <div class="tree-family-group">
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Antônio Claudio</div><div class="role">👨‍👦 Pai</div></div></div>
+                        <div class="tree-connector-line"></div>
+                        <div class="tree-children">
+                            <div class="tree-person text-center"><img src="imagens/eu2.jpg" alt="Kellton" onerror="this.src='https://i.pravatar.cc/150?img=5'"><div class="name">Kellton</div><div class="role">💻 Filho</div></div>
+                            <div class="tree-person text-center"><div class="name">Kellvy</div><div class="role">👦 Filho</div></div>
+                            <div class="tree-person text-center"><div class="name">Kellery</div><div class="role">🌸 Filha</div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- ODETE → Stefany, Caio -->
+                    <div class="tree-family-group">
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Odete</div><div class="role">👩‍👧 Mãe</div></div></div>
+                        <div class="tree-connector-line"></div>
+                        <div class="tree-children">
+                            <div class="tree-person text-center"><div class="name">Stefany</div><div class="role">🌸 Filha</div></div>
+                            <div class="tree-person text-center"><div class="name">Caio</div><div class="role">👦 Filho</div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- AURICÉLIA → Anna Luizza, Anna Rafaella, Pedro Felipe -->
+                    <div class="tree-family-group">
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Auricélia</div><div class="role">👩‍👧 Mãe</div></div></div>
+                        <div class="tree-connector-line"></div>
+                        <div class="tree-children">
+                            <div class="tree-person text-center"><div class="name">Anna Luizza</div><div class="role">🌸 Filha</div></div>
+                            <div class="tree-person text-center"><div class="name">Anna Rafaella</div><div class="role">🌸 Filha</div></div>
+                            <div class="tree-person text-center"><div class="name">Pedro Felipe</div><div class="role">👦 Filho</div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="generation-separator mt-4">
+                    <i class="fas fa-arrow-down text-family-gold text-xl"></i>
+                </div>
+                
+                <!-- 4ª GERAÇÃO - BISNETOS -->
+                <div class="text-center mb-4">
+                    <span class="level-title">🌿 4ª Geração - Bisnetos 🌿</span>
+                </div>
+                
+                <div style="display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                    
+                    <!-- MICHELE → José Emanuel -->
+                    <div class="tree-family-group">
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Michele</div><div class="role">👩‍👧 Mãe</div></div></div>
+                        <div class="tree-connector-line"></div>
+                        <div class="tree-children">
+                            <div class="tree-person text-center"><div class="name">José Emanuel</div><div class="role">👶 Filho</div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- MICAELA → Neném, Manuela -->
+                    <div class="tree-family-group">
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Micaele</div><div class="role">👩‍👧 Mãe</div></div></div>
+                        <div class="tree-connector-line"></div>
+                        <div class="tree-children">
+                            <div class="tree-person text-center"><div class="name">Neném</div><div class="role">👶 A caminho</div></div>
+                            <div class="tree-person text-center"><div class="name">Manuela</div><div class="role">👶 Filha</div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- RAFAEL → Mirella, Miguel -->
+                    <div class="tree-family-group">
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Rafael</div><div class="role">👨‍👦 Pai</div></div></div>
+                        <div class="tree-connector-line"></div>
+                        <div class="tree-children">
+                            <div class="tree-person text-center"><div class="name">Mirella</div><div class="role">👶 Filha</div></div>
+                            <div class="tree-person text-center"><div class="name">Miguel</div><div class="role">👶 Filho</div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- GEOVANA → Heitor -->
+                    <div class="tree-family-group">
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Geovana</div><div class="role">👩‍👧 Mãe</div></div></div>
+                        <div class="tree-connector-line"></div>
+                        <div class="tree-children">
+                            <div class="tree-person text-center"><div class="name">Heitor</div><div class="role">👶 Filho</div></div>
+                        </div>
+                    </div>
+                    
+                    <!-- CLÉCIO → Kauê -->
+                    <div class="tree-family-group">
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Clécio</div><div class="role">👨‍👦 Pai</div></div></div>
+                        <div class="tree-connector-line"></div>
+                        <div class="tree-children">
+                            <div class="tree-person text-center"><div class="name">Kauê</div><div class="role">👶 Filho</div></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="scroll-indicator">
+                    <i class="fas fa-arrow-left"></i> Arraste para o lado <i class="fas fa-arrow-right"></i>
+                </div>
+                
+                <div class="text-center mt-6 text-family-brown text-sm">
+                    <i class="fas fa-heart text-family-gold"></i> Unidos pelo amor e pela memória <i class="fas fa-heart text-family-gold"></i>
+                </div>
+            </div>
         </div>
-        
-        <div class="tree-scroll-container">
-            <!-- 1ª GERAÇÃO - AVÓS -->
-            <div class="text-center mb-2">
-                <span class="level-title">🌿 1ª Geração - Avós 🌿</span>
-            </div>
-            <div class="tree-parents" style="justify-content: center;">
-                <div class="tree-person text-center">
-                    <img src="https://i.pravatar.cc/150?img=65" alt="Vovó Nelsa">
-                    <div class="name">Nelsa</div>
-                    <div class="role">🌹 Vovó</div>
-                </div>
-                <div class="tree-person text-center">
-                    <img src="https://i.pravatar.cc/150?img=12" alt="Vovô Antonio Felipe">
-                    <div class="name">Antonio Felipe</div>
-                    <div class="role">🌳 Vovô</div>
-                </div>
-            </div>
-            
-            <div class="tree-connector-line" style="margin: 10px auto;"></div>
-            
-            <!-- 2ª GERAÇÃO - FILHOS -->
-            <div class="text-center mb-2 mt-2">
-                <span class="level-title">🌿 2ª Geração - Filhos 🌿</span>
-            </div>
-            <div class="tree-parents" style="justify-content: center; flex-wrap: wrap;">
-                <div class="tree-person text-center"><div class="name">Cleide</div><div class="role">👩‍👧 Mãe</div></div>
-                <div class="tree-person text-center"><div class="name">Maria Pastora</div><div class="role">👩‍👧 Mãe</div></div>
-                <div class="tree-person text-center"><div class="name">Jovani</div><div class="role">👨‍👦 Pai</div></div>
-                <div class="tree-person text-center"><div class="name">Antonio Claudio</div><div class="role">👨‍👦 Pai</div></div>
-                <div class="tree-person text-center"><div class="name">Odete</div><div class="role">👩‍👧 Mãe</div></div>
-                <div class="tree-person text-center"><div class="name">Auricélia</div><div class="role">👩‍👧 Mãe</div></div>
-            </div>
-            
-            <div class="generation-separator">
-                <i class="fas fa-arrow-down text-family-gold text-xl"></i>
-            </div>
-            
-            <!-- 3ª GERAÇÃO - NETOS -->
-            <div class="text-center mb-4">
-                <span class="level-title">🌿 3ª Geração - Netos 🌿</span>
-            </div>
-            
-            <div style="display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                
-                <!-- CLEIDE → Rafael, Clécio, Rayane -->
-                <div class="tree-family-group">
-                    <div class="tree-parents"><div class="tree-person text-center" style="background: linear-gradient(145deg, #fff5e6, #f9f0e0);"><div class="name">Cleide</div><div class="role">👩‍👧 Mãe</div></div></div>
-                    <div class="tree-connector-line"></div>
-                    <div class="tree-children">
-                        <div class="tree-person text-center"><div class="name">Rafael</div><div class="role">👦 Filho</div></div>
-                        <div class="tree-person text-center"><div class="name">Clécio</div><div class="role">👦 Filho</div></div>
-                        <div class="tree-person text-center"><div class="name">Rayane</div><div class="role">🌸 Filha</div></div>
-                    </div>
-                </div>
-                
-                <!-- MARIA PASTORA → Alex, Liliane, Michele, Micaele -->
-                <div class="tree-family-group">
-                    <div class="tree-parents"><div class="tree-person text-center" style="background: linear-gradient(145deg, #fff5e6, #f9f0e0);"><div class="name">Maria Pastora</div><div class="role">👩‍👧 Mãe</div></div></div>
-                    <div class="tree-connector-line"></div>
-                    <div class="tree-children">
-                        <div class="tree-person text-center"><div class="name">Alex</div><div class="role">👦 Filho</div></div>
-                        <div class="tree-person text-center"><div class="name">Liliane ✝️</div><div class="role">🌸 Filha</div><div class="in-memory">(In memoriam)</div></div>
-                        <div class="tree-person text-center"><div class="name">Michele</div><div class="role">🌸 Filha</div></div>
-                        <div class="tree-person text-center"><div class="name">Micaele</div><div class="role">🌸 Filha</div></div>
-                    </div>
-                </div>
-                
-                <!-- JOVANI → Kaike, Geovana -->
-                <div class="tree-family-group">
-                    <div class="tree-parents"><div class="tree-person text-center" style="background: linear-gradient(145deg, #e6f0ff, #d8e8fa);"><div class="name">Jovani</div><div class="role">👨‍👦 Pai</div></div></div>
-                    <div class="tree-connector-line"></div>
-                    <div class="tree-children">
-                        <div class="tree-person text-center"><div class="name">Kaike</div><div class="role">👦 Filho</div></div>
-                        <div class="tree-person text-center"><div class="name">Geovana</div><div class="role">🌸 Filha</div></div>
-                    </div>
-                </div>
-                
-                <!-- ANTONIO CLAUDIO → Kellton, Kellvy, Kelleri -->
-                <div class="tree-family-group">
-                    <div class="tree-parents"><div class="tree-person text-center" style="background: linear-gradient(145deg, #e6f0ff, #d8e8fa);"><div class="name">Antonio Claudio</div><div class="role">👨‍👦 Pai</div></div></div>
-                    <div class="tree-connector-line"></div>
-                    <div class="tree-children">
-                        <div class="tree-person text-center"><img src="imagens/eu2.jpg" alt="Kellton" onerror="this.src='https://i.pravatar.cc/150?img=5'"><div class="name">Kellton</div><div class="role">💻 Filho</div></div>
-                        <div class="tree-person text-center"><div class="name">Kellvy</div><div class="role">👦 Filho</div></div>
-                        <div class="tree-person text-center"><div class="name">Kellery</div><div class="role">🌸 Filha</div></div>
-                    </div>
-                </div>
-                
-                <!-- ODETE → Stefany, Caio -->
-                <div class="tree-family-group">
-                    <div class="tree-parents"><div class="tree-person text-center" style="background: linear-gradient(145deg, #fff5e6, #f9f0e0);"><div class="name">Odete</div><div class="role">👩‍👧 Mãe</div></div></div>
-                    <div class="tree-connector-line"></div>
-                    <div class="tree-children">
-                        <div class="tree-person text-center"><div class="name">Stefany</div><div class="role">🌸 Filha</div></div>
-                        <div class="tree-person text-center"><div class="name">Caio</div><div class="role">👦 Filho</div></div>
-                    </div>
-                </div>
-                
-                <!-- AURICÉLIA → Anna Luizza, Anna Rafaella, Pedro Filipe -->
-                <div class="tree-family-group">
-                    <div class="tree-parents"><div class="tree-person text-center" style="background: linear-gradient(145deg, #fff5e6, #f9f0e0);"><div class="name">Auricélia</div><div class="role">👩‍👧 Mãe</div></div></div>
-                    <div class="tree-connector-line"></div>
-                    <div class="tree-children">
-                        <div class="tree-person text-center"><div class="name">Anna Luizza</div><div class="role">🌸 Filha</div></div>
-                        <div class="tree-person text-center"><div class="name">Anna Rafaella</div><div class="role">🌸 Filha</div></div>
-                        <div class="tree-person text-center"><div class="name">Pedro Filipe</div><div class="role">👦 Filho</div></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="generation-separator mt-4">
-                <i class="fas fa-arrow-down text-family-gold text-xl"></i>
-            </div>
-            
-            <!-- 4ª GERAÇÃO - BISNETOS -->
-            <div class="text-center mb-4">
-                <span class="level-title">🌿 4ª Geração - Bisnetos 🌿</span>
-            </div>
-            
-            <div style="display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                
-                <!-- MICHELE → José Emanuel -->
-                <div class="tree-family-group">
-                    <div class="tree-parents"><div class="tree-person text-center" style="background: linear-gradient(145deg, #fff5e6, #f9f0e0);"><div class="name">Michele</div><div class="role">👩‍👧 Mãe</div></div></div>
-                    <div class="tree-connector-line"></div>
-                    <div class="tree-children">
-                        <div class="tree-person text-center"><div class="name">José Emanuel</div><div class="role">👶 Filho</div></div>
-                    </div>
-                </div>
-                
-                <!-- MICAELe → Neném, Manuela -->
-                <div class="tree-family-group">
-                    <div class="tree-parents"><div class="tree-person text-center" style="background: linear-gradient(145deg, #fff5e6, #f9f0e0);"><div class="name">Micaele</div><div class="role">👩‍👧 Mãe</div></div></div>
-                    <div class="tree-connector-line"></div>
-                    <div class="tree-children">
-                        <div class="tree-person text-center"><div class="name">Neném</div><div class="role">👶 A caminho</div></div>
-                        <div class="tree-person text-center"><div class="name">Manuela</div><div class="role">👶 Filha</div></div>
-                    </div>
-                </div>
-                
-                <!-- RAFAEL → Mirella, Miguel -->
-                <div class="tree-family-group">
-                    <div class="tree-parents"><div class="tree-person text-center" style="background: linear-gradient(145deg, #e6f0ff, #d8e8fa);"><div class="name">Rafael</div><div class="role">👨‍👦 Pai</div></div></div>
-                    <div class="tree-connector-line"></div>
-                    <div class="tree-children">
-                        <div class="tree-person text-center"><div class="name">Mirella</div><div class="role">👶 Filha</div></div>
-                        <div class="tree-person text-center"><div class="name">Miguel</div><div class="role">👶 Filho</div></div>
-                    </div>
-                </div>
-                
-                <!-- GEOVANA → Heitor -->
-                <div class="tree-family-group">
-                    <div class="tree-parents"><div class="tree-person text-center" style="background: linear-gradient(145deg, #fff5e6, #f9f0e0);"><div class="name">Geovana</div><div class="role">👩‍👧 Mãe</div></div></div>
-                    <div class="tree-connector-line"></div>
-                    <div class="tree-children">
-                        <div class="tree-person text-center"><div class="name">Heitor</div><div class="role">👶 Filho</div></div>
-                    </div>
-                </div>
-                
-                <!-- CLÉCIO → Kauê -->
-                <div class="tree-family-group">
-                    <div class="tree-parents"><div class="tree-person text-center" style="background: linear-gradient(145deg, #e6f0ff, #d8e8fa);"><div class="name">Clécio</div><div class="role">👨‍👦 Pai</div></div></div>
-                    <div class="tree-connector-line"></div>
-                    <div class="tree-children">
-                        <div class="tree-person text-center"><div class="name">Kauê</div><div class="role">👶 Filho</div></div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="scroll-indicator">
-                <i class="fas fa-arrow-left"></i> Arraste para o lado <i class="fas fa-arrow-right"></i>
-            </div>
-            
-            <div class="text-center mt-6 text-family-brown text-sm">
-                <i class="fas fa-heart text-family-gold"></i> Unidos pelo amor e pela memória <i class="fas fa-heart text-family-gold"></i>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-    <!-- SEÇÃO DE ANIVERSÁRIOS -->
+    <!-- SEÇÃO DE ANIVERSÁRIOS COM DATAS CORRIGIDAS -->
     <section id="birthdays" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
@@ -650,7 +501,13 @@
                 <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
                 <p class="text-gray-600 max-w-2xl mx-auto">Sabores que atravessam gerações e guardam histórias especiais</p>
             </div>
-            <div id="recipes-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            <div id="recipes-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="col-span-full text-center py-16 bg-white rounded-xl shadow-md">
+                    <i class="fas fa-utensils text-7xl text-family-brown mb-4"></i>
+                    <h3 class="text-xl font-bold text-family-brown mb-2">Receitas da Família</h3>
+                    <p class="text-gray-600 max-w-md mx-auto">Em breve adicionaremos nossas receitas especiais!</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -695,39 +552,51 @@
 
     <script>
         // ============================================================
-        // DADOS DA FAMÍLIA
+        // DATAS DE ANIVERSÁRIO CORRIGIDAS
         // ============================================================
         
-        const GALLERY_ITEMS = [];
-        const HISTORY_ITEMS = [];
-        
         const BIRTHDAY_ITEMS = [
-            { id: 1, nome: "Cleide", data: "12/10", idade: "52 anos", foto: null, curiosidade: "A mais velha dos filhos" },
-            { id: 2, nome: "Maria Pastora", data: "20/12", idade: "51 anos", foto: null, curiosidade: "Mãe da Liliane (in memoriam)" },
-            { id: 3, nome: "Jovani", data: "30/03", idade: "49 anos", foto: null, curiosidade: "" },
-            { id: 4, nome: "Antonio Claudio", data: "08/04", idade: "", foto: null, curiosidade: "" },
-            { id: 5, nome: "Odete", data: "04/05", idade: "44 anos", foto: null, curiosidade: "" },
-            { id: 6, nome: "Auricélia", data: "30/05", idade: "", foto: null, curiosidade: "A caçula dos filhos" },
-            { id: 7, nome: "Kellton", data: "11/10", idade: "17 anos", foto: "imagens/eu2.jpg", curiosidade: "O programador da família! 🎮💻" },
-            { id: 8, nome: "Anna Luizza", data: "15/07", idade: "", foto: null, curiosidade: "" },
-            { id: 9, nome: "Geovana", data: "23/09", idade: "", foto: null, curiosidade: "" },
-            { id: 10, nome: "Rayane", data: "14/03", idade: "", foto: null, curiosidade: "" },
-            { id: 11, nome: "Michele", data: "19/11", idade: "", foto: null, curiosidade: "" },
-            { id: 12, nome: "Stefany", data: "05/02", idade: "", foto: null, curiosidade: "" },
-            { id: 13, nome: "Kauê", data: "02/08", idade: "", foto: null, curiosidade: "" },
-            { id: 14, nome: "Mirella", data: "17/01", idade: "", foto: null, curiosidade: "" },
-            { id: 15, nome: "Manuela", data: "25/06", idade: "", foto: null, curiosidade: "" },
-            { id: 16, nome: "Heitor", data: "10/04", idade: "", foto: null, curiosidade: "" },
-            { id: 17, nome: "Miguel", data: "03/12", idade: "", foto: null, curiosidade: "" },
-            { id: 18, nome: "José Emanuel", data: "22/09", idade: "", foto: null, curiosidade: "" }
+            // 2ª GERAÇÃO - FILHOS
+            { id: 1, nome: "Cleide", data: "12/10", idade: "", foto: null, curiosidade: "A mais velha dos filhos" },
+            { id: 2, nome: "Maria Pastora", data: "20/12", idade: "", foto: null, curiosidade: "" },
+            { id: 3, nome: "Jovani", data: "30/03", idade: "", foto: null, curiosidade: "" },
+            { id: 4, nome: "Antônio Claudio", data: "08/04", idade: "", foto: null, curiosidade: "" },
+            { id: 5, nome: "Odete", data: "30/05", idade: "", foto: null, curiosidade: "" },
+            { id: 6, nome: "Auricélia", data: "04/05", idade: "", foto: null, curiosidade: "A caçula dos filhos" },
+            
+            // 3ª GERAÇÃO - NETOS
+            { id: 7, nome: "Clécio", data: "08/11", idade: "", foto: null, curiosidade: "" },
+            { id: 8, nome: "Micaele", data: "24/09", idade: "", foto: null, curiosidade: "" },
+            { id: 9, nome: "Liliane", data: "", idade: "", foto: null, curiosidade: "✝️ In memoriam - Filha da Pastora" },
+            { id: 10, nome: "Rafael", data: "21/10", idade: "", foto: null, curiosidade: "" },
+            { id: 11, nome: "Kellery", data: "06/12", idade: "", foto: null, curiosidade: "" },
+            { id: 12, nome: "Rayane", data: "08/11", idade: "", foto: null, curiosidade: "" },
+            { id: 13, nome: "Michele", data: "26/03", idade: "", foto: null, curiosidade: "" },
+            { id: 14, nome: "Kellvy", data: "28/12", idade: "", foto: null, curiosidade: "" },
+            { id: 15, nome: "Alex", data: "28/08", idade: "", foto: null, curiosidade: "" },
+            { id: 16, nome: "Geovana", data: "11/10", idade: "", foto: null, curiosidade: "" },
+            { id: 17, nome: "Stefany", data: "26/05", idade: "", foto: null, curiosidade: "" },
+            { id: 18, nome: "Kaike", data: "02/12", idade: "", foto: null, curiosidade: "" },
+            { id: 19, nome: "Kellton", data: "11/10", idade: "17 anos", foto: "imagens/eu2.jpg", curiosidade: "O programador da família! 🎮💻" },
+            { id: 20, nome: "Anna Luizza", data: "14/01", idade: "", foto: null, curiosidade: "" },
+            { id: 21, nome: "Caio", data: "20/04", idade: "", foto: null, curiosidade: "" },
+            { id: 22, nome: "Anna Rafaella", data: "26/02", idade: "", foto: null, curiosidade: "" },
+            { id: 23, nome: "Pedro Felipe", data: "", idade: "", foto: null, curiosidade: "Data não informada" },
+            
+            // 4ª GERAÇÃO - BISNETOS
+            { id: 24, nome: "Kauê", data: "", idade: "", foto: null, curiosidade: "Data não informada" },
+            { id: 25, nome: "Mirella", data: "04/03", idade: "", foto: null, curiosidade: "" },
+            { id: 26, nome: "Manuela", data: "26/11", idade: "", foto: null, curiosidade: "" },
+            { id: 27, nome: "Heitor", data: "", idade: "", foto: null, curiosidade: "Data não informada" },
+            { id: 28, nome: "Miguel", data: "27/12", idade: "", foto: null, curiosidade: "" },
+            { id: 29, nome: "José Emanuel", data: "", idade: "", foto: null, curiosidade: "Data não informada" },
+            { id: 30, nome: "Neném", data: "", idade: "", foto: null, curiosidade: "👶 A caminho - Filho(a) da Micaele" }
         ];
         
-        const RECIPE_ITEMS = [];
-        
-        let galleryItems = [...GALLERY_ITEMS];
-        let historyItems = [...HISTORY_ITEMS];
+        let galleryItems = [];
+        let historyItems = [];
         let birthdayItems = [...BIRTHDAY_ITEMS];
-        let recipeItems = [...RECIPE_ITEMS];
+        let recipeItems = [];
         
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toast');
@@ -737,96 +606,11 @@
             setTimeout(() => toast.classList.add('hidden'), 2000);
         }
         
-        function formatDate(dateStr) { 
-            if(!dateStr) return ''; 
-            const [y,m,d] = dateStr.split('-'); 
-            return `${d}/${m}/${y}`; 
-        }
-        
         function escapeHtml(text) { 
             if(!text) return '';
             const div = document.createElement('div'); 
             div.textContent = text; 
             return div.innerHTML; 
-        }
-        
-        function getCategoryIcon(category) {
-            const icons = { 'reunioes': '👨‍👩‍👧‍👦', 'aniversarios': '🎂', 'viagens': '✈️' };
-            return icons[category] || '📷';
-        }
-        
-        function getCategoryName(category) {
-            const names = { 'reunioes': 'Reuniões', 'aniversarios': 'Aniversários', 'viagens': 'Viagens' };
-            return names[category] || category;
-        }
-        
-        function renderGallery() {
-            const container = document.getElementById('gallery-container');
-            if (galleryItems.length === 0) {
-                container.innerHTML = `<div class="col-span-full text-center py-20 bg-gray-50 rounded-xl"><i class="fas fa-camera text-7xl text-gray-300 mb-4"></i><p class="text-gray-500 text-lg">Nenhuma memória adicionada ainda.</p><p class="text-gray-400 mt-2">Em breve adicionaremos nossas fotos e vídeos!</p></div>`;
-                return;
-            }
-            container.innerHTML = galleryItems.map(item => `
-                <div class="memory-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all" data-category="${item.category}">
-                    ${item.type === 'video' ? 
-                        `<div class="relative cursor-pointer group" onclick="openVideoModal(${item.id})">
-                            <video src="${item.src}" class="w-full h-56 object-cover"></video>
-                            <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
-                                <div class="bg-white/90 rounded-full p-4"><i class="fas fa-play text-family-brown text-2xl"></i></div>
-                            </div>
-                        </div>` :
-                        `<img src="${item.src}" class="w-full h-56 object-cover cursor-pointer hover:opacity-90 transition" onclick="openImageModal('${item.src}', '${escapeHtml(item.title)}')">`
-                    }
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-bold text-lg text-family-brown">${escapeHtml(item.title)}</h3>
-                            <span class="bg-family-green/20 text-family-green text-xs px-2 py-1 rounded-full">${getCategoryIcon(item.category)}</span>
-                        </div>
-                        <p class="text-gray-600 text-sm mt-1 line-clamp-2">${escapeHtml(item.description)}</p>
-                        <div class="flex justify-between items-center mt-3">
-                            <span class="text-xs text-gray-400"><i class="far fa-calendar-alt"></i> ${formatDate(item.date)}</span>
-                            <button class="view-memory-btn text-family-brown hover:text-family-gold text-sm font-medium transition" data-id="${item.id}">Ver detalhes →</button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-            document.querySelectorAll('.view-memory-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => openMemoryModal(parseInt(e.currentTarget.dataset.id)));
-            });
-        }
-        
-        function renderHistory() {
-            const container = document.getElementById('history-content');
-            if (historyItems.length === 0) {
-                container.innerHTML = `<div class="text-center py-16 bg-white rounded-xl shadow-md"><i class="fas fa-book-open text-7xl text-family-gold mb-4"></i><h3 class="text-xl font-bold text-family-brown mb-2">História da Família</h3><p class="text-gray-600 max-w-md mx-auto">Em breve adicionaremos os momentos especiais da nossa família!</p></div>`;
-                return;
-            }
-            container.innerHTML = historyItems.sort((a,b) => parseInt(b.year) - parseInt(a.year)).map(item => `
-                <div class="history-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all">
-                    <div class="p-6">
-                        <div class="flex flex-wrap items-center gap-3 mb-3">
-                            <span class="bg-family-brown text-white px-3 py-1 rounded-full text-sm font-bold">📅 ${escapeHtml(item.year)}</span>
-                            <h3 class="text-xl font-bold text-family-brown">${escapeHtml(item.title)}</h3>
-                        </div>
-                        <p class="text-gray-600 mb-4 leading-relaxed">${escapeHtml(item.description)}</p>
-                        ${item.fileData ? `
-                            <div class="mt-3 cursor-pointer group" onclick="openHistoryDetailModal('${item.id}')">
-                                ${item.fileType === 'video' ? 
-                                    `<div class="relative rounded-lg overflow-hidden">
-                                        <video src="${item.fileData}" class="w-full max-h-64 object-cover rounded-lg"></video>
-                                        <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/50 transition">
-                                            <div class="bg-white/90 rounded-full p-3"><i class="fas fa-play text-family-brown text-xl"></i></div>
-                                        </div>
-                                    </div>` :
-                                    `<img src="${item.fileData}" class="w-full max-h-64 object-cover rounded-lg shadow-md transition group-hover:scale-105">`
-                                }
-                                <p class="text-sm text-family-brown mt-2 text-center">📸 Clique para ampliar</p>
-                            </div>
-                        ` : ''}
-                        <button onclick="openHistoryDetailModal('${item.id}')" class="mt-4 text-family-brown hover:text-family-gold transition text-sm font-medium inline-flex items-center gap-1">Ver detalhes <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                </div>
-            `).join('');
         }
         
         function renderBirthdays() {
@@ -836,7 +620,10 @@
                 return;
             }
             
+            // Ordenar por data (mês/dia)
             birthdayItems.sort((a, b) => {
+                if (!a.data) return 1;
+                if (!b.data) return -1;
                 const [diaA, mesA] = a.data.split('/');
                 const [diaB, mesB] = b.data.split('/');
                 if (mesA === mesB) return parseInt(diaA) - parseInt(diaB);
@@ -854,7 +641,10 @@
                         }
                         <h3 class="font-bold text-xl text-family-brown mb-1">${escapeHtml(item.nome)}</h3>
                         <div class="flex items-center justify-center gap-2 mb-2">
-                            <span class="bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold">📅 ${escapeHtml(item.data)}</span>
+                            ${item.data ? 
+                                `<span class="bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold">📅 ${escapeHtml(item.data)}</span>` : 
+                                `<span class="bg-gray-400 text-white px-3 py-1 rounded-full text-sm">📅 Data não informada</span>`
+                            }
                             ${item.idade ? `<span class="bg-family-green/20 text-family-green px-3 py-1 rounded-full text-sm">🎂 ${escapeHtml(item.idade)}</span>` : ''}
                         </div>
                         ${item.curiosidade ? `
@@ -870,92 +660,6 @@
             `).join('');
         }
         
-        function renderRecipes() {
-            const container = document.getElementById('recipes-container');
-            if (recipeItems.length === 0) {
-                container.innerHTML = `<div class="col-span-full text-center py-16 bg-white rounded-xl shadow-md"><i class="fas fa-utensils text-7xl text-family-brown mb-4"></i><h3 class="text-xl font-bold text-family-brown mb-2">Receitas da Família</h3><p class="text-gray-600 max-w-md mx-auto">Em breve adicionaremos nossas receitas especiais!</p></div>`;
-                return;
-            }
-            container.innerHTML = recipeItems.map(item => `
-                <div class="recipe-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all">
-                    ${item.photo ? `<img src="${item.photo}" class="recipe-photo object-cover">` : `<div class="h-48 bg-gradient-to-r from-family-brown/20 to-family-gold/20 flex items-center justify-center"><i class="fas fa-utensils text-5xl text-family-brown/50"></i></div>`}
-                    <div class="p-5">
-                        <h3 class="text-xl font-bold text-family-brown mb-3">${escapeHtml(item.name)}</h3>
-                        <div class="mb-3">
-                            <h4 class="font-semibold text-family-green text-sm"><i class="fas fa-list"></i> Ingredientes:</h4>
-                            <p class="whitespace-pre-wrap text-gray-600 text-sm mt-1">${escapeHtml(item.ingredients)}</p>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-family-green text-sm"><i class="fas fa-utensils"></i> Modo de Preparo:</h4>
-                            <p class="whitespace-pre-wrap text-gray-600 text-sm mt-1">${escapeHtml(item.instructions)}</p>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-        
-        function openMemoryModal(id) {
-            const memory = galleryItems.find(i => i.id === id);
-            if(!memory) return;
-            document.getElementById('modal-title').innerHTML = `${getCategoryIcon(memory.category)} ${escapeHtml(memory.title)}`;
-            document.getElementById('modal-content').innerHTML = `
-                <p class="text-gray-600 text-lg">${escapeHtml(memory.description)}</p>
-                <p class="text-sm text-gray-500"><i class="far fa-calendar-alt"></i> Data: ${formatDate(memory.date)}</p>
-                <p class="text-sm text-gray-500"><i class="far fa-folder"></i> Categoria: ${getCategoryName(memory.category)}</p>
-                ${memory.type === 'video' ? `<video src="${memory.src}" class="w-full rounded-lg shadow-md mt-2" controls autoplay></video>` : `<img src="${memory.src}" class="w-full rounded-lg shadow-md mt-2">`}
-                <div class="bg-family-cream p-5 rounded-xl mt-4">
-                    <h4 class="font-semibold mb-3 text-family-brown"><i class="fas fa-comments"></i> 💬 Comentários:</h4>
-                    <div id="comments-list" class="max-h-60 overflow-y-auto">
-                        ${memory.comments && memory.comments.length > 0 ? 
-                            memory.comments.map(c => `<div class="comment-item p-2 border-b border-gray-200"><i class="fas fa-user-circle text-family-brown mr-2"></i>${escapeHtml(c)}</div>`).join('') :
-                            '<p class="text-gray-500 italic text-center py-4">Nenhum comentário ainda.</p>'
-                        }
-                    </div>
-                    <div class="mt-4">
-                        <textarea id="new-comment" class="w-full px-3 py-2 border border-gray-300 rounded-lg" rows="2" placeholder="Deixe seu comentário..."></textarea>
-                        <button onclick="addComment(${id})" class="mt-2 bg-family-brown text-white px-5 py-2 rounded-lg hover:bg-family-gold transition">💬 Comentar</button>
-                    </div>
-                </div>
-            `;
-            document.getElementById('memory-modal').classList.remove('hidden');
-            document.getElementById('memory-modal').classList.add('flex');
-        }
-        
-        window.openHistoryDetailModal = function(id) {
-            const item = historyItems.find(i => i.id == id);
-            if(!item) return;
-            document.getElementById('history-detail-title').innerHTML = `📅 ${item.year} - ${escapeHtml(item.title)}`;
-            document.getElementById('history-detail-content').innerHTML = `
-                <p class="text-gray-700 text-lg leading-relaxed">${escapeHtml(item.description)}</p>
-                ${item.fileData ? (item.fileType === 'video' ? `<video src="${item.fileData}" class="w-full rounded-xl shadow-lg mt-4" controls></video>` : `<img src="${item.fileData}" class="w-full rounded-xl shadow-lg mt-4">`) : '<p class="text-gray-400 mt-4 text-center">📷 Nenhuma foto adicionada.</p>'}
-            `;
-            document.getElementById('history-detail-modal').classList.remove('hidden');
-            document.getElementById('history-detail-modal').classList.add('flex');
-        };
-        
-        window.addComment = function(id) {
-            const comment = document.getElementById('new-comment').value;
-            if(comment.trim()) {
-                const memory = galleryItems.find(m => m.id === id);
-                if(memory) {
-                    if(!memory.comments) memory.comments = [];
-                    memory.comments.push(comment.trim() + " - " + new Date().toLocaleDateString('pt-BR'));
-                    showToast('💬 Comentário adicionado!');
-                    openMemoryModal(id);
-                }
-            } else showToast('Digite um comentário!', 'error');
-        };
-        
-        window.openImageModal = function(src, title) {
-            document.getElementById('modal-title').innerHTML = title;
-            document.getElementById('modal-content').innerHTML = `<img src="${src}" class="w-full rounded-xl shadow-lg"><div class="text-center text-gray-500 mt-3">✨ Clique fora para fechar</div>`;
-            document.getElementById('memory-modal').classList.remove('hidden');
-            document.getElementById('memory-modal').classList.add('flex');
-        };
-        
-        window.openVideoModal = function(id) { openMemoryModal(id); };
-        window.closeHistoryDetailModal = () => { document.getElementById('history-detail-modal').classList.add('hidden'); document.getElementById('history-detail-modal').classList.remove('flex'); };
-        
         function setupFilters() {
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -970,16 +674,12 @@
         }
         
         document.getElementById('close-modal').addEventListener('click', () => { document.getElementById('memory-modal').classList.add('hidden'); document.getElementById('memory-modal').classList.remove('flex'); });
-        window.addEventListener('click', (e) => {
-            if(e.target === document.getElementById('memory-modal')) { document.getElementById('memory-modal').classList.add('hidden'); document.getElementById('memory-modal').classList.remove('flex'); }
-            if(e.target === document.getElementById('history-detail-modal')) closeHistoryDetailModal();
-        });
+        
+        window.closeHistoryDetailModal = () => { document.getElementById('history-detail-modal').classList.add('hidden'); document.getElementById('history-detail-modal').classList.remove('flex'); };
+        
         document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) { e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); }));
         
-        renderGallery(); 
-        renderHistory(); 
-        renderBirthdays();
-        renderRecipes(); 
+        renderBirthdays(); 
         setupFilters();
     </script>
 </body>
