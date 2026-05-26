@@ -30,14 +30,15 @@
     <style>
         .fade-in { animation: fadeIn 0.5s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .memory-card, .history-card, .recipe-card, .birthday-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .memory-card:hover, .history-card:hover, .recipe-card:hover, .birthday-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .memory-card, .history-card, .recipe-card, .birthday-card, .curiosity-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .memory-card:hover, .history-card:hover, .recipe-card:hover, .birthday-card:hover, .curiosity-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
         .comment-item { transition: background 0.2s; }
         .comment-item:hover { background: #fef3c7; }
         html { scroll-behavior: smooth; }
         @media (max-width: 768px) { .container { padding-left: 1rem; padding-right: 1rem; } }
         .recipe-photo { width: 100%; height: 200px; object-fit: cover; border-radius: 12px 12px 0 0; }
         .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
         .toast-notification {
             position: fixed;
             bottom: 20px;
@@ -212,6 +213,32 @@
             .tree-person { width: 95px; padding: 6px; }
             .tree-person img { width: 55px; height: 55px; }
         }
+        
+        /* Estilo para curiosidades */
+        .curiosity-card {
+            background: linear-gradient(135deg, #fff9ef, #fff5e6);
+            border-left: 5px solid #D4AF37;
+        }
+        
+        /* Estilo para upload de arquivos */
+        .file-upload-area {
+            border: 2px dashed #D4AF37;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .file-upload-area:hover {
+            border-color: #8B4513;
+            background: rgba(212, 175, 55, 0.05);
+        }
+        
+        /* Estilo para os cards de personalidade */
+        .personality-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .personality-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body class="bg-family-cream font-sans text-gray-800">
@@ -226,6 +253,7 @@
                     <li><a href="#home" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Início</a></li>
                     <li><a href="#memories" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Memórias</a></li>
                     <li><a href="#history" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">História</a></li>
+                    <li><a href="#curiosities" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Curiosidades</a></li>
                     <li><a href="#family-tree" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Árvore</a></li>
                     <li><a href="#birthdays" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Aniversários</a></li>
                     <li><a href="#recipes" class="px-3 py-2 rounded-lg hover:bg-family-gold transition font-medium">Receitas</a></li>
@@ -240,35 +268,86 @@
             <p class="text-xl md:text-2xl max-w-2xl mx-auto mb-8 text-gray-700">Um lugar para guardar nossas memórias, histórias e celebrar nosso legado familiar.</p>
             <div class="flex justify-center gap-4 flex-wrap">
                 <a href="#memories" class="bg-family-brown text-white px-8 py-3 rounded-full hover:bg-family-gold transition transform hover:scale-105 inline-block font-semibold shadow-md">📸 Ver Memórias</a>
-                <a href="#family-tree" class="bg-white text-family-brown border-2 border-family-brown px-8 py-3 rounded-full hover:bg-family-green hover:text-white hover:border-transparent transition transform hover:scale-105 inline-block font-semibold shadow-md">🌳 Nossa Árvore</a>
-                <a href="#birthdays" class="bg-family-gold text-family-brown px-8 py-3 rounded-full hover:bg-family-green hover:text-white transition transform hover:scale-105 inline-block font-semibold shadow-md">🎂 Aniversários</a>
+                <a href="#curiosities" class="bg-white text-family-brown border-2 border-family-brown px-8 py-3 rounded-full hover:bg-family-green hover:text-white hover:border-transparent transition transform hover:scale-105 inline-block font-semibold shadow-md">✨ Curiosidades</a>
+                <a href="#family-tree" class="bg-family-gold text-family-brown px-8 py-3 rounded-full hover:bg-family-green hover:text-white transition transform hover:scale-105 inline-block font-semibold shadow-md">🌳 Nossa Árvore</a>
+                <a href="#birthdays" class="bg-family-brown text-white px-8 py-3 rounded-full hover:bg-family-gold transition transform hover:scale-105 inline-block font-semibold shadow-md">🎂 Aniversários</a>
             </div>
         </div>
         <div class="absolute bottom-0 left-0 right-0 h-10 bg-repeat-x opacity-50" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 120 20\" preserveAspectRatio=\"none\"><path d=\"M0,0 Q30,20 60,0 T120,0 V20 H0 Z\" fill=\"%238B4513\"/></svg>')"></div>
     </section>
 
+    <!-- SEÇÃO DE MEMÓRIAS -->
     <section id="memories" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">Nossas Memórias</h2>
+                <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">📸 Nossas Memórias</h2>
                 <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
                 <p class="text-gray-600 max-w-2xl mx-auto">Fotos e vídeos que capturam momentos especiais da nossa família</p>
+                <p class="text-sm text-gray-500 mt-2">✨ Adicione suas fotos clicando no botão abaixo</p>
             </div>
+            
+            <div class="text-center mb-8">
+                <button onclick="openAddMemoryModal()" class="bg-family-brown text-white px-8 py-3 rounded-full hover:bg-family-gold transition transform hover:scale-105 inline-flex items-center gap-2 font-semibold shadow-md">
+                    <i class="fas fa-plus-circle"></i> Adicionar Nova Memória
+                </button>
+            </div>
+            
             <div class="flex justify-center mb-8 flex-wrap gap-2">
                 <button class="filter-btn px-5 py-2 rounded-full bg-family-brown text-white transition font-medium shadow-sm" data-filter="all">📋 Todas</button>
                 <button class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-family-green hover:text-white transition font-medium" data-filter="reunioes">👨‍👩‍👧‍👦 Reuniões</button>
                 <button class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-family-green hover:text-white transition font-medium" data-filter="aniversarios">🎂 Aniversários</button>
                 <button class="filter-btn px-5 py-2 rounded-full bg-gray-200 hover:bg-family-green hover:text-white transition font-medium" data-filter="viagens">✈️ Viagens</button>
             </div>
-            <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="col-span-full text-center py-20 bg-gray-50 rounded-xl">
-                    <i class="fas fa-camera text-7xl text-gray-300 mb-4"></i>
-                    <p class="text-gray-500 text-lg">Nenhuma memória adicionada ainda.</p>
-                    <p class="text-gray-400 mt-2">Em breve adicionaremos nossas fotos e vídeos!</p>
+            
+            <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- MODAL PARA ADICIONAR MEMÓRIA -->
+    <div id="add-memory-modal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4 modal-overlay">
+        <div class="bg-white rounded-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold text-family-brown">📸 Adicionar Memória</h3>
+                    <button onclick="closeAddMemoryModal()" class="text-gray-500 hover:text-gray-700"><i class="fas fa-times text-2xl"></i></button>
+                </div>
+                <form id="memory-form" class="space-y-4">
+                    <div><label class="block text-gray-700 mb-2 font-semibold">Título *</label><input type="text" id="memory-title" class="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Ex: Natal em Família 2024" required></div>
+                    <div><label class="block text-gray-700 mb-2 font-semibold">Descrição</label><textarea id="memory-description" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Descreva este momento especial..."></textarea></div>
+                    <div><label class="block text-gray-700 mb-2 font-semibold">Categoria</label><select id="memory-category" class="w-full px-4 py-2 border border-gray-300 rounded-lg"><option value="reunioes">👨‍👩‍👧‍👦 Reuniões</option><option value="aniversarios">🎂 Aniversários</option><option value="viagens">✈️ Viagens</option></select></div>
+                    <div><label class="block text-gray-700 mb-2 font-semibold">Data</label><input type="date" id="memory-date" class="w-full px-4 py-2 border border-gray-300 rounded-lg"></div>
+                    <div><label class="block text-gray-700 mb-2 font-semibold">📷 Foto ou Vídeo</label>
+                        <div class="file-upload-area rounded-lg p-6 text-center" onclick="document.getElementById('memory-file').click()">
+                            <input type="file" id="memory-file" accept="image/*,video/*" class="hidden">
+                            <i class="fas fa-cloud-upload-alt text-4xl text-family-gold mb-2"></i>
+                            <p class="text-gray-500">Clique para selecionar uma foto ou vídeo</p>
+                            <p class="text-xs text-gray-400 mt-1">Formatos: JPG, PNG, GIF, MP4 (máx 50MB)</p>
+                        </div>
+                        <div id="file-preview" class="mt-3 hidden"><div id="preview-content"></div><button type="button" onclick="clearFilePreview()" class="text-red-500 text-sm mt-2">Remover</button></div>
+                    </div>
+                    <button type="submit" class="w-full bg-family-brown text-white py-3 rounded-lg hover:bg-family-gold transition font-semibold">💾 Salvar Memória</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA VER DETALHES DA MEMÓRIA -->
+    <div id="memory-detail-modal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4 modal-overlay">
+        <div class="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="detail-title" class="text-2xl font-bold text-family-brown"></h3>
+                    <button onclick="closeMemoryDetailModal()" class="text-gray-500 hover:text-gray-700"><i class="fas fa-times text-2xl"></i></button>
+                </div>
+                <div id="detail-content" class="space-y-4"></div>
+                <div class="mt-4 pt-4 border-t border-gray-200">
+                    <h4 class="font-semibold mb-2">💬 Comentários</h4>
+                    <div id="detail-comments" class="max-h-40 overflow-y-auto mb-3"></div>
+                    <div class="flex gap-2"><input type="text" id="new-comment" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg" placeholder="Deixe um comentário..."><button onclick="addCommentToCurrent()" class="bg-family-brown text-white px-4 py-2 rounded-lg hover:bg-family-gold transition">Enviar</button></div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <section id="history" class="py-16 bg-family-cream">
         <div class="container mx-auto px-4">
@@ -290,6 +369,134 @@
         </div>
     </section>
 
+    <!-- SEÇÃO DE CURIOSIDADES -->
+    <section id="curiosities" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">✨ Curiosidades & Momentos Marcantes</h2>
+                <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">Conheça um pouco mais sobre nossa família, nossas tradições e o que nos torna especiais</p>
+            </div>
+            
+            <!-- Momentos Marcantes -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div class="curiosity-card rounded-xl p-6 shadow-md">
+                    <div class="flex items-center gap-3 mb-3"><i class="fas fa-handshake text-family-gold text-3xl"></i><h3 class="text-xl font-bold text-family-brown">🤝 União em primeiro lugar</h3></div>
+                    <p class="text-gray-700">A nossa primeira grande característica é que somos extremamente unidos. Valorizamos muito os momentos juntos e fazemos questão de nos reunir sempre, pois é algo fundamental para nós e que todo mundo ama.</p>
+                </div>
+                <div class="curiosity-card rounded-xl p-6 shadow-md">
+                    <div class="flex items-center gap-3 mb-3"><i class="fas fa-hand-holding-heart text-family-gold text-3xl"></i><h3 class="text-xl font-bold text-family-brown">💪 Fechados na alegria e na dor</h3></div>
+                    <p class="text-gray-700">Estamos sempre juntos, não só nos momentos importantes de celebração, mas também quando surgem dificuldades. A gente realmente se apoia em qualquer situação.</p>
+                </div>
+                <div class="curiosity-card rounded-xl p-6 shadow-md">
+                    <div class="flex items-center gap-3 mb-3"><i class="fas fa-home text-family-gold text-3xl"></i><h3 class="text-xl font-bold text-family-brown">🏠 Nosso Porto Seguro (O Domingo na Vovó)</h3></div>
+                    <p class="text-gray-700">O nosso principal ponto de encontro e grande referência é a casa da nossa avó. Todo domingo estamos lá reunidos. É o momento perfeito para todo mundo descarregar as energias ruins da semana, recarregar as forças e curtir quem a gente ama.</p>
+                </div>
+                <div class="curiosity-card rounded-xl p-6 shadow-md">
+                    <div class="flex items-center gap-3 mb-3"><i class="fas fa-church text-family-gold text-3xl"></i><h3 class="text-xl font-bold text-family-brown">⛪ Tradições Sagradas (Sexta-feira Santa)</h3></div>
+                    <p class="text-gray-700">Temos rituais que vêm desde sempre. Uma das datas mais importantes para nós é a Sexta-feira Santa, dia em que a família inteira, sem falta, se reúne na casa da nossa avó para um grande almoço juntos.</p>
+                </div>
+                <div class="curiosity-card rounded-xl p-6 shadow-md">
+                    <div class="flex items-center gap-3 mb-3"><i class="fas fa-calendar-alt text-family-gold text-3xl"></i><h3 class="text-xl font-bold text-family-brown">📅 Calendário de Festas</h3></div>
+                    <p class="text-gray-700">As comemorações duram o ano todo! Virou uma grande tradição a nossa Festa Junina na casa da avó, e o Natal, Ano Novo e aniversários são sempre paradas obrigatórias para estarmos juntos.</p>
+                </div>
+                <div class="curiosity-card rounded-xl p-6 shadow-md">
+                    <div class="flex items-center gap-3 mb-3"><i class="fas fa-plane text-family-gold text-3xl"></i><h3 class="text-xl font-bold text-family-brown">✈️ Viagens</h3></div>
+                    <p class="text-gray-700">Não é sempre que conseguimos viajar, mas quando surge a oportunidade e as coisas dão certo, a gente aproveita ao máximo para viajar, fazer brincadeiras e curtir muito juntos.</p>
+                </div>
+                <div class="curiosity-card rounded-xl p-6 shadow-md md:col-span-2">
+                    <div class="flex items-center gap-3 mb-3"><i class="fas fa-dove text-family-gold text-3xl"></i><h3 class="text-xl font-bold text-family-brown">🕊️ Superação e Renascimento</h3></div>
+                    <p class="text-gray-700">Um momento que nos marcou profundamente foi a perda do nosso avô e da nossa tia. Sendo pessoas tão importantes, o impacto nos abalou muito e, por um tempo, a frequência dos nossos encontros diminuiu, mantendo-se mais restrita aos domingos. Com o tempo, porém, compreendemos que a nossa união era algo sagrado e que não podíamos deixar essa dor nos afastar. Essa superação nos tornou muito mais fortes e unidos hoje, pois sabemos o quanto cada momento deve ser valorizado.</p>
+                </div>
+            </div>
+            
+            <!-- Personalidades dos Filhos - Cards Bonitos -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-script text-family-brown text-center mb-6">👨‍👩‍👧‍👦 Personalidades da Família</h3>
+                <p class="text-center text-gray-500 mb-8">Cada um dos filhos tem sua própria essência que torna nossa família ainda mais especial</p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Cleide -->
+                    <div class="personality-card bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-5 shadow-md hover:shadow-xl transition-all border-l-4 border-pink-400">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 bg-pink-200 rounded-full flex items-center justify-center"><i class="fas fa-smile text-pink-600 text-2xl"></i></div>
+                            <h4 class="text-xl font-bold text-family-brown">Cleide</h4>
+                        </div>
+                        <p class="text-gray-700"><i class="fas fa-quote-left text-pink-400 mr-1 text-sm"></i> Alegre, amava costurar e iluminava os nossos dias.</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500"><i class="fas fa-calendar-alt"></i> <span>Aniversário: 12/10</span></div>
+                    </div>
+                    
+                    <!-- Maria Pastora -->
+                    <div class="personality-card bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-5 shadow-md hover:shadow-xl transition-all border-l-4 border-purple-400">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center"><i class="fas fa-camera text-purple-600 text-2xl"></i></div>
+                            <h4 class="text-xl font-bold text-family-brown">Maria Pastora</h4>
+                        </div>
+                        <p class="text-gray-700"><i class="fas fa-quote-left text-purple-400 mr-1 text-sm"></i> Muito divertida e a fotógrafa oficial de todos os nossos momentos.</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500"><i class="fas fa-calendar-alt"></i> <span>Aniversário: 20/12</span></div>
+                    </div>
+                    
+                    <!-- Jovani -->
+                    <div class="personality-card bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl p-5 shadow-md hover:shadow-xl transition-all border-l-4 border-emerald-400">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 bg-emerald-200 rounded-full flex items-center justify-center"><i class="fas fa-tractor text-emerald-600 text-2xl"></i></div>
+                            <h4 class="text-xl font-bold text-family-brown">Jovani</h4>
+                        </div>
+                        <p class="text-gray-700"><i class="fas fa-quote-left text-emerald-400 mr-1 text-sm"></i> Agricultor dedicado e muito presente na casa da nossa avó.</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500"><i class="fas fa-calendar-alt"></i> <span>Aniversário: 30/03</span></div>
+                    </div>
+                    
+                    <!-- Antônio Claudio ("Bode") -->
+                    <div class="personality-card bg-gradient-to-br from-amber-50 to-yellow-50 rounded-xl p-5 shadow-md hover:shadow-xl transition-all border-l-4 border-amber-400">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 bg-amber-200 rounded-full flex items-center justify-center"><i class="fas fa-laugh-squint text-amber-600 text-2xl"></i></div>
+                            <h4 class="text-xl font-bold text-family-brown">Antônio Claudio</h4>
+                            <span class="text-xs bg-amber-200 text-amber-800 px-2 py-1 rounded-full">"Bode"</span>
+                        </div>
+                        <p class="text-gray-700"><i class="fas fa-quote-left text-amber-400 mr-1 text-sm"></i> Reservado no dia a dia, mas o mais engraçado nos nossos encontros.</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500"><i class="fas fa-calendar-alt"></i> <span>Aniversário: 08/04</span></div>
+                    </div>
+                    
+                    <!-- Odete -->
+                    <div class="personality-card bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-5 shadow-md hover:shadow-xl transition-all border-l-4 border-orange-400">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center"><i class="fas fa-laugh text-orange-600 text-2xl"></i></div>
+                            <h4 class="text-xl font-bold text-family-brown">Odete</h4>
+                        </div>
+                        <p class="text-gray-700"><i class="fas fa-quote-left text-orange-400 mr-1 text-sm"></i> Trabalhadora, barulhenta e a verdadeira razão das nossas gargalhadas.</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500"><i class="fas fa-calendar-alt"></i> <span>Aniversário: 30/05</span></div>
+                    </div>
+                    
+                    <!-- Auricélia -->
+                    <div class="personality-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-5 shadow-md hover:shadow-xl transition-all border-l-4 border-blue-400">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center"><i class="fas fa-heart text-blue-600 text-2xl"></i></div>
+                            <h4 class="text-xl font-bold text-family-brown">Auricélia</h4>
+                        </div>
+                        <p class="text-gray-700"><i class="fas fa-quote-left text-blue-400 mr-1 text-sm"></i> Mora pertinho da avó e garante sempre muita alegria e momentos incríveis.</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500"><i class="fas fa-calendar-alt"></i> <span>Aniversário: 04/05</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Homenagem aos Avós -->
+            <div class="mt-12 bg-gradient-to-r from-family-brown/10 to-family-gold/10 rounded-xl p-6 text-center">
+                <i class="fas fa-star-of-life text-family-gold text-4xl mb-3"></i>
+                <h3 class="text-2xl font-script text-family-brown mb-3">🌟 Nossos Tesouros</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <i class="fas fa-male text-family-brown text-3xl mb-2"></i>
+                        <p class="text-gray-700"><strong>👴 Vovô:</strong> Muito trabalhador e dedicado, amava profundamente a sua família, sendo um homem eterno e especial para todos nós.</p>
+                    </div>
+                    <div class="bg-white/50 rounded-lg p-4">
+                        <i class="fas fa-female text-family-brown text-3xl mb-2"></i>
+                        <p class="text-gray-700"><strong>👵 Vovó:</strong> O coração da família e nosso porto seguro, sempre com as portas abertas e muito importante para nós.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ÁRVORE GENEALÓGICA -->
     <section id="family-tree" class="py-16 family-tree-section">
         <div class="container mx-auto px-4">
@@ -301,18 +508,22 @@
             </div>
             
             <div class="tree-scroll-container">
-                <!-- 1ª GERAÇÃO - AVÓS -->
-                <div class="text-center mb-2">
-                    <span class="level-title">🌿 1ª Geração - Avós 🌿</span>
-                </div>
+                <!-- ========================================== -->
+                <!-- 🟢🟢🟢 PONTO 1: FOTOS DOS AVÓS 🟢🟢🟢 -->
+                <!-- ========================================== -->
+                <!-- COLOQUE AQUI AS FOTOS DOS SEUS AVÓS -->
+                <!-- Troque o "src" pelo caminho das suas fotos -->
+                <!-- Exemplo: src="imagens/vovo_nelsa.jpg" -->
+                <!-- ========================================== -->
+                <div class="text-center mb-2"><span class="level-title">🌿 1ª Geração - Avós 🌿</span></div>
                 <div class="tree-parents" style="justify-content: center;">
                     <div class="tree-person text-center">
-                        <img src="https://i.pravatar.cc/150?img=65" alt="Vovó Nelsa">
+                        <img src="https://i.pravatar.cc/150?img=65" onerror="this.src='https://via.placeholder.com/150?text=Vovó+Nelsa'">
                         <div class="name">Nelsa</div>
                         <div class="role">🌹 Vovó</div>
                     </div>
                     <div class="tree-person text-center">
-                        <img src="https://i.pravatar.cc/150?img=12" alt="Vovô Antonio Felipe">
+                        <img src="https://i.pravatar.cc/150?img=12" onerror="this.src='https://via.placeholder.com/150?text=Vovô+Antonio'">
                         <div class="name">Antonio Felipe ✝️</div>
                         <div class="role">🌳 Vovô</div>
                         <div class="in-memory">(In memoriam)</div>
@@ -321,174 +532,147 @@
                 
                 <div class="tree-connector-line" style="margin: 10px auto;"></div>
                 
-                <!-- 2ª GERAÇÃO - FILHOS -->
-                <div class="text-center mb-2 mt-2">
-                    <span class="level-title">🌿 2ª Geração - Filhos 🌿</span>
-                </div>
+                <!-- ========================================== -->
+                <!-- 🟢🟢🟢 PONTO 2: FOTOS DOS FILHOS 🟢🟢🟢 -->
+                <!-- ========================================== -->
+                <!-- ADICIONE FOTOS PARA CADA FILHO -->
+                <!-- Descomente as linhas com <img> e adicione o caminho da foto -->
+                <!-- ========================================== -->
+                <div class="text-center mb-2 mt-2"><span class="level-title">🌿 2ª Geração - Filhos 🌿</span></div>
                 <div class="tree-parents" style="justify-content: center; flex-wrap: wrap;">
-                    <div class="tree-person text-center"><div class="name">Cleide</div><div class="role">👩‍👧 Mãe</div></div>
-                    <div class="tree-person text-center"><div class="name">Maria Pastora</div><div class="role">👩‍👧 Mãe</div></div>
-                    <div class="tree-person text-center"><div class="name">Jovani</div><div class="role">👨‍👦 Pai</div></div>
-                    <div class="tree-person text-center"><div class="name">Antônio Claudio</div><div class="role">👨‍👦 Pai</div></div>
-                    <div class="tree-person text-center"><div class="name">Odete</div><div class="role">👩‍👧 Mãe</div></div>
-                    <div class="tree-person text-center"><div class="name">Auricélia</div><div class="role">👩‍👧 Mãe</div></div>
+                    <div class="tree-person text-center">
+                        <!-- <img src="imagens/cleide.jpg" onerror="this.src='https://via.placeholder.com/150?text=Cleide'"> -->
+                        <div class="name">Cleide</div>
+                        <div class="role">👩‍👧 Mãe</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <!-- <img src="imagens/maria_pastora.jpg" onerror="this.src='https://via.placeholder.com/150?text=Maria+Pastora'"> -->
+                        <div class="name">Maria Pastora</div>
+                        <div class="role">👩‍👧 Mãe</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <!-- <img src="imagens/jovani.jpg" onerror="this.src='https://via.placeholder.com/150?text=Jovani'"> -->
+                        <div class="name">Jovani</div>
+                        <div class="role">👨‍👦 Pai</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <!-- <img src="imagens/antonio_claudio.jpg" onerror="this.src='https://via.placeholder.com/150?text=Antônio+Claudio'"> -->
+                        <div class="name">Antônio Claudio</div>
+                        <div class="role">👨‍👦 Pai</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <!-- <img src="imagens/odete.jpg" onerror="this.src='https://via.placeholder.com/150?text=Odete'"> -->
+                        <div class="name">Odete</div>
+                        <div class="role">👩‍👧 Mãe</div>
+                    </div>
+                    <div class="tree-person text-center">
+                        <!-- <img src="imagens/auricelia.jpg" onerror="this.src='https://via.placeholder.com/150?text=Auricélia'"> -->
+                        <div class="name">Auricélia</div>
+                        <div class="role">👩‍👧 Mãe</div>
+                    </div>
                 </div>
                 
-                <div class="generation-separator">
-                    <i class="fas fa-arrow-down text-family-gold text-xl"></i>
-                </div>
+                <div class="generation-separator"><i class="fas fa-arrow-down text-family-gold text-xl"></i></div>
                 
-                <!-- 3ª GERAÇÃO - NETOS -->
-                <div class="text-center mb-4">
-                    <span class="level-title">🌿 3ª Geração - Netos 🌿</span>
-                </div>
-                
+                <div class="text-center mb-4"><span class="level-title">🌿 3ª Geração - Netos 🌿</span></div>
                 <div style="display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                    
-                    <!-- CLEIDE → Rafael, Clécio, Rayane -->
+                    <!-- Família Cleide -->
                     <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Cleide</div><div class="role">👩‍👧 Mãe</div></div></div>
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Cleide</div></div></div>
                         <div class="tree-connector-line"></div>
                         <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Rafael</div><div class="role">👦 Filho</div></div>
-                            <div class="tree-person text-center"><div class="name">Clécio</div><div class="role">👦 Filho</div></div>
-                            <div class="tree-person text-center"><div class="name">Rayane</div><div class="role">🌸 Filha</div></div>
+                            <div class="tree-person text-center"><div class="name">Rafael</div></div>
+                            <div class="tree-person text-center"><div class="name">Clécio</div></div>
+                            <div class="tree-person text-center"><div class="name">Rayane</div></div>
                         </div>
                     </div>
                     
-                    <!-- MARIA PASTORA → Alex, Liliane, Michele, Micaele -->
+                    <!-- Família Maria Pastora -->
                     <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Maria Pastora</div><div class="role">👩‍👧 Mãe</div></div></div>
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Maria Pastora</div></div></div>
                         <div class="tree-connector-line"></div>
                         <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Alex</div><div class="role">👦 Filho</div></div>
-                            <div class="tree-person text-center"><div class="name">Liliane ✝️</div><div class="role">🌸 Filha</div><div class="in-memory">(In memoriam)</div></div>
-                            <div class="tree-person text-center"><div class="name">Michele</div><div class="role">🌸 Filha</div></div>
-                            <div class="tree-person text-center"><div class="name">Micaele</div><div class="role">🌸 Filha</div></div>
+                            <div class="tree-person text-center"><div class="name">Alex</div></div>
+                            <div class="tree-person text-center"><div class="name">Liliane ✝️</div><div class="in-memory">(In memoriam)</div></div>
+                            <div class="tree-person text-center"><div class="name">Michele</div></div>
+                            <div class="tree-person text-center"><div class="name">Micaele</div></div>
                         </div>
                     </div>
                     
-                    <!-- JOVANI → Kaike, Geovana -->
+                    <!-- Família Jovani -->
                     <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Jovani</div><div class="role">👨‍👦 Pai</div></div></div>
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Jovani</div></div></div>
                         <div class="tree-connector-line"></div>
                         <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Kaike</div><div class="role">👦 Filho</div></div>
-                            <div class="tree-person text-center"><div class="name">Geovana</div><div class="role">🌸 Filha</div></div>
+                            <div class="tree-person text-center"><div class="name">Kaike</div></div>
+                            <div class="tree-person text-center"><div class="name">Geovana</div></div>
                         </div>
                     </div>
                     
-                    <!-- ANTONIO CLAUDIO → Kellton, Kellvy, Kelleri -->
+                    <!-- ========================================== -->
+                    <!-- 🟢🟢🟢 PONTO 3: FOTO DO KELLTON 🟢🟢🟢 -->
+                    <!-- ========================================== -->
+                    <!-- Esta é a sua foto! Já está configurada -->
+                    <!-- Troque "imagens/eu2.jpg" pelo caminho correto -->
+                    <!-- ========================================== -->
                     <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Antônio Claudio</div><div class="role">👨‍👦 Pai</div></div></div>
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Antônio Claudio</div></div></div>
                         <div class="tree-connector-line"></div>
                         <div class="tree-children">
-                            <div class="tree-person text-center"><img src="imagens/eu2.jpg" alt="Kellton" onerror="this.src='https://i.pravatar.cc/150?img=5'"><div class="name">Kellton</div><div class="role">💻 Filho</div></div>
-                            <div class="tree-person text-center"><div class="name">Kellvy</div><div class="role">👦 Filho</div></div>
-                            <div class="tree-person text-center"><div class="name">Kellery</div><div class="role">🌸 Filha</div></div>
+                            <div class="tree-person text-center">
+                                <img src="imagens/eu2.jpg" onerror="this.src='https://via.placeholder.com/150?text=Kellton'">
+                                <div class="name">Kellton</div>
+                            </div>
+                            <div class="tree-person text-center"><div class="name">Kellvy</div></div>
+                            <div class="tree-person text-center"><div class="name">Kellery</div></div>
                         </div>
                     </div>
                     
-                    <!-- ODETE → Stefany, Caio -->
+                    <!-- Família Odete -->
                     <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Odete</div><div class="role">👩‍👧 Mãe</div></div></div>
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Odete</div></div></div>
                         <div class="tree-connector-line"></div>
                         <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Stefany</div><div class="role">🌸 Filha</div></div>
-                            <div class="tree-person text-center"><div class="name">Caio</div><div class="role">👦 Filho</div></div>
+                            <div class="tree-person text-center"><div class="name">Stefany</div></div>
+                            <div class="tree-person text-center"><div class="name">Caio</div></div>
                         </div>
                     </div>
                     
-                    <!-- AURICÉLIA → Anna Luizza, Anna Rafaella, Pedro Felipe -->
+                    <!-- Família Auricélia -->
                     <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Auricélia</div><div class="role">👩‍👧 Mãe</div></div></div>
+                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Auricélia</div></div></div>
                         <div class="tree-connector-line"></div>
                         <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Anna Luizza</div><div class="role">🌸 Filha</div></div>
-                            <div class="tree-person text-center"><div class="name">Anna Rafaella</div><div class="role">🌸 Filha</div></div>
-                            <div class="tree-person text-center"><div class="name">Pedro Felipe</div><div class="role">👦 Filho</div></div>
+                            <div class="tree-person text-center"><div class="name">Anna Luizza</div></div>
+                            <div class="tree-person text-center"><div class="name">Anna Rafaella</div></div>
+                            <div class="tree-person text-center"><div class="name">Pedro Felipe</div></div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="generation-separator mt-4">
-                    <i class="fas fa-arrow-down text-family-gold text-xl"></i>
-                </div>
-                
-                <!-- 4ª GERAÇÃO - BISNETOS -->
-                <div class="text-center mb-4">
-                    <span class="level-title">🌿 4ª Geração - Bisnetos 🌿</span>
-                </div>
-                
+                <div class="generation-separator mt-4"><i class="fas fa-arrow-down text-family-gold text-xl"></i></div>
+                <div class="text-center mb-4"><span class="level-title">🌿 4ª Geração - Bisnetos 🌿</span></div>
                 <div style="display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                    
-                    <!-- MICHELE → José Emanuel -->
-                    <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Michele</div><div class="role">👩‍👧 Mãe</div></div></div>
-                        <div class="tree-connector-line"></div>
-                        <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">José Emanuel</div><div class="role">👶 Filho</div></div>
-                        </div>
-                    </div>
-                    
-                    <!-- MICAELA → Neném, Manuela -->
-                    <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Micaele</div><div class="role">👩‍👧 Mãe</div></div></div>
-                        <div class="tree-connector-line"></div>
-                        <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Neném</div><div class="role">👶 A caminho</div></div>
-                            <div class="tree-person text-center"><div class="name">Manuela</div><div class="role">👶 Filha</div></div>
-                        </div>
-                    </div>
-                    
-                    <!-- RAFAEL → Mirella, Miguel -->
-                    <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Rafael</div><div class="role">👨‍👦 Pai</div></div></div>
-                        <div class="tree-connector-line"></div>
-                        <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Mirella</div><div class="role">👶 Filha</div></div>
-                            <div class="tree-person text-center"><div class="name">Miguel</div><div class="role">👶 Filho</div></div>
-                        </div>
-                    </div>
-                    
-                    <!-- GEOVANA → Heitor -->
-                    <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Geovana</div><div class="role">👩‍👧 Mãe</div></div></div>
-                        <div class="tree-connector-line"></div>
-                        <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Heitor</div><div class="role">👶 Filho</div></div>
-                        </div>
-                    </div>
-                    
-                    <!-- CLÉCIO → Kauê -->
-                    <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Clécio</div><div class="role">👨‍👦 Pai</div></div></div>
-                        <div class="tree-connector-line"></div>
-                        <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Kauê</div><div class="role">👶 Filho</div></div>
-                        </div>
-                    </div>
+                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Michele</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">José Emanuel</div></div></div></div>
+                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Micaele</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Neném</div><div class="role">👶 A caminho</div></div><div class="tree-person text-center"><div class="name">Manuela</div></div></div></div>
+                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Rafael</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Mirella</div></div><div class="tree-person text-center"><div class="name">Miguel</div></div></div></div>
+                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Geovana</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Heitor</div></div></div></div>
+                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Clécio</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Kauê</div></div></div></div>
                 </div>
-                
-                <div class="scroll-indicator">
-                    <i class="fas fa-arrow-left"></i> Arraste para o lado <i class="fas fa-arrow-right"></i>
-                </div>
-                
-                <div class="text-center mt-6 text-family-brown text-sm">
-                    <i class="fas fa-heart text-family-gold"></i> Unidos pelo amor e pela memória <i class="fas fa-heart text-family-gold"></i>
-                </div>
+                <div class="scroll-indicator"><i class="fas fa-arrow-left"></i> Arraste para o lado <i class="fas fa-arrow-right"></i></div>
+                <div class="text-center mt-6"><i class="fas fa-heart text-family-gold"></i> Unidos pelo amor e pela memória <i class="fas fa-heart text-family-gold"></i></div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO DE ANIVERSÁRIOS COM DATAS CORRIGIDAS -->
+    <!-- SEÇÃO DE ANIVERSÁRIOS -->
     <section id="birthdays" class="py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">🎂 Aniversários da Família</h2>
                 <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
                 <p class="text-gray-600 max-w-2xl mx-auto">Celebre e acompanhe os aniversários de todos os membros da família</p>
-                <p class="text-sm text-gray-500 mt-2">📅 Marque no calendário e não perca nenhuma data especial!</p>
+                <p class="text-sm text-gray-500 mt-2">📅 Datas especiais para não esquecer de parabenizar!</p>
             </div>
             <div id="birthdays-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
         </div>
@@ -499,111 +683,152 @@
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">Receitas da Família</h2>
                 <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">Sabores que atravessam gerações e guardam histórias especiais</p>
-            </div>
-            <div id="recipes-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="col-span-full text-center py-16 bg-white rounded-xl shadow-md">
-                    <i class="fas fa-utensils text-7xl text-family-brown mb-4"></i>
-                    <h3 class="text-xl font-bold text-family-brown mb-2">Receitas da Família</h3>
-                    <p class="text-gray-600 max-w-md mx-auto">Em breve adicionaremos nossas receitas especiais!</p>
-                </div>
+                <div id="recipes-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="col-span-full text-center py-16 bg-white rounded-xl shadow-md"><i class="fas fa-utensils text-7xl text-family-brown mb-4"></i><p>Em breve adicionaremos nossas receitas especiais!</p></div></div>
             </div>
         </div>
     </section>
 
     <footer class="bg-family-brown text-white py-12 mt-8">
         <div class="container mx-auto px-4 text-center">
-            <div class="flex justify-center gap-6 mb-4">
-                <i class="fas fa-tree text-family-gold text-2xl"></i>
-                <i class="fas fa-heart text-family-gold text-2xl"></i>
-                <i class="fas fa-camera text-family-gold text-2xl"></i>
-            </div>
+            <div class="flex justify-center gap-6 mb-4"><i class="fas fa-tree text-family-gold text-2xl"></i><i class="fas fa-heart text-family-gold text-2xl"></i><i class="fas fa-camera text-family-gold text-2xl"></i></div>
             <p>&copy; 2026 Família da Vovó - Preservando nossas memórias com amor</p>
-            <p class="text-sm text-gray-300 mt-2">"Uma família unida é a maior riqueza que alguém pode ter"</p>
         </div>
     </footer>
-
-    <!-- MODAIS -->
-    <div id="history-detail-modal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4 modal-overlay">
-        <div class="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 id="history-detail-title" class="text-2xl font-bold text-family-brown"></h3>
-                    <button onclick="closeHistoryDetailModal()" class="text-gray-500 hover:text-gray-700"><i class="fas fa-times text-2xl"></i></button>
-                </div>
-                <div id="history-detail-content" class="space-y-4"></div>
-            </div>
-        </div>
-    </div>
-
-    <div id="memory-modal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4 modal-overlay">
-        <div class="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
-            <div class="p-6">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 id="modal-title" class="text-2xl font-bold text-family-brown"></h3>
-                    <button id="close-modal" class="text-gray-500 hover:text-gray-700"><i class="fas fa-times text-2xl"></i></button>
-                </div>
-                <div id="modal-content" class="space-y-4"></div>
-            </div>
-        </div>
-    </div>
 
     <div id="toast" class="toast-notification hidden"></div>
 
     <script>
         // ============================================================
-        // DATAS DE ANIVERSÁRIO CORRIGIDAS
+        // SISTEMA DE MEMÓRIAS
+        // ============================================================
+        
+        let galleryItems = [];
+        let currentMemoryId = null;
+        let currentFileData = null;
+        let currentFileType = null;
+        
+        // ============================================================
+        // 🟢🟢🟢 PONTO 4: MEMÓRIAS INICIAIS 🟢🟢🟢
+        // ============================================================
+        // COLOQUE AQUI AS FOTOS QUE QUER MOSTRAR COMO MEMÓRIAS INICIAIS
+        // Copie e cole o modelo abaixo para cada memória
+        // ============================================================
+        /*
+        {
+            id: Date.now() + 1,
+            title: "Título da Memória",
+            description: "Descrição do momento especial",
+            type: "foto",
+            category: "reunioes", // opções: reunioes, aniversarios, viagens
+            date: "Janeiro 2026",
+            src: "imagens/sua_foto.jpg", // CAMINHO DA FOTO AQUI
+            comments: []
+        }
+        */
+        // ============================================================
+        
+        function loadMemories() {
+            const saved = localStorage.getItem('familyMemories');
+            if (saved && JSON.parse(saved).length > 0) {
+                galleryItems = JSON.parse(saved);
+            } else {
+                // ==========================================
+                // 🔵🔵🔵 ADICIONE SUAS MEMÓRIAS INICIAIS AQUI 🔵🔵🔵
+                // ==========================================
+                galleryItems = [
+                    
+                    {
+                         id: Date.now() + 1,
+                           title: "Viagem para a aquatico",
+                         description: "Viagem que foi toda a familia reunida para o parque aquatico, dia muito legal e divertido",
+                         type: "foto",
+                         category: "viagens",
+                         date: "Sem data",
+                        src: "imagens/3.jpeg",
+                        comments: []
+                    },
+                    // {
+                    //     id: Date.now() + 2,
+                    //     title: "Aniversário da Vovó",
+                    //     description: "80 anos da nossa matriarca",
+                    //     type: "foto",
+                    //     category: "aniversarios",
+                    //     date: "Março 2026",
+                    //     src: "imagens/aniversario_vovo.jpg",
+                    //     comments: []
+                    // },
+                    // {
+                    //     id: Date.now() + 3,
+                    //     title: "Viagem à Praia",
+                    //     description: "Férias em família na praia",
+                    //     type: "foto",
+                    //     category: "viagens",
+                    //     date: "Fevereiro 2026",
+                    //     src: "imagens/viagem_praia.jpg",
+                    //     comments: []
+                    // }
+                ];
+                saveMemories();
+            }
+            renderGallery();
+        }
+        
+        // ============================================================
+        // 🟢🟢🟢 PONTO 5: FOTOS DOS ANIVERSÁRIOS 🟢🟢🟢
+        // ============================================================
+        // Adicione o caminho das fotos no campo "foto" de cada pessoa
         // ============================================================
         
         const BIRTHDAY_ITEMS = [
-            // 2ª GERAÇÃO - FILHOS
-            { id: 1, nome: "Cleide", data: "12/10", idade: "", foto: null, curiosidade: "A mais velha dos filhos" },
-            { id: 2, nome: "Maria Pastora", data: "20/12", idade: "", foto: null, curiosidade: "" },
-            { id: 3, nome: "Jovani", data: "30/03", idade: "", foto: null, curiosidade: "" },
-            { id: 4, nome: "Antônio Claudio", data: "08/04", idade: "", foto: null, curiosidade: "" },
-            { id: 5, nome: "Odete", data: "30/05", idade: "", foto: null, curiosidade: "" },
-            { id: 6, nome: "Auricélia", data: "04/05", idade: "", foto: null, curiosidade: "A caçula dos filhos" },
-            
-            // 3ª GERAÇÃO - NETOS
-            { id: 7, nome: "Clécio", data: "08/11", idade: "", foto: null, curiosidade: "" },
-            { id: 8, nome: "Micaele", data: "24/09", idade: "", foto: null, curiosidade: "" },
-            { id: 9, nome: "Liliane", data: "", idade: "", foto: null, curiosidade: "✝️ In memoriam - Filha da Pastora" },
-            { id: 10, nome: "Rafael", data: "21/10", idade: "", foto: null, curiosidade: "" },
-            { id: 11, nome: "Kellery", data: "06/12", idade: "", foto: null, curiosidade: "" },
-            { id: 12, nome: "Rayane", data: "08/11", idade: "", foto: null, curiosidade: "" },
-            { id: 13, nome: "Michele", data: "26/03", idade: "", foto: null, curiosidade: "" },
-            { id: 14, nome: "Kellvy", data: "28/12", idade: "", foto: null, curiosidade: "" },
-            { id: 15, nome: "Alex", data: "28/08", idade: "", foto: null, curiosidade: "" },
-            { id: 16, nome: "Geovana", data: "11/10", idade: "", foto: null, curiosidade: "" },
-            { id: 17, nome: "Stefany", data: "26/05", idade: "", foto: null, curiosidade: "" },
-            { id: 18, nome: "Kaike", data: "02/12", idade: "", foto: null, curiosidade: "" },
-            { id: 19, nome: "Kellton", data: "11/10", idade: "17 anos", foto: "imagens/eu2.jpg", curiosidade: "O programador da família! 🎮💻" },
-            { id: 20, nome: "Anna Luizza", data: "14/01", idade: "", foto: null, curiosidade: "" },
-            { id: 21, nome: "Caio", data: "20/04", idade: "", foto: null, curiosidade: "" },
-            { id: 22, nome: "Anna Rafaella", data: "26/02", idade: "", foto: null, curiosidade: "" },
-            { id: 23, nome: "Pedro Felipe", data: "", idade: "", foto: null, curiosidade: "Data não informada" },
-            
-            // 4ª GERAÇÃO - BISNETOS
-            { id: 24, nome: "Kauê", data: "", idade: "", foto: null, curiosidade: "Data não informada" },
-            { id: 25, nome: "Mirella", data: "04/03", idade: "", foto: null, curiosidade: "" },
-            { id: 26, nome: "Manuela", data: "26/11", idade: "", foto: null, curiosidade: "" },
-            { id: 27, nome: "Heitor", data: "", idade: "", foto: null, curiosidade: "Data não informada" },
-            { id: 28, nome: "Miguel", data: "27/12", idade: "", foto: null, curiosidade: "" },
-            { id: 29, nome: "José Emanuel", data: "", idade: "", foto: null, curiosidade: "Data não informada" },
-            { id: 30, nome: "Neném", data: "", idade: "", foto: null, curiosidade: "👶 A caminho - Filho(a) da Micaele" }
+            // NETOS (3ª Geração)
+            { id: 1, nome: "Anna Luizza", data: "14/01", idade: "", foto: null, curiosidade: "" },
+            { id: 2, nome: "Anna Rafaella", data: "26/02", idade: "", foto: null, curiosidade: "" },
+            { id: 3, nome: "Mirella", data: "04/03", idade: "", foto: null, curiosidade: "" },
+            { id: 4, nome: "Michele", data: "26/03", idade: "", foto: null, curiosidade: "" },
+            { id: 5, nome: "Jovani", data: "30/03", idade: "", foto: null, curiosidade: "" },
+            { id: 6, nome: "Antônio Claudio", data: "08/04", idade: "", foto: null, curiosidade: "" },
+            { id: 7, nome: "Caio", data: "20/04", idade: "", foto: null, curiosidade: "" },
+            { id: 8, nome: "Auricélia", data: "04/05", idade: "", foto: null, curiosidade: "" },
+            { id: 9, nome: "Odete", data: "30/05", idade: "", foto: null, curiosidade: "" },
+            { id: 10, nome: "Geovana", data: "11/10", idade: "", foto: null, curiosidade: "" },
+            // ==========================================
+            // 🔵🔵🔵 FOTO DO KELLTON (SUA FOTO) 🔵🔵🔵
+            // Troque "imagens/eu2.jpg" pelo caminho correto da sua foto
+            // ==========================================
+            { id: 11, nome: "Kellton", data: "11/10", idade: "17 anos", foto: "imagens/eu2.jpg", curiosidade: "O programador da família! 🎮💻" },
+            { id: 12, nome: "Cleide", data: "12/10", idade: "", foto: null, curiosidade: "" },
+            { id: 13, nome: "Rafael", data: "21/10", idade: "", foto: null, curiosidade: "" },
+            { id: 14, nome: "Clécio", data: "08/11", idade: "", foto: null, curiosidade: "" },
+            { id: 15, nome: "Rayane", data: "08/11", idade: "", foto: null, curiosidade: "" },
+            { id: 16, nome: "Manuela", data: "26/11", idade: "", foto: null, curiosidade: "" },
+            { id: 17, nome: "Kaike", data: "02/12", idade: "", foto: null, curiosidade: "" },
+            { id: 18, nome: "Kellery", data: "06/12", idade: "", foto: null, curiosidade: "" },
+            { id: 19, nome: "Maria Pastora", data: "20/12", idade: "", foto: null, curiosidade: "" },
+            { id: 20, nome: "Miguel", data: "27/12", idade: "", foto: null, curiosidade: "" },
+            { id: 21, nome: "Kellvy", data: "28/12", idade: "", foto: null, curiosidade: "" },
+            // BISNETOS (4ª Geração)
+            { id: 22, nome: "Kauê", data: "02/08", idade: "", foto: null, curiosidade: "" },
+            { id: 23, nome: "Heitor", data: "10/04", idade: "", foto: null, curiosidade: "" },
+            { id: 24, nome: "Manuela", data: "26/11", idade: "", foto: null, curiosidade: "" },
+            { id: 25, nome: "José Emanuel", data: "22/09", idade: "", foto: null, curiosidade: "" },
+            // In memoriam
+            { id: 26, nome: "Liliane", data: "", idade: "", foto: null, curiosidade: "✝️ In memoriam - Filha da Pastora" }
         ];
         
-        let galleryItems = [];
-        let historyItems = [];
-        let birthdayItems = [...BIRTHDAY_ITEMS];
-        let recipeItems = [];
+        // ============================================================
+        // FUNÇÕES DO SISTEMA (não precisa modificar)
+        // ============================================================
+        
+        function saveMemories() {
+            localStorage.setItem('familyMemories', JSON.stringify(galleryItems));
+        }
         
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toast');
-            let bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
+            const bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
             toast.innerHTML = `<div class="${bgColor} text-white px-5 py-3 rounded-lg shadow-lg">${message}</div>`;
             toast.classList.remove('hidden');
-            setTimeout(() => toast.classList.add('hidden'), 2000);
+            setTimeout(() => toast.classList.add('hidden'), 3000);
         }
         
         function escapeHtml(text) { 
@@ -613,51 +838,199 @@
             return div.innerHTML; 
         }
         
-        function renderBirthdays() {
-            const container = document.getElementById('birthdays-container');
-            if (birthdayItems.length === 0) {
-                container.innerHTML = `<div class="col-span-full text-center py-16 bg-gray-50 rounded-xl"><i class="fas fa-birthday-cake text-7xl text-family-brown mb-4"></i><h3 class="text-xl font-bold text-family-brown mb-2">Aniversários da Família</h3><p class="text-gray-600 max-w-md mx-auto">Em breve adicionaremos os aniversariantes!</p></div>`;
+        function renderGallery() {
+            const container = document.getElementById('gallery-container');
+            if (galleryItems.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-20 bg-gray-50 rounded-xl"><i class="fas fa-camera text-7xl text-gray-300 mb-4"></i><p class="text-gray-500 text-lg">Nenhuma memória adicionada ainda.</p><p class="text-gray-400 mt-2">Clique no botão "Adicionar Nova Memória" para começar!</p></div>`;
                 return;
             }
             
-            // Ordenar por data (mês/dia)
-            birthdayItems.sort((a, b) => {
-                if (!a.data) return 1;
-                if (!b.data) return -1;
-                const [diaA, mesA] = a.data.split('/');
-                const [diaB, mesB] = b.data.split('/');
-                if (mesA === mesB) return parseInt(diaA) - parseInt(diaB);
-                return parseInt(mesA) - parseInt(mesB);
-            });
-            
-            container.innerHTML = birthdayItems.map(item => `
-                <div class="birthday-card bg-gradient-to-br from-family-cream to-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border border-family-gold/30">
-                    <div class="p-5 text-center">
-                        ${item.foto ? 
-                            `<img src="${item.foto}" class="w-24 h-24 rounded-full mx-auto mb-3 object-cover border-3 border-family-gold shadow-md" onerror="this.src='https://i.pravatar.cc/150?img=${item.id}'">` : 
-                            `<div class="w-24 h-24 bg-gradient-to-br from-family-gold to-family-brown rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
-                                <i class="fas fa-user-circle text-white text-4xl"></i>
-                            </div>`
-                        }
-                        <h3 class="font-bold text-xl text-family-brown mb-1">${escapeHtml(item.nome)}</h3>
-                        <div class="flex items-center justify-center gap-2 mb-2">
-                            ${item.data ? 
-                                `<span class="bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold">📅 ${escapeHtml(item.data)}</span>` : 
-                                `<span class="bg-gray-400 text-white px-3 py-1 rounded-full text-sm">📅 Data não informada</span>`
-                            }
-                            ${item.idade ? `<span class="bg-family-green/20 text-family-green px-3 py-1 rounded-full text-sm">🎂 ${escapeHtml(item.idade)}</span>` : ''}
-                        </div>
-                        ${item.curiosidade ? `
-                            <div class="mt-3 p-2 bg-family-brown/10 rounded-lg">
-                                <p class="text-sm text-gray-600"><i class="fas fa-star text-family-gold mr-1"></i> ${escapeHtml(item.curiosidade)}</p>
-                            </div>
-                        ` : ''}
-                        <div class="mt-3 text-center">
-                            <span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Não se esqueça de parabenizar!</span>
+            container.innerHTML = galleryItems.map(item => `
+                <div class="memory-card bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all" data-category="${item.category}">
+                    <img src="${item.src}" class="w-full h-48 object-cover cursor-pointer" onclick="openMemoryDetail(${item.id})" onerror="this.src='https://placehold.co/400x300?text=Imagem+não+encontrada'">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg text-family-brown">${escapeHtml(item.title)}</h3>
+                        <p class="text-gray-500 text-sm mt-1 line-clamp-2">${escapeHtml(item.description || '')}</p>
+                        <div class="flex justify-between items-center mt-3">
+                            <span class="text-xs text-gray-400">${item.date || 'Data não informada'}</span>
+                            <button onclick="openMemoryDetail(${item.id})" class="text-family-brown hover:text-family-gold text-sm font-medium">Ver detalhes →</button>
                         </div>
                     </div>
                 </div>
             `).join('');
+        }
+        
+        function clearFilePreview() {
+            currentFileData = null;
+            currentFileType = null;
+            document.getElementById('memory-file').value = '';
+            document.getElementById('file-preview').classList.add('hidden');
+            document.getElementById('preview-content').innerHTML = '';
+        }
+        
+        function openAddMemoryModal() {
+            document.getElementById('add-memory-modal').classList.remove('hidden');
+            document.getElementById('add-memory-modal').classList.add('flex');
+        }
+        
+        function closeAddMemoryModal() {
+            document.getElementById('add-memory-modal').classList.add('hidden');
+            document.getElementById('add-memory-modal').classList.remove('flex');
+            document.getElementById('memory-form').reset();
+            clearFilePreview();
+        }
+        
+        document.getElementById('memory-file').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            if (file.size > 50 * 1024 * 1024) {
+                showToast('Arquivo muito grande! Máximo 50MB', 'error');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                currentFileData = event.target.result;
+                currentFileType = file.type.startsWith('image/') ? 'foto' : 'video';
+                const previewDiv = document.getElementById('preview-content');
+                if (file.type.startsWith('image/')) {
+                    previewDiv.innerHTML = `<img src="${currentFileData}" class="max-h-40 rounded-lg shadow">`;
+                } else {
+                    previewDiv.innerHTML = `<video src="${currentFileData}" class="max-h-40 rounded-lg shadow" controls></video>`;
+                }
+                document.getElementById('file-preview').classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        });
+        
+        document.getElementById('memory-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('memory-title').value;
+            const description = document.getElementById('memory-description').value;
+            const category = document.getElementById('memory-category').value;
+            const date = document.getElementById('memory-date').value;
+            
+            if (!title) {
+                showToast('Por favor, digite um título!', 'error');
+                return;
+            }
+            
+            if (!currentFileData) {
+                showToast('Por favor, selecione uma foto ou vídeo!', 'error');
+                return;
+            }
+            
+            const newMemory = {
+                id: Date.now(),
+                title: title,
+                description: description,
+                type: currentFileType,
+                category: category,
+                date: date || new Date().toLocaleDateString('pt-BR'),
+                src: currentFileData,
+                comments: []
+            };
+            
+            galleryItems.unshift(newMemory);
+            saveMemories();
+            renderGallery();
+            closeAddMemoryModal();
+            showToast('✅ Memória adicionada com sucesso!');
+        });
+        
+        function openMemoryDetail(id) {
+            const memory = galleryItems.find(item => item.id === id);
+            if (!memory) return;
+            currentMemoryId = id;
+            
+            document.getElementById('detail-title').innerHTML = escapeHtml(memory.title);
+            document.getElementById('detail-content').innerHTML = `
+                <img src="${memory.src}" class="w-full rounded-lg shadow-md" onerror="this.src='https://placehold.co/800x500?text=Imagem+não+encontrada'">
+                <p class="text-gray-600 mt-3">${escapeHtml(memory.description || 'Sem descrição')}</p>
+                <p class="text-sm text-gray-500 mt-2">📅 ${memory.date || 'Data não informada'}</p>
+            `;
+            
+            const commentsDiv = document.getElementById('detail-comments');
+            if (memory.comments && memory.comments.length > 0) {
+                commentsDiv.innerHTML = memory.comments.map(c => `<div class="comment-item p-2 border-b border-gray-200"><i class="fas fa-user-circle text-family-brown mr-2"></i>${escapeHtml(c)}</div>`).join('');
+            } else {
+                commentsDiv.innerHTML = '<p class="text-gray-500 italic text-center py-2">Nenhum comentário ainda. Seja o primeiro!</p>';
+            }
+            
+            document.getElementById('memory-detail-modal').classList.remove('hidden');
+            document.getElementById('memory-detail-modal').classList.add('flex');
+        }
+        
+        function closeMemoryDetailModal() {
+            document.getElementById('memory-detail-modal').classList.add('hidden');
+            document.getElementById('memory-detail-modal').classList.remove('flex');
+            currentMemoryId = null;
+        }
+        
+        function addCommentToCurrent() {
+            if (!currentMemoryId) return;
+            const comment = document.getElementById('new-comment').value;
+            if (!comment.trim()) {
+                showToast('Digite um comentário!', 'error');
+                return;
+            }
+            
+            const memory = galleryItems.find(item => item.id === currentMemoryId);
+            if (memory) {
+                if (!memory.comments) memory.comments = [];
+                memory.comments.push(`${comment.trim()} - ${new Date().toLocaleDateString('pt-BR')}`);
+                saveMemories();
+                openMemoryDetail(currentMemoryId);
+                document.getElementById('new-comment').value = '';
+                showToast('💬 Comentário adicionado!');
+            }
+        }
+        
+        let birthdayItems = [...BIRTHDAY_ITEMS];
+        
+        function renderBirthdays() {
+            const container = document.getElementById('birthdays-container');
+            if (!container) return;
+            
+            birthdayItems.sort((a, b) => {
+                if (!a.data) return 1;
+                if (!b.data) return -1;
+                const [da, ma] = a.data.split('/');
+                const [db, mb] = b.data.split('/');
+                if (ma === mb) return parseInt(da) - parseInt(db);
+                return parseInt(ma) - parseInt(mb);
+            });
+            
+            container.innerHTML = birthdayItems.map(item => {
+                if (item.data === "") {
+                    return `
+                        <div class="birthday-card bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-5 text-center shadow-md border border-gray-300 opacity-70">
+                            <div class="w-24 h-24 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                                <i class="fas fa-cloud text-white text-4xl"></i>
+                            </div>
+                            <h3 class="font-bold text-xl text-gray-600">${escapeHtml(item.nome)}</h3>
+                            <div class="mt-2">
+                                <span class="bg-gray-400 text-white px-3 py-1 rounded-full text-sm">📅 ${escapeHtml(item.curiosidade || 'Em memória')}</span>
+                            </div>
+                            <div class="mt-3 text-center"><span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Em nossos corações</span></div>
+                        </div>
+                    `;
+                }
+                return `
+                    <div class="birthday-card bg-gradient-to-br from-family-cream to-white rounded-2xl p-5 text-center shadow-md border border-family-gold/30">
+                        <div class="w-24 h-24 bg-gradient-to-br from-family-gold to-family-brown rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                            ${item.foto ? `<img src="${item.foto}" class="w-full h-full rounded-full object-cover">` : `<i class="fas fa-user-circle text-white text-4xl"></i>`}
+                        </div>
+                        <h3 class="font-bold text-xl text-family-brown">${escapeHtml(item.nome)}</h3>
+                        <div class="mt-2">
+                            <span class="bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold">📅 ${escapeHtml(item.data)}</span>
+                            ${item.idade ? `<span class="bg-family-green/20 text-family-green px-3 py-1 rounded-full text-sm ml-2">🎂 ${escapeHtml(item.idade)}</span>` : ''}
+                        </div>
+                        ${item.curiosidade && !item.curiosidade.includes('✝️') ? `<div class="mt-3 p-2 bg-family-brown/10 rounded-lg"><p class="text-sm text-gray-600"><i class="fas fa-star text-family-gold mr-1"></i> ${escapeHtml(item.curiosidade)}</p></div>` : ''}
+                        <div class="mt-3 text-center"><span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Não se esqueça de parabenizar!</span></div>
+                    </div>
+                `;
+            }).join('');
         }
         
         function setupFilters() {
@@ -673,13 +1046,22 @@
             });
         }
         
-        document.getElementById('close-modal').addEventListener('click', () => { document.getElementById('memory-modal').classList.add('hidden'); document.getElementById('memory-modal').classList.remove('flex'); });
+        document.getElementById('close-modal')?.addEventListener('click', () => { 
+            document.getElementById('memory-modal')?.classList.add('hidden'); 
+        });
         
-        window.closeHistoryDetailModal = () => { document.getElementById('history-detail-modal').classList.add('hidden'); document.getElementById('history-detail-modal').classList.remove('flex'); };
+        window.closeHistoryDetailModal = () => { 
+            document.getElementById('history-detail-modal')?.classList.add('hidden'); 
+        };
         
-        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) { e.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); }));
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) { 
+            e.preventDefault(); 
+            document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); 
+        }));
         
-        renderBirthdays(); 
+        // INICIALIZAR
+        loadMemories();
+        renderBirthdays();
         setupFilters();
     </script>
 </body>
