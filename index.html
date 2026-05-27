@@ -239,6 +239,27 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
+        
+        /* Botão de reset */
+        .reset-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        .reset-btn:hover {
+            background-color: #D4AF37;
+            color: #8B4513;
+        }
     </style>
 </head>
 <body class="bg-family-cream font-sans text-gray-800">
@@ -508,13 +529,6 @@
             </div>
             
             <div class="tree-scroll-container">
-                <!-- ========================================== -->
-                <!-- 🟢🟢🟢 PONTO 1: FOTOS DOS AVÓS 🟢🟢🟢 -->
-                <!-- ========================================== -->
-                <!-- COLOQUE AQUI AS FOTOS DOS SEUS AVÓS -->
-                <!-- Troque o "src" pelo caminho das suas fotos -->
-                <!-- Exemplo: src="imagens/vovo_nelsa.jpg" -->
-                <!-- ========================================== -->
                 <div class="text-center mb-2"><span class="level-title">🌿 1ª Geração - Avós 🌿</span></div>
                 <div class="tree-parents" style="justify-content: center;">
                     <div class="tree-person text-center">
@@ -532,122 +546,33 @@
                 
                 <div class="tree-connector-line" style="margin: 10px auto;"></div>
                 
-                <!-- ========================================== -->
-                <!-- 🟢🟢🟢 PONTO 2: FOTOS DOS FILHOS 🟢🟢🟢 -->
-                <!-- ========================================== -->
-                <!-- ADICIONE FOTOS PARA CADA FILHO -->
-                <!-- Descomente as linhas com <img> e adicione o caminho da foto -->
-                <!-- ========================================== -->
                 <div class="text-center mb-2 mt-2"><span class="level-title">🌿 2ª Geração - Filhos 🌿</span></div>
                 <div class="tree-parents" style="justify-content: center; flex-wrap: wrap;">
-                    <div class="tree-person text-center">
-                        <!-- <img src="imagens/cleide.jpg" onerror="this.src='https://via.placeholder.com/150?text=Cleide'"> -->
-                        <div class="name">Cleide</div>
-                        <div class="role">👩‍👧 Mãe</div>
-                    </div>
-                    <div class="tree-person text-center">
-                        <!-- <img src="imagens/maria_pastora.jpg" onerror="this.src='https://via.placeholder.com/150?text=Maria+Pastora'"> -->
-                        <div class="name">Maria Pastora</div>
-                        <div class="role">👩‍👧 Mãe</div>
-                    </div>
-                    <div class="tree-person text-center">
-                        <!-- <img src="imagens/jovani.jpg" onerror="this.src='https://via.placeholder.com/150?text=Jovani'"> -->
-                        <div class="name">Jovani</div>
-                        <div class="role">👨‍👦 Pai</div>
-                    </div>
-                    <div class="tree-person text-center">
-                        <!-- <img src="imagens/antonio_claudio.jpg" onerror="this.src='https://via.placeholder.com/150?text=Antônio+Claudio'"> -->
-                        <div class="name">Antônio Claudio</div>
-                        <div class="role">👨‍👦 Pai</div>
-                    </div>
-                    <div class="tree-person text-center">
-                        <!-- <img src="imagens/odete.jpg" onerror="this.src='https://via.placeholder.com/150?text=Odete'"> -->
-                        <div class="name">Odete</div>
-                        <div class="role">👩‍👧 Mãe</div>
-                    </div>
-                    <div class="tree-person text-center">
-                        <!-- <img src="imagens/auricelia.jpg" onerror="this.src='https://via.placeholder.com/150?text=Auricélia'"> -->
-                        <div class="name">Auricélia</div>
-                        <div class="role">👩‍👧 Mãe</div>
-                    </div>
+                    <div class="tree-person text-center"><div class="name">Cleide</div><div class="role">👩‍👧 Mãe</div></div>
+                    <div class="tree-person text-center"><div class="name">Maria Pastora</div><div class="role">👩‍👧 Mãe</div></div>
+                    <div class="tree-person text-center"><div class="name">Jovani</div><div class="role">👨‍👦 Pai</div></div>
+                    <div class="tree-person text-center"><div class="name">Antônio Claudio</div><div class="role">👨‍👦 Pai</div></div>
+                    <div class="tree-person text-center"><div class="name">Odete</div><div class="role">👩‍👧 Mãe</div></div>
+                    <div class="tree-person text-center"><div class="name">Auricélia</div><div class="role">👩‍👧 Mãe</div></div>
                 </div>
                 
                 <div class="generation-separator"><i class="fas fa-arrow-down text-family-gold text-xl"></i></div>
                 
                 <div class="text-center mb-4"><span class="level-title">🌿 3ª Geração - Netos 🌿</span></div>
                 <div style="display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                    <!-- Família Cleide -->
-                    <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Cleide</div></div></div>
-                        <div class="tree-connector-line"></div>
-                        <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Rafael</div></div>
-                            <div class="tree-person text-center"><div class="name">Clécio</div></div>
-                            <div class="tree-person text-center"><div class="name">Rayane</div></div>
+                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Cleide</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Rafael</div></div><div class="tree-person text-center"><div class="name">Clécio</div></div><div class="tree-person text-center"><div class="name">Rayane</div></div></div></div>
+                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Maria Pastora</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Alex</div></div><div class="tree-person text-center"><div class="name">Liliane ✝️</div><div class="in-memory">(In memoriam)</div></div><div class="tree-person text-center"><div class="name">Michele</div></div><div class="tree-person text-center"><div class="name">Micaele</div></div></div></div>
+                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Jovani</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Kaike</div></div><div class="tree-person text-center"><div class="name">Geovana</div></div></div></div>
+                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Antônio Claudio</div></div></div><div class="tree-connector-line"></div><div class="tree-children">
+                        <div class="tree-person text-center">
+                            <img src="imagens/1.jpg" onerror="this.src='https://via.placeholder.com/150?text=Kellton'">
+                            <div class="name">Kellton</div>
                         </div>
-                    </div>
-                    
-                    <!-- Família Maria Pastora -->
-                    <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Maria Pastora</div></div></div>
-                        <div class="tree-connector-line"></div>
-                        <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Alex</div></div>
-                            <div class="tree-person text-center"><div class="name">Liliane ✝️</div><div class="in-memory">(In memoriam)</div></div>
-                            <div class="tree-person text-center"><div class="name">Michele</div></div>
-                            <div class="tree-person text-center"><div class="name">Micaele</div></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Família Jovani -->
-                    <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Jovani</div></div></div>
-                        <div class="tree-connector-line"></div>
-                        <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Kaike</div></div>
-                            <div class="tree-person text-center"><div class="name">Geovana</div></div>
-                        </div>
-                    </div>
-                    
-                    <!-- ========================================== -->
-                    <!-- 🟢🟢🟢 PONTO 3: FOTO DO KELLTON 🟢🟢🟢 -->
-                    <!-- ========================================== -->
-                    <!-- Esta é a sua foto! Já está configurada -->
-                    <!-- Troque "imagens/eu2.jpg" pelo caminho correto -->
-                    <!-- ========================================== -->
-                    <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Antônio Claudio</div></div></div>
-                        <div class="tree-connector-line"></div>
-                        <div class="tree-children">
-                            <div class="tree-person text-center">
-                                <img src="imagens/eu2.jpg" onerror="this.src='https://via.placeholder.com/150?text=Kellton'">
-                                <div class="name">Kellton</div>
-                            </div>
-                            <div class="tree-person text-center"><div class="name">Kellvy</div></div>
-                            <div class="tree-person text-center"><div class="name">Kellery</div></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Família Odete -->
-                    <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Odete</div></div></div>
-                        <div class="tree-connector-line"></div>
-                        <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Stefany</div></div>
-                            <div class="tree-person text-center"><div class="name">Caio</div></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Família Auricélia -->
-                    <div class="tree-family-group">
-                        <div class="tree-parents"><div class="tree-person text-center"><div class="name">Auricélia</div></div></div>
-                        <div class="tree-connector-line"></div>
-                        <div class="tree-children">
-                            <div class="tree-person text-center"><div class="name">Anna Luizza</div></div>
-                            <div class="tree-person text-center"><div class="name">Anna Rafaella</div></div>
-                            <div class="tree-person text-center"><div class="name">Pedro Felipe</div></div>
-                        </div>
-                    </div>
+                        <div class="tree-person text-center"><div class="name">Kellvy</div></div>
+                        <div class="tree-person text-center"><div class="name">Kellery</div></div>
+                    </div></div>
+                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Odete</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Stefany</div></div><div class="tree-person text-center"><div class="name">Caio</div></div></div></div>
+                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Auricélia</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Anna Luizza</div></div><div class="tree-person text-center"><div class="name">Anna Rafaella</div></div><div class="tree-person text-center"><div class="name">Pedro Felipe</div></div></div></div>
                 </div>
                 
                 <div class="generation-separator mt-4"><i class="fas fa-arrow-down text-family-gold text-xl"></i></div>
@@ -697,6 +622,9 @@
 
     <div id="toast" class="toast-notification hidden"></div>
 
+    <!-- Botão de Reset -->
+    <button id="resetDataBtn" class="reset-btn">🔄 Resetar Dados</button>
+
     <script>
         // ============================================================
         // SISTEMA DE MEMÓRIAS
@@ -708,77 +636,168 @@
         let currentFileType = null;
         
         // ============================================================
-        // 🟢🟢🟢 PONTO 4: MEMÓRIAS INICIAIS 🟢🟢🟢
+        // MEMÓRIAS INICIAIS (VOCÊ PODE EDITAR AQUI)
         // ============================================================
-        // COLOQUE AQUI AS FOTOS QUE QUER MOSTRAR COMO MEMÓRIAS INICIAIS
-        // Copie e cole o modelo abaixo para cada memória
-        // ============================================================
-        /*
-        {
-            id: Date.now() + 1,
-            title: "Título da Memória",
-            description: "Descrição do momento especial",
-            type: "foto",
-            category: "reunioes", // opções: reunioes, aniversarios, viagens
-            date: "Janeiro 2026",
-            src: "imagens/sua_foto.jpg", // CAMINHO DA FOTO AQUI
-            comments: []
-        }
-        */
-        // ============================================================
+        const MEMORIAS_INICIAIS = [
+            {
+                title: "Viagem para o aquatico",
+                description: "Viagem que foi toda a familia reunida para o parque aquatico, dia muito legal e divertido",
+                type: "foto",
+                category: "viagens",
+                date: "Sem data",
+                src: "imagens/3.jpeg"
+            },
+            {
+                title: "Viagem para o aquatico",
+                description: "continuação da viagem que foi toda a familia reunida para o parque aquatico, dia muito legal e divertido",
+                type: "foto",
+                category: "viagens",
+                date: "Sem data",
+                src: "imagens/4.jpeg"
+            },
+            {
+                title: "Meninas",
+                description: "",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/7.jpeg"
+            },
+            {
+                title: "Casamento da Micaele",
+                description: "Foto com nosso avô, ele estava muito feliz nesse dia, foi um momento muito especial para todos nós",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/8.jpeg"
+            },
+            {
+                title: "Casamento da Micaele",
+                description: "Nossa avó estava muito feliz nesse dia, foi um momento muito especial para todos nós",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/10.jpeg"
+            },
+            {
+                title: "Vovó",
+                description: "Nossa avó é o coração da família, sempre com as portas abertas e muito importante para nós",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/11.jpeg"
+            },
+            {
+                title: "Priminhas",
+                description: "As priminhas estavam muito felizes nesse dia",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/12.jpeg"
+            },
+            {
+                title: "Priminhas",
+                description: "as priminhas muito fofinhas ",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/13.jpeg"
+            },
+            {
+                title: "Foto em família",
+                description: "Foto em família, um momento muito especial para todos nós",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/14.jpeg"
+            },
+            {
+                title: "Vovô e seu neto policial",
+                description: "Vovô e seu neto policial, um momento muito especial para todos nós",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/15.jpeg"
+            },
+            {
+                title: "Reunião",
+                description: "Foto de uma reunião da família.",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/16.jpeg"
+            },
+            {
+                title: "Vovó",
+                description: "nossa vovó,seu amiga e filha",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/17.jpeg"
+            },
+            {
+                title: "Foto rara",
+                description: "Foto rara da família, um momento muito especial para todos nós",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/18.jpeg"
+            },
+            {
+                title: "Micaele",
+                description: "Micaele, uma das netas da vovó.",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/19.jpeg"
+            },
+            {
+                title: "Casamento do tio Jovane",
+                description: "Foto do casamento do tio Jovane.",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/20.jpeg"
+            },
+            {
+                title: "Priminhas",
+                description: "As priminhas estavam muito felizes nesse dia",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/21.jpeg"
+            },
+            {
+                title: "Tia Odete",
+                description: "Odete e suas baladas da vida rsrs, tia muito divertida",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/22.jpeg"
+            },
+            {
+                title: "Tia Auricélia",
+                description: "Auricélia e sua foto rara",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/23.jpeg"
+            },
+            {
+                title: "Michele e a pequenina",
+                description: "Michele e a pequenina caçando o que ???",
+                type: "foto",
+                category: "reunioes",
+                date: "Sem data",
+                src: "imagens/24.jpeg"
+            },
+            
+            // Adicione mais memórias aqui seguindo o modelo acima
+        ];
         
-        function loadMemories() {
-            const saved = localStorage.getItem('familyMemories');
-            if (saved && JSON.parse(saved).length > 0) {
-                galleryItems = JSON.parse(saved);
-            } else {
-                // ==========================================
-                // 🔵🔵🔵 ADICIONE SUAS MEMÓRIAS INICIAIS AQUI 🔵🔵🔵
-                // ==========================================
-                galleryItems = [
-                    
-                    {
-                         id: Date.now() + 1,
-                           title: "Viagem para a aquatico",
-                         description: "Viagem que foi toda a familia reunida para o parque aquatico, dia muito legal e divertido",
-                         type: "foto",
-                         category: "viagens",
-                         date: "Sem data",
-                        src: "imagens/3.jpeg",
-                        comments: []
-                    },
-                    // {
-                    //     id: Date.now() + 2,
-                    //     title: "Aniversário da Vovó",
-                    //     description: "80 anos da nossa matriarca",
-                    //     type: "foto",
-                    //     category: "aniversarios",
-                    //     date: "Março 2026",
-                    //     src: "imagens/aniversario_vovo.jpg",
-                    //     comments: []
-                    // },
-                    // {
-                    //     id: Date.now() + 3,
-                    //     title: "Viagem à Praia",
-                    //     description: "Férias em família na praia",
-                    //     type: "foto",
-                    //     category: "viagens",
-                    //     date: "Fevereiro 2026",
-                    //     src: "imagens/viagem_praia.jpg",
-                    //     comments: []
-                    // }
-                ];
-                saveMemories();
-            }
-            renderGallery();
-        }
-        
         // ============================================================
-        // 🟢🟢🟢 PONTO 5: FOTOS DOS ANIVERSÁRIOS 🟢🟢🟢
+        // ANIVERSÁRIOS (VOCÊ PODE EDITAR AQUI)
         // ============================================================
-        // Adicione o caminho das fotos no campo "foto" de cada pessoa
-        // ============================================================
-        
         const BIRTHDAY_ITEMS = [
             // NETOS (3ª Geração)
             { id: 1, nome: "Anna Luizza", data: "14/01", idade: "", foto: null, curiosidade: "" },
@@ -791,11 +810,8 @@
             { id: 8, nome: "Auricélia", data: "04/05", idade: "", foto: null, curiosidade: "" },
             { id: 9, nome: "Odete", data: "30/05", idade: "", foto: null, curiosidade: "" },
             { id: 10, nome: "Geovana", data: "11/10", idade: "", foto: null, curiosidade: "" },
-            // ==========================================
-            // 🔵🔵🔵 FOTO DO KELLTON (SUA FOTO) 🔵🔵🔵
-            // Troque "imagens/eu2.jpg" pelo caminho correto da sua foto
-            // ==========================================
-            { id: 11, nome: "Kellton", data: "11/10", idade: "17 anos", foto: "imagens/eu2.jpg", curiosidade: "O programador da família! 🎮💻" },
+            // SUA FOTO
+            { id: 11, nome: "Kellton", data: "11/10", idade: "17 anos", foto: "imagens/1.jpg", curiosidade: "O programador da família! 🎮💻" },
             { id: 12, nome: "Cleide", data: "12/10", idade: "", foto: null, curiosidade: "" },
             { id: 13, nome: "Rafael", data: "21/10", idade: "", foto: null, curiosidade: "" },
             { id: 14, nome: "Clécio", data: "08/11", idade: "", foto: null, curiosidade: "" },
@@ -809,15 +825,43 @@
             // BISNETOS (4ª Geração)
             { id: 22, nome: "Kauê", data: "02/08", idade: "", foto: null, curiosidade: "" },
             { id: 23, nome: "Heitor", data: "10/04", idade: "", foto: null, curiosidade: "" },
-            { id: 24, nome: "Manuela", data: "26/11", idade: "", foto: null, curiosidade: "" },
-            { id: 25, nome: "José Emanuel", data: "22/09", idade: "", foto: null, curiosidade: "" },
+            { id: 24, nome: "José Emanuel", data: "22/09", idade: "", foto: null, curiosidade: "" },
             // In memoriam
-            { id: 26, nome: "Liliane", data: "", idade: "", foto: null, curiosidade: "✝️ In memoriam - Filha da Pastora" }
+            { id: 25, nome: "Liliane", data: "", idade: "", foto: null, curiosidade: "✝️ In memoriam - Filha da Pastora" }
         ];
         
         // ============================================================
-        // FUNÇÕES DO SISTEMA (não precisa modificar)
+        // FUNÇÕES DO SISTEMA
         // ============================================================
+        
+        function resetarDados() {
+            if(confirm('⚠️ ATENÇÃO! Isso vai apagar TODAS as memórias, comentários e aniversários adicionados. Deseja continuar?')) {
+                // Limpar localStorage
+                localStorage.clear();
+                // Recarregar a página
+                location.reload();
+            }
+        }
+        
+        // Carregar memórias
+        function loadMemories() {
+            const saved = localStorage.getItem('familyMemories');
+            if (saved && JSON.parse(saved).length > 0) {
+                galleryItems = JSON.parse(saved);
+                console.log('📸 Memórias carregadas do localStorage:', galleryItems.length);
+            } else {
+                // Carregar memórias iniciais
+                let idCounter = Date.now();
+                galleryItems = MEMORIAS_INICIAIS.map(mem => ({
+                    id: idCounter++,
+                    ...mem,
+                    comments: []
+                }));
+                saveMemories();
+                console.log('📸 Memórias iniciais carregadas:', galleryItems.length);
+            }
+            renderGallery();
+        }
         
         function saveMemories() {
             localStorage.setItem('familyMemories', JSON.stringify(galleryItems));
@@ -841,7 +885,11 @@
         function renderGallery() {
             const container = document.getElementById('gallery-container');
             if (galleryItems.length === 0) {
-                container.innerHTML = `<div class="col-span-full text-center py-20 bg-gray-50 rounded-xl"><i class="fas fa-camera text-7xl text-gray-300 mb-4"></i><p class="text-gray-500 text-lg">Nenhuma memória adicionada ainda.</p><p class="text-gray-400 mt-2">Clique no botão "Adicionar Nova Memória" para começar!</p></div>`;
+                container.innerHTML = `<div class="col-span-full text-center py-20 bg-gray-50 rounded-xl">
+                    <i class="fas fa-camera text-7xl text-gray-300 mb-4"></i>
+                    <p class="text-gray-500 text-lg">Nenhuma memória adicionada ainda.</p>
+                    <p class="text-gray-400 mt-2">Clique no botão "Adicionar Nova Memória" para começar!</p>
+                </div>`;
                 return;
             }
             
@@ -1058,6 +1106,9 @@
             e.preventDefault(); 
             document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); 
         }));
+        
+        // Botão de reset
+        document.getElementById('resetDataBtn').addEventListener('click', resetarDados);
         
         // INICIALIZAR
         loadMemories();
