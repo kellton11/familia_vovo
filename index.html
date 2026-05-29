@@ -261,6 +261,40 @@
             color: #8B4513;
         }
         
+        /* Estilo para o card da linha do tempo - VERSÃO MELHORADA */
+        .timeline-card {
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .timeline-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+        }
+        .timeline-year-badge {
+            background: linear-gradient(135deg, #D4AF37, #8B4513);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .timeline-content {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #4a4a4a;
+            text-align: justify;
+        }
+        .timeline-content p {
+            margin-bottom: 1rem;
+        }
+        
+        /* Estilo para o modal de detalhes da história */
+        .history-detail-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+            color: #2d3748;
+        }
+        
         /* Estilo para vídeos na galeria */
         .video-thumbnail {
             position: relative;
@@ -326,7 +360,6 @@
                 <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">📸 Nossas Memórias</h2>
                 <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
                 <p class="text-gray-600 max-w-2xl mx-auto">Fotos e vídeos que capturam momentos especiais da nossa família</p>
-                <p class="text-sm text-gray-500 mt-2">✨ Adicione suas fotos e vídeos clicando no botão abaixo</p>
             </div>
             
             <div class="text-center mb-8">
@@ -392,25 +425,322 @@
         </div>
     </div>
 
-    <section id="history" class="py-16 bg-family-cream">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">Nossa História</h2>
-                <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto">A jornada da nossa família através das gerações</p>
-            </div>
-            <div class="max-w-4xl mx-auto">
-                <h3 class="text-2xl font-script text-family-brown text-center mb-6">📖 Linha do Tempo</h3>
-                <div id="history-content" class="space-y-6">
-                    <div class="text-center py-16 bg-white rounded-xl shadow-md">
-                        <i class="fas fa-book-open text-7xl text-family-gold mb-4"></i>
-                        <h3 class="text-xl font-bold text-family-brown mb-2">História da Família</h3>
-                        <p class="text-gray-600 max-w-md mx-auto">Em breve adicionaremos os momentos especiais da nossa família!</p>
-                    </div>
+    
+    <div class="container mx-auto px-4">
+
+```
+    <!-- Título -->
+    <div class="text-center mb-14">
+        <h2 class="text-4xl md:text-5xl font-script text-family-brown mb-4">
+            📖 Nossa História
+        </h2>
+
+        <div class="w-28 h-1 bg-family-gold mx-auto rounded-full mb-5"></div>
+
+        <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+            A trajetória de uma família construída com amor, união, coragem e fé.
+        </p>
+
+        <p class="text-sm text-gray-500 italic mt-3">
+            ✨ Cada memória guarda um pedaço da nossa história
+        </p>
+    </div>
+
+    <!-- Card Principal -->
+    <div class="max-w-6xl mx-auto bg-white shadow-2xl rounded-3xl overflow-hidden border border-yellow-100">
+
+        <!-- Cabeçalho -->
+        <div class="bg-family-brown text-white text-center py-10 px-6">
+            <h3 class="text-3xl md:text-4xl font-bold mb-3">
+                Elsa Francisca dos Santos
+            </h3>
+
+            <p class="text-lg opacity-90">
+                Uma vida marcada pelo amor à família
+            </p>
+        </div>
+
+        <!-- Conteúdo -->
+        <div class="p-8 md:p-14">
+
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+
+                <p>
+                    No dia <strong>3 de dezembro de 1951</strong>, nasceu, na comunidade de
+                    <strong>Olho D’Água</strong>, uma menina que viria a construir uma família
+                    marcada pelo amor, pela união e pela força:
+                    <strong>Elsa Francisca dos Santos</strong>.
+                    Filha de Francisco Filho dos Santos e Francisca Joana da Conceição,
+                    ela cresceu em uma família simples de agricultores,
+                    aprendendo desde cedo o valor do trabalho,
+                    do respeito e da humildade.
+                </p>
+
+                <p>
+                    Ao lado de suas duas irmãs, viveu uma infância simples,
+                    mas cheia de memórias especiais.
+                    Gostava de brincar de boneca e carregava consigo a alegria
+                    das crianças do interior.
+                    Apesar de não ter frequentado a escola,
+                    aprendeu com a vida e com os ensinamentos da família
+                    tudo aquilo que realmente importa:
+                    cuidar das pessoas, respeitar o próximo
+                    e nunca desistir diante das dificuldades.
+                </p>
+
+                <p>
+                    Entre as lembranças mais marcantes daquela época,
+                    estão os momentos em que sua mãe preparava arroz,
+                    feijão e carne, comida simples, mas feita com amor.
+                    Também ficou conhecido o apelido
+                    <strong>“Dona Seca”</strong>,
+                    que surgiu quando ela teimava muito com Maria,
+                    arrancando risadas e histórias
+                    que até hoje permanecem vivas na memória da família.
+                </p>
+
+                <div class="my-10 border-l-4 border-family-gold pl-6 italic text-family-brown text-xl">
+                    “A simplicidade da infância se transformou
+                    na força que guiou toda uma família.”
                 </div>
+
+                <p>
+                    Ainda jovem, aos 17 anos,
+                    Elsa conheceu Antônio Joaquim de Araújo
+                    no caminho para Viçosa.
+                    Foi amor à primeira vista da parte dela.
+                    Desde aquele momento,
+                    ela passou a gostar muito dele,
+                    embora Antônio demorasse um pouco mais
+                    para demonstrar seus sentimentos.
+                    Naquele tempo, o namoro acontecia
+                    de forma simples e natural,
+                    tanto que praticamente passaram
+                    do namoro direto para o casamento.
+                </p>
+
+                <p>
+                    O casamento foi um dia inesquecível e cheio de alegria.
+                    As pessoas caminhavam desde Tianguá gritando
+                    <strong>“Viva aos noivos!”</strong>,
+                    enquanto Elsa, emocionada,
+                    dizia que parecia que o mundo iria se acabar
+                    de tanta felicidade e emoção que sentia naquele momento.
+                </p>
+
+                <p>
+                    O começo da vida de casada não foi fácil.
+                    Elsa demorou um pouco para se acostumar
+                    com a nova vida ao lado de Antônio,
+                    mas, com o tempo,
+                    o carinho e a convivência fizeram nascer
+                    um amor forte e verdadeiro.
+                    Juntos, construíram uma família grande e cheia de histórias.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6 my-10">
+
+                    <div class="bg-family-cream rounded-2xl p-6">
+                        <h4 class="text-xl font-bold text-family-brown mb-3">
+                            👨‍👩‍👧‍👦 Família
+                        </h4>
+
+                        <p>
+                            Quando descobriu que seria mãe pela primeira vez,
+                            sentiu medo, principalmente porque passava mal
+                            durante os primeiros meses da gravidez.
+                            Ela conta que em todas as seis gestações
+                            enfrentou dificuldades parecidas,
+                            ficando doente durante cerca de três meses
+                            antes de melhorar.
+                            Mesmo assim, cada filho foi recebido com muito amor.
+                        </p>
+                    </div>
+
+                    <div class="bg-family-cream rounded-2xl p-6">
+                        <h4 class="text-xl font-bold text-family-brown mb-3">
+                            💛 Superação
+                        </h4>
+
+                        <p>
+                            A maior dificuldade daquela época
+                            era cuidar das crianças quando adoeciam,
+                            pois quase não existiam médicos disponíveis para ajudar.
+                            Ainda assim, Elsa nunca deixou faltar cuidado,
+                            proteção e dedicação.
+                        </p>
+                    </div>
+
+                </div>
+
+                <p>
+                    Com muita força,
+                    ela e Antônio criaram seus filhos ensinando sempre
+                    o respeito ao próximo e o valor do trabalho honesto.
+                </p>
+
+                <p>
+                    Entre tantas lembranças,
+                    uma das mais engraçadas é das artes de Antônio Cláudio,
+                    que gostava de assustar Antônio Felipe.
+                    Os domingos eram os dias mais especiais:
+                    a casa cheia, os filhos reunidos,
+                    conversas, brincadeiras e muita alegria
+                    faziam parte da rotina da família.
+                </p>
+
+                <p>
+                    As tradições familiares sempre tiveram grande importância.
+                    Quando era pequena,
+                    Elsa celebrava o Natal em casa,
+                    ao lado da família,
+                    em um ambiente simples,
+                    mas cheio de união.
+                    Depois, já com seus próprios filhos,
+                    manteve essa tradição viva,
+                    reunindo todos com muita comida,
+                    alegria e carinho.
+                </p>
+
+                <p>
+                    Na infância,
+                    ela não costumava comemorar aniversários,
+                    pois a família tinha poucas condições financeiras
+                    e não possuía esse costume.
+                    Mais tarde,
+                    com os filhos já crescidos,
+                    as comemorações passaram a fazer parte da vida da família,
+                    trazendo ainda mais união entre todos.
+                </p>
+
+                <p>
+                    A cozinha também sempre foi um lugar especial.
+                    Elsa costuma dizer que qualquer comida feita por ela
+                    era recebida com felicidade pelos filhos,
+                    porque tudo era preparado com muito amor.
+                </p>
+
+                <div class="my-10 bg-family-brown text-white rounded-3xl p-8 text-center">
+                    <p class="text-2xl italic leading-relaxed">
+                        “Se pudesse resumir o significado da família
+                        em uma única palavra,
+                        ela seria: Paz.”
+                    </p>
+                </div>
+
+                <p>
+                    Com o passar dos anos,
+                    vieram os netos,
+                    trazendo uma nova fase de felicidade para sua vida.
+                    Quando se tornou avó pela primeira vez,
+                    sentiu uma alegria enorme.
+                    Até hoje,
+                    gosta de brincar com os netos,
+                    conversar, rir e aproveitar cada momento ao lado deles.
+                </p>
+
+                <p>
+                    Os conselhos que ela deixa para os netos e bisnetos
+                    são simples, mas muito valiosos:
+                    respeitar todas as pessoas,
+                    estudar e lutar para conquistar um bom futuro.
+                    Seu maior orgulho é ver que seus filhos cresceram
+                    sendo pessoas boas e honestas.
+                </p>
+
+                <p>
+                    E o que ela mais deseja
+                    que as futuras gerações saibam sobre ela
+                    é que sempre foi uma mulher alegre,
+                    batalhadora e apaixonada pelos seus filhos e pela sua família.
+                </p>
+
+                <p>
+                    Ao longo da vida,
+                    também enfrentou momentos difíceis.
+                    A perda de sua filha Cleide
+                    foi uma das maiores dores que já sentiu.
+                    Mesmo carregando essa saudade no coração,
+                    encontrou forças na própria família
+                    para continuar seguindo em frente,
+                    sempre de cabeça erguida.
+                </p>
+
+                <p>
+                    Hoje,
+                    Elsa Francisca dos Santos continua sendo
+                    o coração da família:
+                    uma mulher forte, alegre, amorosa
+                    e cheia de histórias que merecem ser lembradas para sempre.
+                    Sua trajetória é um exemplo de amor,
+                    união e dedicação,
+                    deixando marcas eternas em todos
+                    que têm a felicidade de conviver com ela.
+                </p>
+
             </div>
         </div>
-    </section>
+    </div>
+</div>
+
+
+</section>
+
+
+    <!-- MODAL PARA ADICIONAR HISTÓRIA -->
+    <div id="add-history-modal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4 modal-overlay">
+        <div class="bg-white rounded-xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-2xl font-bold text-family-brown">📝 Escrever um Capítulo</h3>
+                    <button onclick="closeAddHistoryModal()" class="text-gray-500 hover:text-gray-700"><i class="fas fa-times text-2xl"></i></button>
+                </div>
+                <form id="history-form" class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-semibold">📅 Ano</label>
+                        <input type="text" id="history-year" class="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Ex: 1950" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-semibold">🏷️ Título</label>
+                        <input type="text" id="history-title" class="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Ex: O Casamento dos Avós" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-semibold">📖 História</label>
+                        <textarea id="history-description" rows="6" class="w-full px-4 py-2 border border-gray-300 rounded-lg" placeholder="Conte esse momento especial com detalhes..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2 font-semibold">🖼️ Foto (opcional)</label>
+                        <div class="file-upload-area rounded-lg p-4 text-center" onclick="document.getElementById('history-file').click()">
+                            <input type="file" id="history-file" accept="image/*" class="hidden">
+                            <i class="fas fa-cloud-upload-alt text-3xl text-family-gold mb-2"></i>
+                            <p class="text-gray-500 text-sm">Clique para adicionar uma foto</p>
+                        </div>
+                        <div id="history-file-preview" class="mt-3 hidden text-center">
+                            <img id="history-preview-img" class="max-h-32 rounded-lg mx-auto shadow">
+                            <button type="button" onclick="clearHistoryFilePreview()" class="text-red-500 text-sm mt-1">Remover</button>
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-family-brown text-white py-3 rounded-lg hover:bg-family-gold transition font-semibold">💾 Salvar Capítulo</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PARA VER DETALHES DA HISTÓRIA -->
+    <div id="history-detail-modal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4 modal-overlay">
+        <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4 border-b pb-3">
+                    <div>
+                        <span id="history-detail-year" class="inline-block bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold"></span>
+                        <h3 id="history-detail-title" class="text-2xl font-bold text-family-brown mt-2"></h3>
+                    </div>
+                    <button onclick="closeHistoryDetailModal()" class="text-gray-500 hover:text-gray-700"><i class="fas fa-times text-2xl"></i></button>
+                </div>
+                <div id="history-detail-content" class="history-detail-text space-y-4"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- SEÇÃO DE CURIOSIDADES -->
     <section id="curiosities" class="py-16 bg-white">
@@ -421,7 +751,6 @@
                 <p class="text-gray-600 max-w-2xl mx-auto">Conheça um pouco mais sobre nossa família, nossas tradições e o que nos torna especiais</p>
             </div>
             
-            <!-- Momentos Marcantes -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
                 <div class="curiosity-card rounded-xl p-6 shadow-md">
                     <div class="flex items-center gap-3 mb-3"><i class="fas fa-handshake text-family-gold text-3xl"></i><h3 class="text-xl font-bold text-family-brown">🤝 União em primeiro lugar</h3></div>
@@ -453,71 +782,33 @@
                 </div>
             </div>
             
-            <!-- Personalidades dos Filhos - Cards Bonitos -->
+            <!-- Personalidades dos Filhos -->
             <div class="mt-12">
                 <h3 class="text-2xl font-script text-family-brown text-center mb-6">👨‍👩‍👧‍👦 Personalidades da Família</h3>
-                <p class="text-center text-gray-500 mb-8">Cada um dos filhos tem sua própria essência que torna nossa família ainda mais especial</p>
-                
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Cleide -->
-                    <div class="personality-card bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-5 shadow-md hover:shadow-xl transition-all border-l-4 border-pink-400">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-12 h-12 bg-pink-200 rounded-full flex items-center justify-center"><i class="fas fa-smile text-pink-600 text-2xl"></i></div>
-                            <h4 class="text-xl font-bold text-family-brown">Cleide</h4>
-                        </div>
+                    <div class="personality-card bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl p-5 shadow-md border-l-4 border-pink-400">
+                        <div class="flex items-center gap-3 mb-3"><div class="w-12 h-12 bg-pink-200 rounded-full flex items-center justify-center"><i class="fas fa-smile text-pink-600 text-2xl"></i></div><h4 class="text-xl font-bold text-family-brown">Cleide</h4></div>
                         <p class="text-gray-700"><i class="fas fa-quote-left text-pink-400 mr-1 text-sm"></i> Alegre, amava costurar e iluminava os nossos dias.</p>
-                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500"><i class="fas fa-calendar-alt"></i> <span>Aniversário: 12/10</span></div>
                     </div>
-                    
-                    <!-- Maria Pastora -->
-                    <div class="personality-card bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-5 shadow-md hover:shadow-xl transition-all border-l-4 border-purple-400">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center"><i class="fas fa-camera text-purple-600 text-2xl"></i></div>
-                            <h4 class="text-xl font-bold text-family-brown">Maria Pastora</h4>
-                        </div>
+                    <div class="personality-card bg-gradient-to-br from-purple-50 to-indigo-50 rounded-xl p-5 shadow-md border-l-4 border-purple-400">
+                        <div class="flex items-center gap-3 mb-3"><div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center"><i class="fas fa-camera text-purple-600 text-2xl"></i></div><h4 class="text-xl font-bold text-family-brown">Maria Pastora</h4></div>
                         <p class="text-gray-700"><i class="fas fa-quote-left text-purple-400 mr-1 text-sm"></i> Muito divertida e a fotógrafa oficial de todos os nossos momentos.</p>
-                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500"><i class="fas fa-calendar-alt"></i> <span>Aniversário: 20/12</span></div>
                     </div>
-                    
-                    <!-- Jovani -->
-                    <div class="personality-card bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl p-5 shadow-md hover:shadow-xl transition-all border-l-4 border-emerald-400">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-12 h-12 bg-emerald-200 rounded-full flex items-center justify-center"><i class="fas fa-tractor text-emerald-600 text-2xl"></i></div>
-                            <h4 class="text-xl font-bold text-family-brown">Jovani</h4>
-                        </div>
+                    <div class="personality-card bg-gradient-to-br from-emerald-50 to-green-50 rounded-xl p-5 shadow-md border-l-4 border-emerald-400">
+                        <div class="flex items-center gap-3 mb-3"><div class="w-12 h-12 bg-emerald-200 rounded-full flex items-center justify-center"><i class="fas fa-tractor text-emerald-600 text-2xl"></i></div><h4 class="text-xl font-bold text-family-brown">Jovani</h4></div>
                         <p class="text-gray-700"><i class="fas fa-quote-left text-emerald-400 mr-1 text-sm"></i> Agricultor dedicado e muito presente na casa da nossa avó.</p>
-                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500"><i class="fas fa-calendar-alt"></i> <span>Aniversário: 30/03</span></div>
                     </div>
-                    
-                    <!-- Antônio Claudio ("Bode") -->
-                    <div class="personality-card bg-gradient-to-br from-amber-50 to-yellow-50 rounded-xl p-5 shadow-md hover:shadow-xl transition-all border-l-4 border-amber-400">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-12 h-12 bg-amber-200 rounded-full flex items-center justify-center"><i class="fas fa-laugh-squint text-amber-600 text-2xl"></i></div>
-                            <h4 class="text-xl font-bold text-family-brown">Antônio Claudio</h4>
-                            <span class="text-xs bg-amber-200 text-amber-800 px-2 py-1 rounded-full">"Bode"</span>
-                        </div>
+                    <div class="personality-card bg-gradient-to-br from-amber-50 to-yellow-50 rounded-xl p-5 shadow-md border-l-4 border-amber-400">
+                        <div class="flex items-center gap-3 mb-3"><div class="w-12 h-12 bg-amber-200 rounded-full flex items-center justify-center"><i class="fas fa-laugh-squint text-amber-600 text-2xl"></i></div><h4 class="text-xl font-bold text-family-brown">Antônio Claudio</h4><span class="text-xs bg-amber-200 text-amber-800 px-2 py-1 rounded-full">"Bode"</span></div>
                         <p class="text-gray-700"><i class="fas fa-quote-left text-amber-400 mr-1 text-sm"></i> Reservado no dia a dia, mas o mais engraçado nos nossos encontros.</p>
-                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500"><i class="fas fa-calendar-alt"></i> <span>Aniversário: 08/04</span></div>
                     </div>
-                    
-                    <!-- Odete -->
-                    <div class="personality-card bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-5 shadow-md hover:shadow-xl transition-all border-l-4 border-orange-400">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center"><i class="fas fa-laugh text-orange-600 text-2xl"></i></div>
-                            <h4 class="text-xl font-bold text-family-brown">Odete</h4>
-                        </div>
+                    <div class="personality-card bg-gradient-to-br from-orange-50 to-red-50 rounded-xl p-5 shadow-md border-l-4 border-orange-400">
+                        <div class="flex items-center gap-3 mb-3"><div class="w-12 h-12 bg-orange-200 rounded-full flex items-center justify-center"><i class="fas fa-laugh text-orange-600 text-2xl"></i></div><h4 class="text-xl font-bold text-family-brown">Odete</h4></div>
                         <p class="text-gray-700"><i class="fas fa-quote-left text-orange-400 mr-1 text-sm"></i> Trabalhadora, barulhenta e a verdadeira razão das nossas gargalhadas.</p>
-                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500"><i class="fas fa-calendar-alt"></i> <span>Aniversário: 30/05</span></div>
                     </div>
-                    
-                    <!-- Auricélia -->
-                    <div class="personality-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-5 shadow-md hover:shadow-xl transition-all border-l-4 border-blue-400">
-                        <div class="flex items-center gap-3 mb-3">
-                            <div class="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center"><i class="fas fa-heart text-blue-600 text-2xl"></i></div>
-                            <h4 class="text-xl font-bold text-family-brown">Auricélia</h4>
-                        </div>
+                    <div class="personality-card bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-5 shadow-md border-l-4 border-blue-400">
+                        <div class="flex items-center gap-3 mb-3"><div class="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center"><i class="fas fa-heart text-blue-600 text-2xl"></i></div><h4 class="text-xl font-bold text-family-brown">Auricélia</h4></div>
                         <p class="text-gray-700"><i class="fas fa-quote-left text-blue-400 mr-1 text-sm"></i> Mora pertinho da avó e garante sempre muita alegria e momentos incríveis.</p>
-                        <div class="mt-3 flex items-center gap-2 text-xs text-gray-500"><i class="fas fa-calendar-alt"></i> <span>Aniversário: 04/05</span></div>
                     </div>
                 </div>
             </div>
@@ -527,14 +818,8 @@
                 <i class="fas fa-star-of-life text-family-gold text-4xl mb-3"></i>
                 <h3 class="text-2xl font-script text-family-brown mb-3">🌟 Nossos Tesouros</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white/50 rounded-lg p-4">
-                        <i class="fas fa-male text-family-brown text-3xl mb-2"></i>
-                        <p class="text-gray-700"><strong>👴 Vovô:</strong> Muito trabalhador e dedicado, amava profundamente a sua família, sendo um homem eterno e especial para todos nós.</p>
-                    </div>
-                    <div class="bg-white/50 rounded-lg p-4">
-                        <i class="fas fa-female text-family-brown text-3xl mb-2"></i>
-                        <p class="text-gray-700"><strong>👵 Vovó:</strong> O coração da família e nosso porto seguro, sempre com as portas abertas e muito importante para nós.</p>
-                    </div>
+                    <div class="bg-white/50 rounded-lg p-4"><i class="fas fa-male text-family-brown text-3xl mb-2"></i><p><strong>👴 Vovô:</strong> Muito trabalhador e dedicado, amava profundamente a sua família, sendo um homem eterno e especial para todos nós.</p></div>
+                    <div class="bg-white/50 rounded-lg p-4"><i class="fas fa-female text-family-brown text-3xl mb-2"></i><p><strong>👵 Vovó:</strong> O coração da família e nosso porto seguro, sempre com as portas abertas e muito importante para nós.</p></div>
                 </div>
             </div>
         </div>
@@ -553,21 +838,10 @@
             <div class="tree-scroll-container">
                 <div class="text-center mb-2"><span class="level-title">🌿 1ª Geração - Avós 🌿</span></div>
                 <div class="tree-parents" style="justify-content: center;">
-                    <div class="tree-person text-center">
-                        <img src="https://i.pravatar.cc/150?img=65" onerror="this.src='https://via.placeholder.com/150?text=Vovó+Nelsa'">
-                        <div class="name">Nelsa</div>
-                        <div class="role">🌹 Vovó</div>
-                    </div>
-                    <div class="tree-person text-center">
-                        <img src="https://i.pravatar.cc/150?img=12" onerror="this.src='https://via.placeholder.com/150?text=Vovô+Antonio'">
-                        <div class="name">Antonio Felipe ✝️</div>
-                        <div class="role">🌳 Vovô</div>
-                        <div class="in-memory">(In memoriam)</div>
-                    </div>
+                    <div class="tree-person text-center"><img src="https://i.pravatar.cc/150?img=65"><div class="name">Nelsa</div><div class="role">🌹 Vovó</div></div>
+                    <div class="tree-person text-center"><img src="https://i.pravatar.cc/150?img=12"><div class="name">Antonio Felipe ✝️</div><div class="role">🌳 Vovô</div><div class="in-memory">(In memoriam)</div></div>
                 </div>
-                
                 <div class="tree-connector-line" style="margin: 10px auto;"></div>
-                
                 <div class="text-center mb-2 mt-2"><span class="level-title">🌿 2ª Geração - Filhos 🌿</span></div>
                 <div class="tree-parents" style="justify-content: center; flex-wrap: wrap;">
                     <div class="tree-person text-center"><div class="name">Cleide</div><div class="role">👩‍👧 Mãe</div></div>
@@ -577,26 +851,16 @@
                     <div class="tree-person text-center"><div class="name">Odete</div><div class="role">👩‍👧 Mãe</div></div>
                     <div class="tree-person text-center"><div class="name">Auricélia</div><div class="role">👩‍👧 Mãe</div></div>
                 </div>
-                
                 <div class="generation-separator"><i class="fas fa-arrow-down text-family-gold text-xl"></i></div>
-                
                 <div class="text-center mb-4"><span class="level-title">🌿 3ª Geração - Netos 🌿</span></div>
                 <div style="display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
                     <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Cleide</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Rafael</div></div><div class="tree-person text-center"><div class="name">Clécio</div></div><div class="tree-person text-center"><div class="name">Rayane</div></div></div></div>
                     <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Maria Pastora</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Alex</div></div><div class="tree-person text-center"><div class="name">Liliane ✝️</div><div class="in-memory">(In memoriam)</div></div><div class="tree-person text-center"><div class="name">Michele</div></div><div class="tree-person text-center"><div class="name">Micaele</div></div></div></div>
                     <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Jovani</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Kaike</div></div><div class="tree-person text-center"><div class="name">Geovana</div></div></div></div>
-                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Antônio Claudio</div></div></div><div class="tree-connector-line"></div><div class="tree-children">
-                        <div class="tree-person text-center">
-                            <img src="imagens/eu2.jpg" onerror="this.src='https://via.placeholder.com/150?text=Kellton'">
-                            <div class="name">Kellton</div>
-                        </div>
-                        <div class="tree-person text-center"><div class="name">Kellvy</div></div>
-                        <div class="tree-person text-center"><div class="name">Kellery</div></div>
-                    </div></div>
+                    <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Antônio Claudio</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><img src="imagens/eu2.jpg"><div class="name">Kellton</div></div><div class="tree-person text-center"><div class="name">Kellvy</div></div><div class="tree-person text-center"><div class="name">Kellery</div></div></div></div>
                     <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Odete</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Stefany</div></div><div class="tree-person text-center"><div class="name">Caio</div></div></div></div>
                     <div class="tree-family-group"><div class="tree-parents"><div class="tree-person text-center"><div class="name">Auricélia</div></div></div><div class="tree-connector-line"></div><div class="tree-children"><div class="tree-person text-center"><div class="name">Anna Luizza</div></div><div class="tree-person text-center"><div class="name">Anna Rafaella</div></div><div class="tree-person text-center"><div class="name">Pedro Felipe</div></div></div></div>
                 </div>
-                
                 <div class="generation-separator mt-4"><i class="fas fa-arrow-down text-family-gold text-xl"></i></div>
                 <div class="text-center mb-4"><span class="level-title">🌿 4ª Geração - Bisnetos 🌿</span></div>
                 <div style="display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
@@ -619,7 +883,6 @@
                 <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">🎂 Aniversários da Família</h2>
                 <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
                 <p class="text-gray-600 max-w-2xl mx-auto">Celebre e acompanhe os aniversários de todos os membros da família</p>
-                <p class="text-sm text-gray-500 mt-2">📅 Datas especiais para não esquecer de parabenizar!</p>
             </div>
             <div id="birthdays-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
         </div>
@@ -1594,40 +1857,215 @@
         // ============================================================
         // ANIVERSÁRIOS
         // ============================================================
+        
         const BIRTHDAY_ITEMS = [
-            { id: 1, nome: "Anna Luizza", data: "14/01", idade: "", foto: null, curiosidade: "" },
-            { id: 2, nome: "Anna Rafaella", data: "26/02", idade: "", foto: null, curiosidade: "" },
-            { id: 3, nome: "Mirella", data: "04/03", idade: "", foto: null, curiosidade: "" },
-            { id: 4, nome: "Michele", data: "26/03", idade: "", foto: null, curiosidade: "" },
-            { id: 5, nome: "Jovani", data: "30/03", idade: "", foto: null, curiosidade: "" },
-            { id: 6, nome: "Antônio Claudio", data: "08/04", idade: "", foto: null, curiosidade: "" },
-            { id: 7, nome: "Caio", data: "20/04", idade: "", foto: null, curiosidade: "" },
-            { id: 8, nome: "Auricélia", data: "04/05", idade: "", foto: null, curiosidade: "" },
-            { id: 9, nome: "Odete", data: "30/05", idade: "", foto: null, curiosidade: "" },
-            { id: 10, nome: "Geovana", data: "11/10", idade: "", foto: null, curiosidade: "" },
-            { id: 11, nome: "Kellton", data: "11/10", idade: "17 anos", foto: "imagens/eu2.jpg", curiosidade: "O programador da família! 🎮💻" },
-            { id: 12, nome: "Cleide", data: "12/10", idade: "", foto: null, curiosidade: "" },
-            { id: 13, nome: "Rafael", data: "21/10", idade: "", foto: null, curiosidade: "" },
-            { id: 14, nome: "Clécio", data: "08/11", idade: "", foto: null, curiosidade: "" },
-            { id: 15, nome: "Rayane", data: "08/11", idade: "", foto: null, curiosidade: "" },
-            { id: 16, nome: "Manuela", data: "26/11", idade: "", foto: null, curiosidade: "" },
-            { id: 17, nome: "Kaike", data: "02/12", idade: "", foto: null, curiosidade: "" },
-            { id: 18, nome: "Kellery", data: "06/12", idade: "", foto: null, curiosidade: "" },
-            { id: 19, nome: "Maria Pastora", data: "20/12", idade: "", foto: null, curiosidade: "" },
-            { id: 20, nome: "Miguel", data: "27/12", idade: "", foto: null, curiosidade: "" },
-            { id: 21, nome: "Kellvy", data: "28/12", idade: "", foto: null, curiosidade: "" },
-            { id: 22, nome: "Kauê", data: "02/08", idade: "", foto: null, curiosidade: "" },
-            { id: 23, nome: "Heitor", data: "10/04", idade: "", foto: null, curiosidade: "" },
-            { id: 24, nome: "José Emanuel", data: "22/09", idade: "", foto: null, curiosidade: "" },
-            { id: 25, nome: "Liliane", data: "", idade: "", foto: null, curiosidade: "✝️ In memoriam - Filha da Pastora" }
+            { id: 1, nome: "Anna Luizza", data: "14/01", idade: "", foto: null },
+            { id: 2, nome: "Anna Rafaella", data: "26/02", idade: "", foto: null },
+            { id: 3, nome: "Mirella", data: "04/03", idade: "", foto: null },
+            { id: 4, nome: "Michele", data: "26/03", idade: "", foto: null },
+            { id: 5, nome: "Jovani", data: "30/03", idade: "", foto: null },
+            { id: 6, nome: "Antônio Claudio", data: "08/04", idade: "", foto: null },
+            { id: 7, nome: "Caio", data: "20/04", idade: "", foto: null },
+            { id: 8, nome: "Auricélia", data: "04/05", idade: "", foto: null },
+            { id: 9, nome: "Odete", data: "30/05", idade: "", foto: null },
+            { id: 10, nome: "Geovana", data: "11/10", idade: "", foto: null },
+            { id: 11, nome: "Kellton", data: "11/10", idade: "17 anos", foto: "imagens/eu2.jpg" },
+            { id: 12, nome: "Cleide", data: "12/10", idade: "", foto: null },
+            { id: 13, nome: "Rafael", data: "21/10", idade: "", foto: null },
+            { id: 14, nome: "Clécio", data: "08/11", idade: "", foto: null },
+            { id: 15, nome: "Rayane", data: "08/11", idade: "", foto: null },
+            { id: 16, nome: "Manuela", data: "26/11", idade: "", foto: null },
+            { id: 17, nome: "Kaike", data: "02/12", idade: "", foto: null },
+            { id: 18, nome: "Kellery", data: "06/12", idade: "", foto: null },
+            { id: 19, nome: "Maria Pastora", data: "20/12", idade: "", foto: null },
+            { id: 20, nome: "Miguel", data: "27/12", idade: "", foto: null },
+            { id: 21, nome: "Kellvy", data: "28/12", idade: "", foto: null },
+            { id: 22, nome: "Kauê", data: "02/08", idade: "", foto: null },
+            { id: 23, nome: "Heitor", data: "10/04", idade: "", foto: null },
+            { id: 24, nome: "José Emanuel", data: "22/09", idade: "", foto: null },
+            { id: 25, nome: "Liliane", data: "", idade: "", foto: null, curiosidade: "✝️ In memoriam" }
         ];
         
+        let birthdayItems = [...BIRTHDAY_ITEMS];
+        
         // ============================================================
-        // FUNÇÕES DO SISTEMA
+        // FUNÇÕES DE HISTÓRIA - VERSÃO MELHORADA
+        // ============================================================
+        
+        function loadHistory() {
+            const saved = localStorage.getItem('familyHistory');
+            if (saved && JSON.parse(saved).length > 0) {
+                historyItems = JSON.parse(saved);
+            } else {
+                historyItems = [...HISTORIAS_INICIAIS];
+                saveHistory();
+            }
+            renderHistory();
+        }
+        
+        function saveHistory() {
+            localStorage.setItem('familyHistory', JSON.stringify(historyItems));
+        }
+        
+        function renderHistory() {
+            const container = document.getElementById('history-content');
+            if (historyItems.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 bg-white rounded-xl shadow-md">
+                        <i class="fas fa-book-open text-7xl text-family-gold mb-4"></i>
+                        <h3 class="text-xl font-bold text-family-brown mb-2">Nossa História</h3>
+                        <p class="text-gray-600 max-w-md mx-auto mb-6">Adicione os momentos importantes da história da sua família!</p>
+                        <button onclick="openAddHistoryModal()" class="bg-family-brown text-white px-6 py-3 rounded-lg hover:bg-family-gold transition inline-flex items-center gap-2">
+                            <i class="fas fa-plus"></i> Adicionar Momento Histórico
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            // Ordenar por ano (crescente)
+            const sortedHistory = [...historyItems].sort((a, b) => parseInt(a.year) - parseInt(b.year));
+            
+            container.innerHTML = sortedHistory.map((item, index) => `
+                <div class="timeline-card relative md:flex md:items-start md:gap-6 group">
+                    <!-- Versão Mobile -->
+                    <div class="md:hidden bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="timeline-year-badge absolute -top-3 left-6 bg-gradient-to-r from-family-gold to-family-brown text-white px-4 py-1 rounded-full text-sm font-bold z-10">
+                            📅 ${escapeHtml(item.year)}
+                        </div>
+                        <div class="p-6 pt-10">
+                            <h3 class="text-xl font-bold text-family-brown mb-3">${escapeHtml(item.title)}</h3>
+                            <div class="timeline-content">
+                                <p class="text-gray-600 leading-relaxed">${escapeHtml(item.description.length > 200 ? item.description.substring(0, 200) + '...' : item.description)}</p>
+                            </div>
+                            ${item.foto ? `<img src="${item.foto}" class="mt-4 rounded-lg w-full h-48 object-cover shadow-md cursor-pointer" onclick="openImageModal('${item.foto}', '${escapeHtml(item.title)}')">` : ''}
+                            <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-100">
+                                <button onclick="viewHistoryDetail(${item.id})" class="text-family-brown hover:text-family-gold text-sm font-medium transition flex items-center gap-1">
+                                    Ler história completa <i class="fas fa-arrow-right"></i>
+                                </button>
+                                <button onclick="deleteHistoryItem(${item.id})" class="text-red-400 hover:text-red-600 text-sm transition">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Versão Desktop (com linha do tempo) -->
+                    <div class="hidden md:flex md:w-full">
+                        <div class="w-1/2 text-right pr-8 ${index % 2 === 0 ? 'order-1' : 'order-2'}">
+                            <div class="bg-white rounded-xl shadow-lg p-6 inline-block w-full">
+                                <div class="timeline-year-badge inline-block bg-gradient-to-r from-family-gold to-family-brown text-white px-4 py-1 rounded-full text-sm font-bold mb-3">
+                                    📅 ${escapeHtml(item.year)}
+                                </div>
+                                <h3 class="text-xl font-bold text-family-brown mb-3">${escapeHtml(item.title)}</h3>
+                                <div class="timeline-content">
+                                    <p class="text-gray-600 leading-relaxed">${escapeHtml(item.description.length > 200 ? item.description.substring(0, 200) + '...' : item.description)}</p>
+                                </div>
+                                ${item.foto ? `<img src="${item.foto}" class="mt-4 rounded-lg w-full h-40 object-cover shadow-md cursor-pointer" onclick="openImageModal('${item.foto}', '${escapeHtml(item.title)}')">` : ''}
+                                <div class="flex justify-between items-center mt-4 pt-3 border-t border-gray-100">
+                                    <button onclick="viewHistoryDetail(${item.id})" class="text-family-brown hover:text-family-gold text-sm font-medium transition">Ler história completa →</button>
+                                    <button onclick="deleteHistoryItem(${item.id})" class="text-red-400 hover:text-red-600 text-sm transition"><i class="fas fa-trash-alt"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-1/2 ${index % 2 === 0 ? 'order-2' : 'order-1'}"></div>
+                        <!-- Marcador na linha do tempo -->
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-family-gold rounded-full border-4 border-white shadow-md z-10" style="top: ${30 + index * 20}px;"></div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function viewHistoryDetail(id) {
+            const item = historyItems.find(i => i.id === id);
+            if (!item) return;
+            
+            document.getElementById('history-detail-year').innerHTML = `📅 ${escapeHtml(item.year)}`;
+            document.getElementById('history-detail-title').innerHTML = escapeHtml(item.title);
+            document.getElementById('history-detail-content').innerHTML = `
+                <div class="history-detail-text">
+                    <p class="whitespace-pre-wrap leading-relaxed">${escapeHtml(item.description)}</p>
+                    ${item.foto ? `<div class="mt-6 text-center"><img src="${item.foto}" class="rounded-lg shadow-md max-h-96 mx-auto cursor-pointer" onclick="openImageModal('${item.foto}', '${escapeHtml(item.title)}')"></div>` : ''}
+                </div>
+            `;
+            document.getElementById('history-detail-modal').classList.remove('hidden');
+            document.getElementById('history-detail-modal').classList.add('flex');
+        }
+        
+        function deleteHistoryItem(id) {
+            if(confirm('Tem certeza que deseja remover este capítulo da história?')) {
+                historyItems = historyItems.filter(i => i.id !== id);
+                saveHistory();
+                renderHistory();
+                showToast('✅ Capítulo removido!');
+            }
+        }
+        
+        function openAddHistoryModal() {
+            document.getElementById('add-history-modal').classList.remove('hidden');
+            document.getElementById('add-history-modal').classList.add('flex');
+        }
+        
+        function closeAddHistoryModal() {
+            document.getElementById('add-history-modal').classList.add('hidden');
+            document.getElementById('add-history-modal').classList.remove('flex');
+            document.getElementById('history-form').reset();
+            currentHistoryFileData = null;
+            document.getElementById('history-file-preview').classList.add('hidden');
+        }
+        
+        function clearHistoryFilePreview() {
+            currentHistoryFileData = null;
+            document.getElementById('history-file').value = '';
+            document.getElementById('history-file-preview').classList.add('hidden');
+            document.getElementById('history-preview-img').src = '';
+        }
+        
+        document.getElementById('history-file').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                currentHistoryFileData = event.target.result;
+                document.getElementById('history-preview-img').src = currentHistoryFileData;
+                document.getElementById('history-file-preview').classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        });
+        
+        document.getElementById('history-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const year = document.getElementById('history-year').value;
+            const title = document.getElementById('history-title').value;
+            const description = document.getElementById('history-description').value;
+            
+            if (!year || !title || !description) {
+                showToast('Por favor, preencha todos os campos!', 'error');
+                return;
+            }
+            
+            const newHistory = {
+                id: Date.now(),
+                year: year,
+                title: title,
+                description: description,
+                foto: currentHistoryFileData || null
+            };
+            
+            historyItems.push(newHistory);
+            saveHistory();
+            renderHistory();
+            closeAddHistoryModal();
+            showToast('✅ Capítulo adicionado à história!');
+        });
+        
+        // ============================================================
+        // FUNÇÕES DE MEMÓRIAS
         // ============================================================
         
         function resetarDados() {
-            if(confirm('⚠️ ATENÇÃO! Isso vai apagar TODAS as memórias, comentários e aniversários adicionados. Deseja continuar?')) {
+            if(confirm('⚠️ ATENÇÃO! Isso vai apagar TODAS as memórias, histórias e aniversários adicionados. Deseja continuar?')) {
                 localStorage.clear();
                 location.reload();
             }
@@ -1637,7 +2075,6 @@
             const saved = localStorage.getItem('familyMemories');
             if (saved && JSON.parse(saved).length > 0) {
                 galleryItems = JSON.parse(saved);
-                console.log('📸 Memórias carregadas do localStorage:', galleryItems.length);
             } else {
                 let idCounter = Date.now();
                 galleryItems = MEMORIAS_INICIAIS.map(mem => ({
@@ -1646,7 +2083,6 @@
                     comments: []
                 }));
                 saveMemories();
-                console.log('📸 Memórias iniciais carregadas:', galleryItems.length);
             }
             renderGallery();
         }
@@ -1695,7 +2131,7 @@
                             </div>
                             <div class="p-4">
                                 <h3 class="font-bold text-lg text-family-brown">${escapeHtml(item.title)}</h3>
-                                <p class="text-gray-500 text-sm mt-1 line-clamp-2">${escapeHtml(item.description || '')}</p>
+                                <p class="text-gray-500 text-sm mt-1">${escapeHtml(item.description || '')}</p>
                                 <div class="flex justify-between items-center mt-3">
                                     <span class="text-xs text-gray-400">${item.date || 'Data não informada'}</span>
                                     <button onclick="openVideoModal(${item.id})" class="text-family-brown hover:text-family-gold text-sm font-medium">Assistir vídeo →</button>
@@ -1709,7 +2145,7 @@
                             <img src="${item.src}" class="w-full h-48 object-cover cursor-pointer" onclick="openMemoryDetail(${item.id})" onerror="this.src='https://placehold.co/400x300?text=Imagem+não+encontrada'">
                             <div class="p-4">
                                 <h3 class="font-bold text-lg text-family-brown">${escapeHtml(item.title)}</h3>
-                                <p class="text-gray-500 text-sm mt-1 line-clamp-2">${escapeHtml(item.description || '')}</p>
+                                <p class="text-gray-500 text-sm mt-1">${escapeHtml(item.description || '')}</p>
                                 <div class="flex justify-between items-center mt-3">
                                     <span class="text-xs text-gray-400">${item.date || 'Data não informada'}</span>
                                     <button onclick="openMemoryDetail(${item.id})" class="text-family-brown hover:text-family-gold text-sm font-medium">Ver detalhes →</button>
@@ -1874,7 +2310,17 @@
             }
         }
         
-        let birthdayItems = [...BIRTHDAY_ITEMS];
+        function closeHistoryDetailModal() {
+            document.getElementById('history-detail-modal').classList.add('hidden');
+            document.getElementById('history-detail-modal').classList.remove('flex');
+        }
+        
+        function openImageModal(src, title) {
+            document.getElementById('detail-title').innerHTML = title;
+            document.getElementById('detail-content').innerHTML = `<img src="${src}" class="w-full rounded-lg shadow-md">`;
+            document.getElementById('memory-detail-modal').classList.remove('hidden');
+            document.getElementById('memory-detail-modal').classList.add('flex');
+        }
         
         function renderBirthdays() {
             const container = document.getElementById('birthdays-container');
@@ -1890,16 +2336,14 @@
             });
             
             container.innerHTML = birthdayItems.map(item => {
-                if (item.data === "") {
+                if (!item.data) {
                     return `
                         <div class="birthday-card bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-5 text-center shadow-md border border-gray-300 opacity-70">
                             <div class="w-24 h-24 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
                                 <i class="fas fa-cloud text-white text-4xl"></i>
                             </div>
                             <h3 class="font-bold text-xl text-gray-600">${escapeHtml(item.nome)}</h3>
-                            <div class="mt-2">
-                                <span class="bg-gray-400 text-white px-3 py-1 rounded-full text-sm">📅 ${escapeHtml(item.curiosidade || 'Em memória')}</span>
-                            </div>
+                            <div class="mt-2"><span class="bg-gray-400 text-white px-3 py-1 rounded-full text-sm">${escapeHtml(item.curiosidade || 'Em memória')}</span></div>
                             <div class="mt-3 text-center"><span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Em nossos corações</span></div>
                         </div>
                     `;
@@ -1910,11 +2354,7 @@
                             ${item.foto ? `<img src="${item.foto}" class="w-full h-full rounded-full object-cover">` : `<i class="fas fa-user-circle text-white text-4xl"></i>`}
                         </div>
                         <h3 class="font-bold text-xl text-family-brown">${escapeHtml(item.nome)}</h3>
-                        <div class="mt-2">
-                            <span class="bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold">📅 ${escapeHtml(item.data)}</span>
-                            ${item.idade ? `<span class="bg-family-green/20 text-family-green px-3 py-1 rounded-full text-sm ml-2">🎂 ${escapeHtml(item.idade)}</span>` : ''}
-                        </div>
-                        ${item.curiosidade && !item.curiosidade.includes('✝️') ? `<div class="mt-3 p-2 bg-family-brown/10 rounded-lg"><p class="text-sm text-gray-600"><i class="fas fa-star text-family-gold mr-1"></i> ${escapeHtml(item.curiosidade)}</p></div>` : ''}
+                        <div class="mt-2"><span class="bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold">📅 ${escapeHtml(item.data)}</span>${item.idade ? `<span class="bg-family-green/20 text-family-green px-3 py-1 rounded-full text-sm ml-2">🎂 ${escapeHtml(item.idade)}</span>` : ''}</div>
                         <div class="mt-3 text-center"><span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Não se esqueça de parabenizar!</span></div>
                     </div>
                 `;
@@ -1934,23 +2374,16 @@
             });
         }
         
-        document.getElementById('close-modal')?.addEventListener('click', () => { 
-            document.getElementById('memory-modal')?.classList.add('hidden'); 
-        });
-        
-        window.closeHistoryDetailModal = () => { 
-            document.getElementById('history-detail-modal')?.classList.add('hidden'); 
-        };
+        document.getElementById('resetDataBtn').addEventListener('click', resetarDados);
         
         document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) { 
             e.preventDefault(); 
             document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' }); 
         }));
         
-        document.getElementById('resetDataBtn').addEventListener('click', resetarDados);
-        
         // INICIALIZAR
         loadMemories();
+        loadHistory();
         renderBirthdays();
         setupFilters();
     </script>
