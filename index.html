@@ -1015,8 +1015,7 @@
         </div>
     </section>
 
-    <!-- SEÇÃO DE ANIVERSÁRIOS -->
-    <!-- SEÇÃO DE ANIVERSÁRIOS COMPLETA -->
+    <!-- SEÇÃO DE ANIVERSÁRIOS - CORRIGIDA (APENAS LILIANE FALECIDA) -->
 <section id="birthdays" class="py-16 bg-white">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
@@ -1028,6 +1027,265 @@
         <div id="birthdays-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
     </div>
 </section>
+
+<style>
+    .birthday-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+    .birthday-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    .birthday-card:hover .birthday-curiosity {
+        opacity: 1;
+        max-height: 200px;
+    }
+    .birthday-curiosity {
+        transition: opacity 0.3s ease, max-height 0.3s ease;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+    }
+    .birthday-card:hover .birthday-curiosity {
+        max-height: 200px;
+        opacity: 1;
+    }
+    .in-memoria {
+        opacity: 0.85;
+        background: linear-gradient(135deg, #f5f0e8, #e8e0d0);
+    }
+</style>
+
+<<!-- SEÇÃO DE ANIVERSÁRIOS - CORRIGIDA (APENAS LILIANE FALECIDA) -->
+<section id="birthdays" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">🎂 Aniversários da Família</h2>
+            <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
+            <p class="text-gray-600 max-w-2xl mx-auto">Celebre e acompanhe os aniversários de todos os membros da família</p>
+            <p class="text-sm text-gray-500 mt-2">📅 Datas especiais para não esquecer de parabenizar!</p>
+        </div>
+        <div id="birthdays-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+    </div>
+</section>
+
+<style>
+    .birthday-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+    .birthday-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    .birthday-card:hover .birthday-curiosity {
+        opacity: 1;
+        max-height: 200px;
+    }
+    .birthday-curiosity {
+        transition: opacity 0.3s ease, max-height 0.3s ease;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+    }
+    .birthday-card:hover .birthday-curiosity {
+        max-height: 200px;
+        opacity: 1;
+    }
+    .in-memoria {
+        opacity: 0.85;
+        background: linear-gradient(135deg, #f5f0e8, #e8e0d0);
+    }
+</style>
+
+<!-- SEÇÃO DE ANIVERSÁRIOS - CORRIGIDA (APENAS LILIANE FALECIDA) -->
+<section id="birthdays" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-script text-family-brown mb-3">🎂 Aniversários da Família</h2>
+            <div class="w-24 h-1 bg-family-gold mx-auto mb-4"></div>
+            <p class="text-gray-600 max-w-2xl mx-auto">Celebre e acompanhe os aniversários de todos os membros da família</p>
+            <p class="text-sm text-gray-500 mt-2">📅 Datas especiais para não esquecer de parabenizar!</p>
+        </div>
+        <div id="birthdays-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+    </div>
+</section>
+
+<style>
+    .birthday-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+    .birthday-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    .birthday-card:hover .birthday-curiosity {
+        opacity: 1;
+        max-height: 200px;
+    }
+    .birthday-curiosity {
+        transition: opacity 0.3s ease, max-height 0.3s ease;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+    }
+    .birthday-card:hover .birthday-curiosity {
+        max-height: 200px;
+        opacity: 1;
+    }
+    .in-memoria {
+        opacity: 0.85;
+        background: linear-gradient(135deg, #f5f0e8, #e8e0d0);
+    }
+</style>
+
+<script>
+    // ============================================================
+    // ANIVERSÁRIOS - APENAS LILIANE É FALECIDA
+    // ============================================================
+    
+    const BIRTHDAY_ITEMS = [
+        // 1ª GERAÇÃO - AVÓS
+        { id: 1, nome: "Vovó Nelsa", data: "03/12", idade: "", foto: null, curiosidade: "O coração da família", falecido: false },
+        { id: 2, nome: "Vovô Antonio Felipe", data: "26/11", idade: "", foto: null, curiosidade: "Trabalhador e dedicado", falecido: false },
+        
+        // PARCEIROS DOS AVÓS
+        { id: 3, nome: "Raimundo", data: "Sem data", idade: "", foto: null, curiosidade: "", falecido: false },
+        { id: 4, nome: "Chico", data: "Sem data", idade: "", foto: null, curiosidade: "", falecido: false },
+        { id: 5, nome: "Claudenia", data: "27/11", idade: "", foto: null, curiosidade: "", falecido: false },
+        { id: 6, nome: "Ângela", data: "Sem data", idade: "", foto: null, curiosidade: "", falecido: false },
+        { id: 7, nome: "Clairto", data: "26/08", idade: "", foto: null, curiosidade: "", falecido: false },
+        { id: 8, nome: "Erisvaldo", data: "Sem data", idade: "", foto: null, curiosidade: "", falecido: false },
+        
+        // 2ª GERAÇÃO - FILHOS
+        { id: 9, nome: "Cleide", data: "12/10", idade: "", foto: null, curiosidade: "Alegre, amava costurar", falecido: false },
+        { id: 10, nome: "Maria Pastora", data: "20/12", idade: "", foto: null, curiosidade: "Fotógrafa oficial", falecido: false },
+        { id: 11, nome: "Jovani", data: "30/03", idade: "", foto: null, curiosidade: "Agricultor dedicado", falecido: false },
+        { id: 12, nome: "Antônio Claudio", data: "08/04", idade: "", foto: null, curiosidade: "O mais engraçado", falecido: false },
+        { id: 13, nome: "Odete", data: "31/05", idade: "", foto: null, curiosidade: "Razão das gargalhadas", falecido: false },
+        { id: 14, nome: "Auricélia", data: "04/05", idade: "", foto: null, curiosidade: "Mora perto da avó", falecido: false },
+        
+        // PARCEIROS DOS FILHOS
+        { id: 15, nome: "Uliclecia", data: "Sem data", idade: "", foto: null, curiosidade: "", falecido: false },
+        { id: 16, nome: "Iago", data: "Sem data", idade: "", foto: null, curiosidade: "", falecido: false },
+        { id: 17, nome: "Milena", data: "10/11", idade: "", foto: null, curiosidade: "", falecido: false },
+        { id: 18, nome: "Ítalo", data: "Sem data", idade: "", foto: null, curiosidade: "", falecido: false },
+        { id: 19, nome: "Tiago", data: "Sem data", idade: "", foto: null, curiosidade: "", falecido: false },
+        { id: 20, nome: "Jamile", data: "Sem data", idade: "", foto: null, curiosidade: "", falecido: false },
+        { id: 21, nome: "Nicole", data: "Sem data", idade: "", foto: null, curiosidade: "", falecido: false },
+        { id: 22, nome: "João", data: "Sem data", idade: "", foto: null, curiosidade: "", falecido: false },
+        
+        // 3ª GERAÇÃO - NETOS
+        { id: 23, nome: "Clécio", data: "08/11", idade: "", foto: null, curiosidade: "Equilíbrio entre calmaria e estresse", falecido: false },
+        { id: 24, nome: "Micaele", data: "24/09", idade: "", foto: null, curiosidade: "Alegria em pessoa", falecido: false },
+        { id: 25, nome: "Liliane", data: "", idade: "", foto: null, curiosidade: "✝️ Nossa anjinha da guarda", falecido: true },
+        { id: 26, nome: "Rafael", data: "21/10", idade: "", foto: null, curiosidade: "Festeiro oficial", falecido: false },
+        { id: 27, nome: "Kellery", data: "06/12", idade: "", foto: null, curiosidade: "Profissional das gravações", falecido: false },
+        { id: 28, nome: "Rayane", data: "08/11", idade: "", foto: null, curiosidade: "Costureira oficial", falecido: false },
+        { id: 29, nome: "Michele", data: "26/03", idade: "", foto: null, curiosidade: "Fisioterapeuta oficial", falecido: false },
+        { id: 30, nome: "Kellvy", data: "28/12", idade: "", foto: null, curiosidade: "Memória de peixe", falecido: false },
+        { id: 31, nome: "Alex", data: "28/08", idade: "", foto: null, curiosidade: "Ex-festeiro trabalhador", falecido: false },
+        { id: 32, nome: "Geovana", data: "11/10", idade: "", foto: null, curiosidade: "Não perde um domingo", falecido: false },
+        { id: 33, nome: "Stefany", data: "26/05", idade: "", foto: null, curiosidade: "Companheira da vó", falecido: false },
+        { id: 34, nome: "Kaike", data: "02/12", idade: "", foto: null, curiosidade: "Reservado e trabalhador", falecido: false },
+        { id: 35, nome: "Kellton", data: "11/10", idade: "17 anos", foto: "imagens/eu2.jpg", curiosidade: "Programador da família! 🎮💻", falecido: false },
+        { id: 36, nome: "Anna Luizza", data: "14/01", idade: "", foto: null, curiosidade: "Coração gigante", falecido: false },
+        { id: 37, nome: "Caio", data: "20/04", idade: "", foto: null, curiosidade: "Energia contagiante", falecido: false },
+        { id: 38, nome: "Anna Rafaella", data: "26/02", idade: "", foto: null, curiosidade: "Xodó da vó", falecido: false },
+        { id: 39, nome: "Pedro Felipe", data: "Sem data", idade: "", foto: null, curiosidade: "Caçulinha da família", falecido: false },
+    ];
+    
+    let birthdayItems = [...BIRTHDAY_ITEMS];
+    
+    function escapeHtml(text) { 
+        if(!text) return '';
+        const div = document.createElement('div'); 
+        div.textContent = text; 
+        return div.innerHTML; 
+    }
+    
+    function renderBirthdays() {
+        const container = document.getElementById('birthdays-container');
+        if (!container) return;
+        
+        const comData = birthdayItems.filter(item => item.data && item.data !== "");
+        const semData = birthdayItems.filter(item => !item.data || item.data === "");
+        
+        comData.sort((a, b) => {
+            const [da, ma] = a.data.split('/');
+            const [db, mb] = b.data.split('/');
+            if (ma === mb) return parseInt(da) - parseInt(db);
+            return parseInt(ma) - parseInt(mb);
+        });
+        
+        const todosOrdenados = [...comData, ...semData];
+        
+        container.innerHTML = todosOrdenados.map(item => {
+            // APENAS LILIANE É FALECIDA
+            if (item.falecido === true) {
+                return `
+                    <div class="birthday-card in-memoria rounded-2xl p-5 text-center shadow-md border border-gray-400 hover:shadow-xl transition-all">
+                        <div class="w-24 h-24 bg-gray-500 rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                            <i class="fas fa-cloud text-white text-4xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-gray-700">${escapeHtml(item.nome)} ✝️</h3>
+                        <div class="mt-2">
+                            <span class="bg-gray-500 text-white px-3 py-1 rounded-full text-sm">📅 Em memória</span>
+                        </div>
+                        <div class="mt-3 text-center">
+                            <span class="text-xs text-gray-500"><i class="fas fa-gift"></i> Em nossos corações</span>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Caso sem data (vivos)
+            if (!item.data || item.data === "") {
+                return `
+                    <div class="birthday-card bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-5 text-center shadow-md border border-gray-300 hover:shadow-xl transition-all">
+                        <div class="w-24 h-24 bg-gray-400 rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                            <i class="fas fa-user text-white text-4xl"></i>
+                        </div>
+                        <h3 class="font-bold text-xl text-gray-700">${escapeHtml(item.nome)}</h3>
+                        <div class="mt-2">
+                            <span class="bg-gray-400 text-white px-3 py-1 rounded-full text-sm">📅 Data não informada</span>
+                        </div>
+                        <div class="mt-3 text-center">
+                            <span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Aguardando data</span>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Card normal para vivos com data
+            return `
+                <div class="birthday-card bg-gradient-to-br from-family-cream to-white rounded-2xl p-5 text-center shadow-md border border-family-gold/30 hover:shadow-xl transition-all">
+                    <div class="w-24 h-24 bg-gradient-to-br from-family-gold to-family-brown rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                        ${item.foto ? `<img src="${item.foto}" class="w-full h-full rounded-full object-cover">` : `<i class="fas fa-user-circle text-white text-4xl"></i>`}
+                    </div>
+                    <h3 class="font-bold text-xl text-family-brown">${escapeHtml(item.nome)}</h3>
+                    <div class="mt-2">
+                        <span class="bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold">📅 ${escapeHtml(item.data)}</span>
+                        ${item.idade ? `<span class="bg-family-green/20 text-family-green px-3 py-1 rounded-full text-sm ml-2">🎂 ${escapeHtml(item.idade)}</span>` : ''}
+                    </div>
+                    ${item.curiosidade ? `
+                        <div class="birthday-curiosity mt-3 p-2 bg-family-brown/10 rounded-lg">
+                            <p class="text-sm text-gray-600"><i class="fas fa-star text-family-gold mr-1"></i> ${escapeHtml(item.curiosidade)}</p>
+                        </div>
+                    ` : ''}
+                    <div class="mt-3 text-center">
+                        <span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Não se esqueça de parabenizar!</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+    
+    // Inicializar
+    renderBirthdays();
+</script>
 
 <style>
     .birthday-card {
@@ -2013,66 +2271,7 @@
             }
         ];
         
-        // ============================================================
-        // ANIVERSÁRIOS
-        // ============================================================
         
-        // ============================================================
-    // ANIVERSÁRIOS COMPLETOS - COM TODAS AS INFORMAÇÕES
-    // ============================================================
-    
-    const BIRTHDAY_ITEMS = [
-        // ========== 1ª GERAÇÃO - AVÓS ==========
-        { id: 1, nome: "Vovó Nelsa", data: "03/12", idade: "", foto: null, curiosidade: "O coração da família e nosso porto seguro, sempre com as portas abertas e muito importante para nós.", geracao: "avos" },
-        { id: 2, nome: "Vovô Antonio Felipe ✝️", data: "26/11", idade: "", foto: null, curiosidade: "Muito trabalhador e dedicado, amava profundamente a sua família, sendo um homem eterno e especial para todos nós.", geracao: "avos" },
-        
-        // ========== PARCEIROS DOS AVÓS (1ª GERAÇÃO) ==========
-        { id: 3, nome: "Raimundo", data: "", idade: "", foto: null, curiosidade: "", geracao: "parceiros_avos" },
-        { id: 4, nome: "Chico", data: "", idade: "", foto: null, curiosidade: "", geracao: "parceiros_avos" },
-        { id: 5, nome: "Claudenia", data: "27/11", idade: "", foto: null, curiosidade: "", geracao: "parceiros_avos" },
-        { id: 6, nome: "Ângela", data: "", idade: "", foto: null, curiosidade: "", geracao: "parceiros_avos" },
-        { id: 7, nome: "Clairto", data: "26/08", idade: "", foto: null, curiosidade: "", geracao: "parceiros_avos" },
-        { id: 8, nome: "Erisvaldo", data: "", idade: "", foto: null, curiosidade: "", geracao: "parceiros_avos" },
-        
-        // ========== 2ª GERAÇÃO - FILHOS ==========
-        { id: 9, nome: "Cleide", data: "12/10", idade: "", foto: null, curiosidade: "A mais velha dos filhos", geracao: "filhos" },
-        { id: 10, nome: "Maria Pastora", data: "20/12", idade: "", foto: null, curiosidade: "A fotógrafa oficial da família", geracao: "filhos" },
-        { id: 11, nome: "Jovani", data: "30/03", idade: "", foto: null, curiosidade: "Agricultor dedicado", geracao: "filhos" },
-        { id: 12, nome: "Antônio Claudio", data: "08/04", idade: "", foto: null, curiosidade: "O mais engraçado", geracao: "filhos" },
-        { id: 13, nome: "Odete", data: "31/05", idade: "", foto: null, curiosidade: "A razão das nossas gargalhadas", geracao: "filhos" },
-        { id: 14, nome: "Auricélia", data: "04/05", idade: "", foto: null, curiosidade: "Mora perto da avó e traz muita alegria", geracao: "filhos" },
-        
-        // ========== PARCEIROS DOS FILHOS (2ª GERAÇÃO) ==========
-        { id: 15, nome: "Uliclecia", data: "", idade: "", foto: null, curiosidade: "", geracao: "parceiros_filhos" },
-        { id: 16, nome: "Iago", data: "", idade: "", foto: null, curiosidade: "", geracao: "parceiros_filhos" },
-        { id: 17, nome: "Milena", data: "10/11", idade: "", foto: null, curiosidade: "", geracao: "parceiros_filhos" },
-        { id: 18, nome: "Ítalo", data: "", idade: "", foto: null, curiosidade: "", geracao: "parceiros_filhos" },
-        { id: 19, nome: "Tiago", data: "", idade: "", foto: null, curiosidade: "", geracao: "parceiros_filhos" },
-        { id: 20, nome: "Jamile", data: "", idade: "", foto: null, curiosidade: "", geracao: "parceiros_filhos" },
-        { id: 21, nome: "Nicole", data: "", idade: "", foto: null, curiosidade: "", geracao: "parceiros_filhos" },
-        { id: 22, nome: "João", data: "", idade: "", foto: null, curiosidade: "", geracao: "parceiros_filhos" },
-        
-        // ========== 3ª GERAÇÃO - NETOS (COM AS FRASES) ==========
-        { id: 23, nome: "Clécio", data: "08/11", idade: "", foto: null, curiosidade: "O equilíbrio entre a calmaria e o estresse. Mesmo reservado e na dele, sua presença é um verdadeiro presente para a família.", geracao: "netos" },
-        { id: 24, nome: "Micaele", data: "24/09", idade: "", foto: null, curiosidade: "A alegria em pessoa, sempre presente e pronta para se divertir. Adora provocar as tias, especialmente a tia Odete, sua grande parceira.", geracao: "netos" },
-        { id: 25, nome: "Liliane", data: "", idade: "", foto: null, curiosidade: "✝️ In memoriam - Uma bebezinha que virou o nosso anjinho da guarda e cujo amor sempre guiará a nossa família.", geracao: "netos" },
-        { id: 26, nome: "Rafael", data: "21/10", idade: "", foto: null, curiosidade: "O festeiro oficial da família. Só está bem com um copo na mão, trazendo alegria e garantindo as maiores risadas em nossos encontros.", geracao: "netos" },
-        { id: 27, nome: "Kellery", data: "06/12", idade: "", foto: null, curiosidade: "Pode até sumir em alguns domingos, mas nunca perde um bom encontro. Sempre nos bastidores, ela é a nossa profissional das gravações, registrando cada risada nossa.", geracao: "netos" },
-        { id: 28, nome: "Rayane", data: "08/11", idade: "", foto: null, curiosidade: "Nossa costureira oficial, cheia de talento e alegria! Sempre envolvida em todas as brincadeiras e com seu jeito super legal.", geracao: "netos" },
-        { id: 29, nome: "Michele", data: "26/03", idade: "", foto: null, curiosidade: "A nossa fisioterapeuta e nossa designer de sobrancelha oficial! Alegria em pessoa e nunca fica de fora de uma boa bagunça.", geracao: "netos" },
-        { id: 30, nome: "Kellvy", data: "28/12", idade: "", foto: null, curiosidade: "Dono da maior memória de peixe da família, ele pode até esquecer das coisas e ser um pouco distante, mas nunca esquece o caminho para tomar um bom café na vó.", geracao: "netos" },
-        { id: 31, nome: "Alex", data: "28/08", idade: "", foto: null, curiosidade: "O nosso ex-festeiro oficial! É um homem super trabalhador e, mesmo na correria, faz questão de estar sempre presente e dar aquela passadinha na casa da vó.", geracao: "netos" },
-        { id: 32, nome: "Geovana", data: "11/10", idade: "", foto: null, curiosidade: "Não perde um domingo na casa da vó por nada, marcando presença com seu jeito sempre animado e contagiante.", geracao: "netos" },
-        { id: 33, nome: "Stefany", data: "26/05", idade: "", foto: null, curiosidade: "Companheira oficial da vó nos finais de semana! Sempre alegre, divertida e uma das cacheadas da família!", geracao: "netos" },
-        { id: 34, nome: "Kaike", data: "02/12", idade: "", foto: null, curiosidade: "Mais reservado e tímido, mas sempre trabalhador ao lado do pai. Ele marca presença de vez em quando nos domingos, trazendo seu jeito tranquilo para a casa da vó.", geracao: "netos" },
-        { id: 35, nome: "Kellton", data: "11/10", idade: "17 anos", foto: "imagens/eu2.jpg", curiosidade: "O programador da família! Adora tecnologia e é apaixonado por jogos. Sempre tem uma piada pronta e um sorriso no rosto! 🎮💻", geracao: "netos" },
-        { id: 36, nome: "Anna Luizza", data: "14/01", idade: "", foto: null, curiosidade: "Mais reservada, tímida e com um jeitinho só dela de falar, mas dona de um coração gigante! Ela é super alegre, divertida e está sempre com um sorriso no rosto para qualquer situação.", geracao: "netos" },
-        { id: 37, nome: "Caio", data: "20/04", idade: "", foto: null, curiosidade: "Mais na dele, mas com uma energia super contagiante! Dividido entre o futebol com os amigos e o videogame com o pai, gosta de tirar aquela onda com a vó.", geracao: "netos" },
-        { id: 38, nome: "Anna Rafaella", data: "26/02", idade: "", foto: null, curiosidade: "Alegria e diversão em pessoa! Sempre presente, ela adora se divertir com as primas mais novas e é o verdadeiro xodó da vó, estando sempre grudadinha e ao lado dela.", geracao: "netos" },
-        { id: 39, nome: "Pedro Felipe", data: "", idade: "", foto: null, curiosidade: "O caçulinha e o pequenininho da família! Com seu jeito único, ele espalha alegria por onde passa, adora brincar com os primos e primas e é o companheiro oficial de bagunça da tia Odete.", geracao: "netos" },
-    ];
-    
-    let birthdayItems = [...BIRTHDAY_ITEMS];
     
     function renderBirthdays() {
         const container = document.getElementById('birthdays-container');
