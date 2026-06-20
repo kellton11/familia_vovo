@@ -1044,15 +1044,11 @@
         max-height: 200px;
     }
     .birthday-curiosity {
-        transition: opacity 0.3s ease, max-height 0.3s ease;
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-    }
-    .birthday-card:hover .birthday-curiosity {
-        max-height: 200px;
-        opacity: 1;
-    }
+    transition: opacity 0.3s ease;
+    max-height: 500px;
+    opacity: 1;
+    overflow: visible;
+}
   
 </style>
 
@@ -1063,52 +1059,68 @@
     
     const BIRTHDAY_ITEMS = [
         // 1ª GERAÇÃO - AVÓS
-        { id: 1, nome: "Vovó Nelsa", data: "03/12", idade: "", foto: "imagens/10.jpeg", curiosidade: "O coração da família", falecido: false },
-        { id: 2, nome: "Vovô Antonio Felipe", data: "26/11", idade: "", foto: "imagens/33.jpeg", curiosidade: "Trabalhador e dedicado", falecido: false },
-        
-        // PARCEIROS DOS AVÓS
-        
-        { id: 5, nome: "Claudenia", data: "27/11", idade: "", foto: "", curiosidade: "", falecido: false },
-        { id: 6, nome: "Ângela", data: "Sem data", idade: "", foto: "pessoas/angela.jpeg", curiosidade: "", falecido: false },
-        { id: 7, nome: "Clairto", data: "26/08", idade: "", foto: "pessoas/clairton.jpeg", curiosidade: "", falecido: false },
-        { id: 8, nome: "Erisvaldo", data: "Sem data", idade: "", foto: "", curiosidade: "", falecido: false },
-        
-        // 2ª GERAÇÃO - FILHOS
-        { id: 9, nome: "Cleide", data: "12/10", idade: "", foto: "pessoas/clede.jpeg", curiosidade: "Alegre, amava costurar", falecido: false },
-        { id: 10, nome: "Maria Pastora", data: "20/12", idade: "", foto: "pessoas/pastora.jpeg", curiosidade: "Fotógrafa oficial", falecido: false },
-        { id: 11, nome: "Jovani", data: "30/03", idade: "", foto: "", curiosidade: "Agricultor dedicado", falecido: false },
-        { id: 12, nome: "Antônio Claudio", data: "08/04", idade: "", foto: "pessoas/claudio.jpeg", curiosidade: "O mais engraçado", falecido: false },
-        { id: 13, nome: "Odete", data: "31/05", idade: "", foto: "pessoas/odete.jpeg", curiosidade: "Razão das gargalhadas", falecido: false },
-        { id: 14, nome: "Auricélia", data: "04/05", idade: "", foto: "imagens/23.jpeg", curiosidade: "Mora perto da avó", falecido: false },
-        
-        // PARCEIROS DOS FILHOS
-        { id: 15, nome: "Uliclecia", data: "Sem data", idade: "", foto: "pessoas/uliclecie.jpeg", curiosidade: "", falecido: false },
-        { id: 16, nome: "Iago", data: "Sem data", idade: "", foto: "pessoas/iago.jpeg", curiosidade: "", falecido: false },
-        { id: 17, nome: "Milena", data: "10/11", idade: "", foto: "pessoas/milena.jpeg", curiosidade: "", falecido: false },
-        { id: 18, nome: "Ítalo Alencar", data: "Sem data", idade: "", foto: "", curiosidade: "", falecido: false },
-        { id: 19, nome: "Tiago", data: "Sem data", idade: "", foto: "", curiosidade: "", falecido: false },
-        { id: 20, nome: "Jamile", data: "Sem data", idade: "", foto: "", curiosidade: "", falecido: false },
-        { id: 21, nome: "Nicole", data: "Sem data", idade: "", foto: "pessoas/nicoly.jpeg", curiosidade: "", falecido: false },
-        { id: 22, nome: "João", data: "Sem data", idade: "", foto: "", curiosidade: "", falecido: false },
-        
-        // 3ª GERAÇÃO - NETOS
-        { id: 23, nome: "Clécio", data: "08/11", idade: "", foto: "pessoas/clecio.jpeg", curiosidade: "Equilíbrio entre calmaria e estresse", falecido: false },
-        { id: 24, nome: "Micaele", data: "24/09", idade: "", foto: "pessoas/micaele.jpeg", curiosidade: "Alegria em pessoa", falecido: false },
-        { id: 25, nome: "Liliane", data: "Sem data", idade: "", foto: "pessoas/liliane.jpeg", curiosidade: "✝️ Nossa anjinha da guarda", falecido: false },
-        { id: 26, nome: "Rafael", data: "21/10", idade: "", foto: "pessoas/rafael.jpeg", curiosidade: "Festeiro oficial", falecido: false },
-        { id: 27, nome: "Kellry", data: "06/12", idade: "", foto: "pessoas/kellry.jpeg", curiosidade: "Profissional das gravações", falecido: false },
-        { id: 28, nome: "Rayane", data: "08/11", idade: "", foto: "pessoas/rayane.jpeg", curiosidade: "Costureira oficial", falecido: false },
-        { id: 29, nome: "Michele", data: "26/03", idade: "", foto: "pessoas/michele.jpeg", curiosidade: "Fisioterapeuta oficial", falecido: false },
-        { id: 30, nome: "Kellvy", data: "28/12", idade: "", foto: "pessoas/kellvy.jpeg", curiosidade: "Memória de peixe", falecido: false },
-        { id: 31, nome: "Alex", data: "28/08", idade: "", foto: "pessoas/alex.jpeg", curiosidade: "Ex-festeiro trabalhador", falecido: false },
-        { id: 32, nome: "Geovana", data: "11/10", idade: "", foto: "pessoas/geovana.jpeg", curiosidade: "Não perde um domingo", falecido: false },
-        { id: 33, nome: "Stefany", data: "26/05", idade: "", foto: "pessoas/stefany.jpeg", curiosidade: "Companheira da vó", falecido: false },
-        { id: 34, nome: "Kaike", data: "02/12", idade: "", foto: "pessoas/kaike.jpeg", curiosidade: "Reservado e trabalhador", falecido: false },
-        { id: 35, nome: "Kellton", data: "11/10", idade: "", foto: "imagens/1.jpg", curiosidade: "Programador da família! 🎮💻", falecido: false },
-        { id: 36, nome: "Anna Luizza", data: "14/01", idade: "", foto: "pessoas/luizza.jpeg", curiosidade: "Coração gigante", falecido: false },
-        { id: 37, nome: "Caio", data: "20/04", idade: "", foto: "pessoas/caio.jpeg", curiosidade: "Energia contagiante", falecido: false },
-        { id: 38, nome: "Anna Rafaella", data: "26/02", idade: "", foto: "pessoas/rafaela.jpeg", curiosidade: "Xodó da vó", falecido: false },
-        { id: 39, nome: "Pedro Felipe", data: "Sem data", idade: "", foto: "pessoas/felipe.jpeg", curiosidade: "Caçulinha da família", falecido: false },
+        // AVÓS
+{ id: 1, nome: "Vovó Nelsa", data: "03/12", idade: "", foto: "imagens/10.jpeg", curiosidade: "O coração da família", falecido: false },
+{ id: 2, nome: "Vovô Antonio Felipe", data: "26/11", idade: "", foto: "imagens/33.jpeg", curiosidade: "Trabalhador e dedicado", falecido: false },
+
+// PARCEIROS DOS AVÓS
+{ id: 5, nome: "Claudenia", data: "27/11", idade: "", foto: "", curiosidade: "", falecido: false },
+{ id: 6, nome: "Ângela", data: "Sem data", idade: "", foto: "pessoas/angela.jpeg", curiosidade: "", falecido: false },
+{ id: 7, nome: "Clairto", data: "26/08", idade: "", foto: "pessoas/clairton.jpeg", curiosidade: "", falecido: false },
+{ id: 8, nome: "Erisvaldo", data: "Sem data", idade: "", foto: "", curiosidade: "", falecido: false },
+
+// 2ª GERAÇÃO - FILHOS
+{ id: 9, nome: "Cleide", data: "12/10", idade: "", foto: "pessoas/clede.jpeg", curiosidade: "Alegre, amava costurar", falecido: false },
+{ id: 10, nome: "Maria Pastora", data: "20/12", idade: "", foto: "pessoas/pastora.jpeg", curiosidade: "Fotógrafa oficial", falecido: false },
+{ id: 11, nome: "Jovani", data: "30/03", idade: "", foto: "", curiosidade: "Agricultor dedicado", falecido: false },
+{ id: 12, nome: "Antônio Claudio", data: "08/04", idade: "", foto: "pessoas/claudio.jpeg", curiosidade: "O mais engraçado", falecido: false },
+{ id: 13, nome: "Odete", data: "31/05", idade: "", foto: "pessoas/odete.jpeg", curiosidade: "Razão das gargalhadas", falecido: false },
+{ id: 14, nome: "Auricélia", data: "04/05", idade: "", foto: "imagens/23.jpeg", curiosidade: "Mora perto da avó", falecido: false },
+
+// PARCEIROS DOS FILHOS
+{ id: 15, nome: "Uliclecia", data: "Sem data", idade: "", foto: "pessoas/uliclecie.jpeg", curiosidade: "", falecido: false },
+{ id: 16, nome: "Iago", data: "Sem data", idade: "", foto: "pessoas/iago.jpeg", curiosidade: "", falecido: false },
+{ id: 17, nome: "Milena", data: "10/11", idade: "", foto: "pessoas/milena.jpeg", curiosidade: "", falecido: false },
+{ id: 18, nome: "Ítalo Alencar", data: "Sem data", idade: "", foto: "", curiosidade: "", falecido: false },
+{ id: 19, nome: "Tiago", data: "Sem data", idade: "", foto: "", curiosidade: "", falecido: false },
+{ id: 20, nome: "Jamile", data: "Sem data", idade: "", foto: "", curiosidade: "", falecido: false },
+{ id: 21, nome: "Nicole", data: "Sem data", idade: "", foto: "pessoas/nicoly.jpeg", curiosidade: "", falecido: false },
+{ id: 22, nome: "João", data: "Sem data", idade: "", foto: "", curiosidade: "", falecido: false },
+
+// 3ª GERAÇÃO - NETOS
+{ id: 23, nome: "Clécio", data: "08/11", idade: "", foto: "pessoas/clecio.jpeg", curiosidade: "O equilíbrio entre a calmaria e o estresse. Reservado, mas um verdadeiro presente para a família.", falecido: false },
+
+{ id: 24, nome: "Micaele", data: "24/09", idade: "", foto: "pessoas/micaele.jpeg", curiosidade: "Alegria em pessoa, sempre pronta para se divertir e fazer todos sorrirem.", falecido: false },
+
+{ id: 25, nome: "Liliane", data: "Sem data", idade: "", foto: "pessoas/liliane.jpeg", curiosidade: "✝️ Nossa anjinha da guarda, cujo amor continuará guiando nossa família.", falecido: false },
+
+{ id: 26, nome: "Rafael", data: "21/10", idade: "", foto: "pessoas/rafael.jpeg", curiosidade: "O festeiro oficial da família, responsável por muitas risadas nos encontros.", falecido: false },
+
+{ id: 27, nome: "Kellry", data: "06/12", idade: "", foto: "pessoas/kellry.jpeg", curiosidade: "Nossa profissional das gravações, registrando os melhores momentos da família.", falecido: false },
+
+{ id: 28, nome: "Rayane", data: "08/11", idade: "", foto: "pessoas/rayane.jpeg", curiosidade: "Nossa costureira oficial, cheia de talento, alegria e sempre presente nas brincadeiras.", falecido: false },
+
+{ id: 29, nome: "Michele", data: "26/03", idade: "", foto: "pessoas/michele.jpeg", curiosidade: "Fisioterapeuta e designer de sobrancelhas da família. Alegria em pessoa.", falecido: false },
+
+{ id: 30, nome: "Kellvy", data: "28/12", idade: "", foto: "pessoas/kellvy.jpeg", curiosidade: "Dono da famosa memória de peixe, mas nunca esquece o café na casa da vó.", falecido: false },
+
+{ id: 31, nome: "Alex", data: "28/08", idade: "", foto: "pessoas/alex.jpeg", curiosidade: "Ex-festeiro oficial e trabalhador dedicado, sempre dando uma passadinha na casa da vó.", falecido: false },
+
+{ id: 32, nome: "Geovana", data: "11/10", idade: "", foto: "pessoas/geovana.jpeg", curiosidade: "Não perde um domingo na casa da vó e espalha alegria por onde passa.", falecido: false },
+
+{ id: 33, nome: "Stefany", data: "26/05", idade: "", foto: "pessoas/stefany.jpeg", curiosidade: "Companheira oficial da vó nos finais de semana e uma das cacheadas da família.", falecido: false },
+
+{ id: 34, nome: "Kaike", data: "02/12", idade: "", foto: "pessoas/kaike.jpeg", curiosidade: "Reservado e trabalhador, sempre ajudando o pai e marcando presença nos encontros.", falecido: false },
+
+{ id: 35, nome: "Kellton", data: "11/10", idade: "", foto: "imagens/1.jpg", curiosidade: "Programador da família! 🎮💻", falecido: false },
+
+{ id: 36, nome: "Anna Luizza", data: "14/01", idade: "", foto: "pessoas/luizza.jpeg", curiosidade: "Tímida e reservada, mas dona de um coração gigante e de um lindo sorriso.", falecido: false },
+
+{ id: 37, nome: "Caio", data: "20/04", idade: "", foto: "pessoas/caio.jpeg", curiosidade: "Entre o futebol e o videogame, leva sua energia contagiante para todos os lugares.", falecido: false },
+
+{ id: 38, nome: "Anna Rafaella", data: "26/02", idade: "", foto: "pessoas/rafaela.jpeg", curiosidade: "O verdadeiro xodó da vó, sempre alegre e grudada com a família.", falecido: false },
+
+{ id: 39, nome: "Pedro Felipe", data: "Sem data", idade: "", foto: "pessoas/felipe.jpeg", curiosidade: "O caçulinha da família, companheiro oficial das brincadeiras e da bagunça.", falecido: false },
     ];
     
     let birthdayItems = [...BIRTHDAY_ITEMS];
@@ -1149,10 +1161,13 @@ if (item.falecido === true) {
                 <span class="bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold">📅 Em memória</span>
             </div>
             ${item.curiosidade ? `
-                <div class="birthday-curiosity mt-3 p-2 bg-family-brown/10 rounded-lg">
-                    <p class="text-sm text-gray-600"><i class="fas fa-star text-family-gold mr-1"></i> ${escapeHtml(item.curiosidade)}</p>
-                </div>
-            ` : ''}
+    <div class="mt-3 p-2 bg-family-brown/10 rounded-lg">
+        <p class="text-sm text-gray-600">
+            <i class="fas fa-star text-family-gold mr-1"></i>
+            ${escapeHtml(item.curiosidade)}
+        </p>
+    </div>
+` : ''}
             <div class="mt-3 text-center">
                 <span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Em nossos corações</span>
             </div>
@@ -1208,20 +1223,21 @@ if (item.falecido === true) {
 
 <style>
     .birthday-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer;
-    }
-    .birthday-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    }
-    .birthday-card:hover .birthday-curiosity {
-        opacity: 1;
-        max-height: 100px;
-    }
-    .birthday-curiosity {
-        transition: opacity 0.3s ease, max-height 0.3s ease;
-    }
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.birthday-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.birthday-curiosity {
+    display: block;
+    opacity: 1;
+    max-height: none;
+    overflow: visible;
+}
 </style>
 
     <section id="recipes" class="py-16 bg-family-cream">
@@ -2222,32 +2238,33 @@ if (item.falecido === true) {
                             <span class="bg-gray-400 text-white px-3 py-1 rounded-full text-sm">📅 Data não informada</span>
                         </div>
                         ${item.curiosidade ? `
-                            <div class="birthday-curiosity mt-3 p-2 bg-gray-200 rounded-lg opacity-80">
-                                <p class="text-sm text-gray-600"><i class="fas fa-star text-gray-500 mr-1"></i> ${escapeHtml(item.curiosidade)}</p>
-                            </div>
-                        ` : ''}
+    <div class="mt-3 p-2 bg-family-brown/10 rounded-lg">
+        <p class="text-sm text-gray-600">
+            <i class="fas fa-star text-family-gold mr-1"></i>
+            ${escapeHtml(item.curiosidade)}
+        </p>
+    </div>
+` : ''}
                         <div class="mt-3 text-center"><span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Em nossos corações</span></div>
                     </div>
                 `;
             }
             return `
-                <div class="birthday-card bg-gradient-to-br from-family-cream to-white rounded-2xl p-5 text-center shadow-md border border-family-gold/30 hover:shadow-xl transition-all">
-                    <div class="w-24 h-24 bg-gradient-to-br from-family-gold to-family-brown rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
-                        ${item.foto ? `<img src="${item.foto}" class="w-full h-full rounded-full object-cover">` : `<i class="fas fa-user-circle text-white text-4xl"></i>`}
-                    </div>
-                    <h3 class="font-bold text-xl text-family-brown">${escapeHtml(item.nome)}</h3>
-                    <div class="mt-2">
-                        <span class="bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold">📅 ${escapeHtml(item.data)}</span>
-                        ${item.idade ? `<span class="bg-family-green/20 text-family-green px-3 py-1 rounded-full text-sm ml-2">🎂 ${escapeHtml(item.idade)}</span>` : ''}
-                    </div>
-                    ${item.curiosidade ? `
-                        <div class="birthday-curiosity mt-3 p-2 bg-family-brown/10 rounded-lg opacity-90 hover:opacity-100 transition-opacity">
-                            <p class="text-sm text-gray-600"><i class="fas fa-star text-family-gold mr-1"></i> ${escapeHtml(item.curiosidade)}</p>
-                        </div>
-                    ` : ''}
-                    <div class="mt-3 text-center">
-                        <span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Não se esqueça de parabenizar!</span>
-                    </div>
+                ${item.curiosidade ? `
+    <div class="mt-3 p-2 bg-family-brown/10 rounded-lg">
+        <p class="text-sm text-gray-600">
+            <i class="fas fa-star text-family-gold mr-1"></i>
+            ${escapeHtml(item.curiosidade)}
+        </p>
+    </div>
+` : `
+    <div class="mt-3 text-center">
+        <span class="text-sm text-gray-500">
+            🎁 
+        </span>
+    </div>
+`}
+}
                 </div>
             `;
         }).join('');
@@ -2719,23 +2736,62 @@ if (item.falecido === true) {
                             </div>
                             <h3 class="font-bold text-xl text-gray-600">${escapeHtml(item.nome)}</h3>
                             <div class="mt-2"><span class="bg-gray-400 text-white px-3 py-1 rounded-full text-sm">${escapeHtml(item.curiosidade || 'Em memória')}</span></div>
-                            <div class="mt-3 text-center"><span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Em nossos corações</span></div>
-                        </div>
+                            ${item.curiosidade ? `
+    <div class="mt-3 p-2 bg-family-brown/10 rounded-lg">
+        <p class="text-sm text-gray-600">
+            <i class="fas fa-star text-family-gold mr-1"></i>
+            ${escapeHtml(item.curiosidade)}
+        </p>
+    </div>
+` : `
+    <div class="mt-3 p-2 bg-red-100 rounded-lg">
+    <p class="text-sm text-red-600">
+        TESTE DE LEGENDA
+    </p>
+</div>
+`}
                     `;
                 }
                 return `
-                    <div class="birthday-card bg-gradient-to-br from-family-cream to-white rounded-2xl p-5 text-center shadow-md border border-family-gold/30">
-                        <div class="w-24 h-24 bg-gradient-to-br from-family-gold to-family-brown rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
-                            ${item.foto ? `<img src="${item.foto}" class="w-full h-full rounded-full object-cover">` : `<i class="fas fa-user-circle text-white text-4xl"></i>`}
-                        </div>
-                        <h3 class="font-bold text-xl text-family-brown">${escapeHtml(item.nome)}</h3>
-                        <div class="mt-2"><span class="bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold">📅 ${escapeHtml(item.data)}</span>${item.idade ? `<span class="bg-family-green/20 text-family-green px-3 py-1 rounded-full text-sm ml-2">🎂 ${escapeHtml(item.idade)}</span>` : ''}</div>
-                        <div class="mt-3 text-center"><span class="text-xs text-gray-400"><i class="fas fa-gift"></i> Não se esqueça de parabenizar!</span></div>
-                    </div>
-                `;
+    <div class="birthday-card bg-gradient-to-br from-family-cream to-white rounded-2xl p-5 text-center shadow-md border border-family-gold/30">
+        <div class="w-24 h-24 bg-gradient-to-br from-family-gold to-family-brown rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+            ${item.foto ? `<img src="${item.foto}" class="w-full h-full rounded-full object-cover">` : `<i class="fas fa-user-circle text-white text-4xl"></i>`}
+        </div>
+
+        <h3 class="font-bold text-xl text-family-brown">
+            ${escapeHtml(item.nome)}
+        </h3>
+
+        <div class="mt-2">
+            <span class="bg-family-gold text-family-brown px-3 py-1 rounded-full text-sm font-bold">
+                📅 ${escapeHtml(item.data)}
+            </span>
+
+            ${item.idade ? `
+                <span class="bg-family-green/20 text-family-green px-3 py-1 rounded-full text-sm ml-2">
+                    🎂 ${escapeHtml(item.idade)}
+                </span>
+            ` : ''}
+        </div>
+
+        ${item.curiosidade ? `
+            <div class="mt-3 p-2 bg-family-brown/10 rounded-lg">
+                <p class="text-sm text-gray-600">
+                    <i class="fas fa-star text-family-gold mr-1"></i>
+                    ${escapeHtml(item.curiosidade)}
+                </p>
+            </div>
+        ` : `
+            <div class="mt-3 text-center">
+                <span class="text-xs text-gray-400">
+                    <i class="fas fa-gift"></i> Não se esqueça de parabenizar!
+                </span>
+            </div>
+        `}
+    </div>
+`;
             }).join('');
         }
-        
         function setupFilters() {
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
